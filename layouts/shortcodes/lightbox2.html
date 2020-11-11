@@ -1,0 +1,8 @@
+
+    <div align="center">
+    
+        <a href="{{ .Get 0 | safeURL }}" data-lightbox="{{ .Get 1}}"  data-title="{{ .Get 2}}">
+            <img  src="{{ .Get 0 | safeURL }}" alt="{{ .Get 2}}" />
+        </a>
+
+    </div>

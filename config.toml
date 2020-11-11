@@ -1,0 +1,63 @@
+baseurl = "/"
+languageCode = "en-us"
+theme = "hello-friend"
+paginate = 5
+hasCJKLanguage = true
+summaryLength = 70
+
+#[markup.goldmark.renderer]
+#  unsafe=true
+
+
+[params]
+  # dir name of your blog content (default is `content/posts`)
+  contentTypeName = "post"
+  # "light" or "dark"
+  defaultTheme = "light"
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 4
+  # Enable to show reading time in minutes for posts
+  showReadingTime = false
+  
+
+[languages]
+  [languages.en]
+    title = "P&R's Blog"
+    subtitle = "聼其言觀其行"
+    keywords = ""
+    copyright = ""
+    menuMore = "Show more"
+    writtenBy = "Written by"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    minuteReadingTime = "min read"
+    dateFormatSingle = "2006.01.02"
+    dateFormatList = "2006.01.02"
+
+    [languages.en.params.logo]
+      logoText = "兼聽則明..."
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "tech"
+        name = "Technical"
+        url = "/categories/tech"
+        weight = 1
+        [[languages.en.menu.main]]
+        identifier = "showcase"
+        name = "MDTips"
+        url = "/showcase"
+        weight = 2
+        [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+        weight = 3
+
