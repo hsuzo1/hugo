@@ -103,5 +103,28 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   {{ end }}
 
+  <!-- 以下代码实现在网页中显示返回顶部按钮 -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          //Get the button:
+      mybutton = document.getElementById("myBtn");
+
+      // When the user scrolls down 400px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+      }
+  </script>
 {{ end }}
 

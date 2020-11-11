@@ -1,3 +1,5 @@
+<!-- https://matnoble.me/posts/shortcodes-practice-tutorial-for-hugo -->
+
 {{/* Available notice types: warning, info, note, tip */}}
 {{- $noticeType := .Get 0 -}}
 {{/* Workaround markdownify inconsistency for single/multiple paragraphs */}}
@@ -11,7 +13,7 @@
 {{- $.Page.Scratch.Add "noticecount" 1 -}}
 <div class="notice {{ $noticeType }}" {{ if len .Params | eq 2 }} id="{{ .Get 1 }}" {{ end }}>
 <p class="first notice-title"><span class="icon-notice baseline"><svg><use href="#{{- $noticeType -}}-notice"></use></svg></span>{{- i18n $noticeType -}}</p>
-{{- if or $block (not $raw) }}{{ $raw }}{{ else }}<p>{{ $raw }}</p>{{ end -}}
+{{- if or $block (not $raw) }}{{ $raw }}{{ else }}<p style="font-size: 1rem;letter-spacing: 2px;">{{ $raw }}</p>{{ end -}}
 </div>
 <!-- [warning]
 other = "警告"
@@ -25,3 +27,11 @@ other = "引言"
 [tip]
 other = "小贴示"
  -->
+
+ <!-- 
+{ notice warning }}
+这是告诫! 请注意!
+{ /notice }}
+
+
+  -->
