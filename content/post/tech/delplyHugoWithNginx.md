@@ -22,16 +22,20 @@ $ sudo ufw allow 'Nginx Full'
 $ sudo ufw reload
 ```
 查看防火墙状态
-`$ sudo ufw status`
+```bash
+$ sudo ufw status
+```
 
 
 ### 配置 Nginx server
 ```bash
 $ sudo systemctl start nginx
 ```
-默认网页根目录在** /var/www/**. 
-创建新站点文件 **/etc/nginx/sites-available**  使用 **example.com**:
-`$ sudo emacs /etc/nginx/sites-available/example.com`
+默认网页根目录在 **/var/www/**. 
+创建新站点文件 **/etc/nginx/sites-available**  使用 **example.com**:  
+```bash
+$ sudo emacs /etc/nginx/sites-available/example.com
+```
 粘贴以下内容：
 ```bash
 server {
@@ -41,8 +45,10 @@ server {
     index index.html; # You will create this file shortly
 }
 ```
-
-`$ sudo chmod 0755 /your/path/to/www`
+修改文件夹权限
+```bash
+$ sudo chmod 0755 /your/path/to/www
+```
 
 新建 **index.html** 测试Nginx是否正常运行:
 ```bash
@@ -53,14 +59,17 @@ $ sudo systemctl restart nginx
 
 ### 设置 SSL (HTTPS)
 
-```
+```bash
 $ sudo apt install python-certbot-nginx
 $ sudo certbot --nginx
 $ sudo systemctl restart nginx
-# 设置自动更新证书
+```
+#### 设置自动更新证书
+```bash
 $ sudo crontab -e
-# 设置为每天 09:00 运行.
-
+```
+设置为每天 09:00 运行，在最后一行添加如下：  
+```  
 0 9 * * * certbot renew --post-hook "systemctl reload nginx"
 ```
 更新的时间可以灵活设置。First column specifies the minutes and the second specifies the hour (24h clock).
@@ -70,16 +79,25 @@ $ sudo crontab -e
 ### 其他功能配置
 
 #### 启用 HTTPS/2
-```
+```bash
 $ sudo emacs /etc/nginx/sites-available/example.com
 ```
-将` listen 443 ssl; # managed by Certbot`替换成`listen 443 ssl http2; # managed by Certbot`
+将
+``` 
+listen 443 ssl; # managed by Certbot
+```
+替换成
+```
+listen 443 ssl http2; # managed by Certbot
+```
 重启Nginx server。
 
 
 #### 启用客户端缓存
 
-`$ sudo emacs /etc/nginx/sites-available/example.com`
+```bash
+$ sudo emacs /etc/nginx/sites-available/example.com
+```
 将下方代码插入第一个域名解析块末尾：
 ```
 server{
@@ -103,24 +121,24 @@ server{
 ### 设置 Hugo 站点
 
 安装Hugo软件
-```
+```bash
 $ sudo apt install hugo
 ```
-创建新站点
+创建新站点  
 `$ hugo newsite sitename`
 
-下载主题包
+下载主题包  
 `$ git clone https://github.com/Track3/hermit.git themes/hermit`
 
-修改站点根目录下的配置文件**config.toml**，以启用新主题
+修改站点根目录下的配置文件**config.toml**，以启用新主题  
 `theme = 'hermit'`
 
-建立新文章
+建立新文章  
 `$ hugo new posts/some-post.md`
 
-测试站点运行，在站点根目录下运行如下
-`$ hugo server -D`
-This runs a local webserver, enabling drafts with the -D option. 
+测试站点运行，在站点根目录下运行如下  
+`$ hugo server -D`  
+使用 **-D** 选项以显示草稿文章。 
 
 编译生成站点文件
 `$ hugo`
@@ -128,7 +146,7 @@ This runs a local webserver, enabling drafts with the -D option.
 
 
 如果web服务器是远程服务器，可以使用**rsync**软件将网页内容同步过去：
-```
+```bash
 $ rsync -aAXv /path/to/sitename/public/ user@example.com:/var/www/ --delete
 ```
 {{< notice tip >}}
