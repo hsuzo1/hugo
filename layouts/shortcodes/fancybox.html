@@ -53,7 +53,7 @@
     {{ $gallery := $.Scratch.Get "gallery" }}
 
     <div class="fancybox" align="center">
-      <a data-fancybox="{{ $gallery }}" href="{{ $path }}/{{ $file }}" data-caption="{{ $caption }}"><img src="{{ $path }}/{{ $file }}"></a>
+      <a data-fancybox="{{ $gallery }}" href="{{ $path }}/{{ $file }}" data-caption="{{ $caption }}"><img src="{{ $path }}/{{ $file }}" width="50%"></a>
     </div>
   {{ end }}
 {{ end }}
