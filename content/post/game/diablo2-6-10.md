@@ -23,7 +23,7 @@ Cover : "/img/game/DiabloIII_2020-11-12_22-10-19.jpg"
   
 一是加入暗影分身  
 二是卡奈魔盒增加一個欄位
-{{< fancybox "/img/game/" "EBQBE3PWAAYC1603874968079.jpg" "四個欄位" "D3">}}  
+{{< image src="/img/game/EBQBE3PWAAYC1603874968079.jpg" position="center" style="border-radius: 8px;">}}   
 
 ### 賽季旅程獎勵
 如果你以前有勤奮地把惡魔通通殺光，也有在每次的賽季旅程中取得征服者稱號，你應該已經拿到了幾個額外的儲物箱欄頁。在每個賽季裡完成征服者層級的挑戰，還可以再獲得一個額外欄頁，最多可以獲得共五個：
