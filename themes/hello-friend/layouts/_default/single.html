@@ -103,6 +103,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   {{ end }}
 
+  <!-- 动态添加lazy脚本 -->
+  <!-- {{ if .HasShortcode "fancybox" }}
+    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js" async=""></script>
+  {{ end }}  -->
+  
+
+
   <!-- 以下代码实现在网页中显示返回顶部按钮 -->
   <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
   <script>

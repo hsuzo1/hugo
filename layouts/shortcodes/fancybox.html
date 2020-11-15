@@ -53,7 +53,10 @@
     {{ $gallery := $.Scratch.Get "gallery" }}
 
     <div class="fancybox" align="center">
-      <a data-fancybox="{{ $gallery }}" href="{{ $path }}/{{ $file }}" data-caption="{{ $caption }}"><img src="{{ $path }}/{{ $file }}" width="600"></a>
+      <a data-fancybox="{{ $gallery }}" href="{{ $path }}/{{ $file }}" data-caption="{{ $caption }}">
+        <img src="{{ $path }}/{{ $file }}" width="600" loading="lazy" /> 
+        <!-- class="lazyload" -->
+      </a>
     </div>
   {{ end }}
 {{ end }}

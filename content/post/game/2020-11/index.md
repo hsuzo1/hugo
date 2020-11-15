@@ -10,14 +10,14 @@ Cover : "/img/game/DiabloIII_2020-11-12_22-10-19.jpg"
 
 目前暗黑3的**2.6.10**更新檔已經上綫！暴雪台灣網放出消息，&#128227; 22賽季預計會在 **11月10日**推出。可實際上今天還并未出現 &#128514;
 只能順手刷了兩遍宏偉秘境。
-{{< fancybox "/img/game/" "2020-11-12 (1).jpg" "戰大佬" "D3">}}  
+{{< fancybox "/img/game" "2020-11-12 (1).jpg" "戰大佬" "D3">}}  
 
 不過值得一提的是通過1M的香港VPS（阿里雲國際免費試用一年）搭建加速服務器似乎效果不錯，晚高峰的網絡延時也不會太高，免去了官方加速器的高昂成本。  
-{{< fancybox "/img/game/" "2020-11-12 (4).jpg" "基本在200ms以内" "D3">}}  
+{{< fancybox "/img/game" "2020-11-12 (4).jpg" "基本在200ms以内" "D3">}}  
   
 ---
 
-{{< fancybox "https://bnetcmsus-a.akamaihd.net/cms/gallery/" "GEFW2KTQD11M1603874966548.jpg" "22賽季" "D3">}}  
+{{< fancybox "https://bnetcmsus-a.akamaihd.net/cms/gallery" "GEFW2KTQD11M1603874966548.jpg" "22賽季" "D3">}}  
 
 ## 本次升級新變化
   
