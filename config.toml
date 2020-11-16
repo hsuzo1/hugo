@@ -22,7 +22,7 @@ summaryLength = 70
 
 [languages]
   [languages.en]
-    title = "P&R's Blog"
+    title = "Hsuzo's Blog"
     subtitle = "聼其言觀其行"
     keywords = ""
     copyright = ""
@@ -37,11 +37,11 @@ summaryLength = 70
     dateFormatList = "2006.01.02"
 
     [languages.en.params.logo]
-      logoText = "兼聽則明..."
+      logoText = "兼聽則明"
       logoHomeLink = "/"
     # or
     #
-    # path = "/img/your-example-logo.svg"
+     path = "/logo.svg"
     # alt = "Your example logo alt text"
 
     [languages.en.menu]

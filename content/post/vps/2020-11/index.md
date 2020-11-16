@@ -11,7 +11,7 @@ Tags : ["vps", "youtube","4K"]
 **BWH20201111（优惠 11%）**  
   
 
-- 最便宜的一款也要年付 *$49.99 USD Annually*，就是**50**美金
+- 最便宜的一款也要年付 *$49.99 USD*，基本就是**50**美金
 ```plaintext
 SPECIAL 20G KVM PROMO V3 - LOS ANGELES - CN2
 SSD: 20 GB RAID-10
@@ -40,6 +40,12 @@ Strictly self-managed, no support
 ```
   
 
-- 不过目前似乎有更省心经济的方案，晚高峰有关**4K**稳定在40000以上🥰：
+- 不过目前似乎有更省心经济的方案，月付9.9元，晚高峰油管**4K**视频稳定在40000+  🥰：
   
-{{< fancybox "." "Dubai_2020-11-15_19-05-58.jpg" "晚高峰稳定在40000+" >}}
+{{< fancybox "." "Dubai_2020-11-15_19-05-58.jpg" "晚高峰稳定在40000+" >}}  
+  
+
+
+
+提供一个下载样式按钮：
+{{< link "/files/pyautogui-readthedocs-io-en-latest.pdf" >}}
