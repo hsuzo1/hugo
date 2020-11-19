@@ -27,7 +27,7 @@ layout = [[sg.Text('请选择要识别的图片'), sg.Text(size=(15, 1), key='-O
                                                                                         file_types=(("Text Files", "*.txt"),),\
                                                                                         default_extension='.txt')]]
 
-window = sg.Window('OCR Tool by zhangxuzhou', layout)
+window = sg.Window('OCR Tool by ', layout)
 
 while True:
     event, values = window.read()
