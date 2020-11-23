@@ -4,6 +4,7 @@ date: 2020-11-10T10:32:02+08:00
 draft: false
 categories: ["tech"]
 Tags : ["SSH", "SCP", "FTP"]
+description: 学习使用SSH、SCP、SFTP命令
 ---
 
 

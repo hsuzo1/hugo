@@ -3,7 +3,7 @@ title: "LightBox and HTML5 Video"
 date: 2020-10-31T23:06:48+08:00
 draft: false
 categories: ["other"]
-Tags : ["video", "4K"]
+Tags : ["video", "4K", "lightbox"]
 ---
 
 

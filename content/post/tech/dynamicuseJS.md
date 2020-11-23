@@ -4,6 +4,8 @@ date: 2020-11-09T20:08:25+08:00
 draft: false
 categories: ["tech"]
 Tags : ["Hugo", "JS", "CSS"]
+keywords: "Hugo JS CSS 动态调用"
+description: 使用动态的方法在文章页面灵活调用js和css文件，从而减少主页面外部加载延时。
 ---
 
 

@@ -3,8 +3,8 @@ title: "网页中引用GoogleFont的方法"
 date: 2020-10-29T19:18:06+08:00
 draft: false
 categories: ["tech"]
-Tags : ["other"]
-decription : ["在线调用方式在Hugo网页中使用GoogleFonts"]
+Tags : ["other", "googlefont"]
+decription : 在线调用方式在Hugo网页中使用GoogleFonts的Noto Serif SC字体
 ---
 
 

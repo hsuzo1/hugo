@@ -5,6 +5,8 @@ draft: false
 categories: ["game"]
 Tags : ["Diablo"]
 Cover : "/img/game/DiabloIII_2020-11-12_22-10-19.jpg"
+Keywords: "Diablo 22赛季 猎魔人"
+description: 暗黑3新补丁2.6.10发布，上线试玩发现22赛季还未开。
 ---
 
 

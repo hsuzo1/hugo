@@ -3,7 +3,9 @@ title: "如何使用Slimbox2显示图片灯箱"
 date: 2020-11-13T09:03:21+08:00
 draft: false
 categories: ["tech"]
-Tags : ["slimbox2","lightbox"]
+Tags : ["slimbox2","lightbox", "image"]
+Keywords: "slimbox2 lightbox 图片灯箱 hugo"
+description: Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。文本记录了在Hugo中使用slimbox2来显示图片灯箱效果的过程。
 ---
 
 

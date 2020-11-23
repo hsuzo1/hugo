@@ -4,6 +4,8 @@ date: 2020-10-27T18:34:17+08:00
 draft: false
 categories: ["tech"]
 Tags : ["github"]
+keywords: "github git 版本控制"
+description: Github版本控制的方法
 ---
 
 

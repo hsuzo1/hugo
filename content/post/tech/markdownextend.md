@@ -4,6 +4,7 @@ date: 2020-10-31T16:20:56+08:00
 author: "david"
 categories: ["tech"]
 tags: ["markdown"]
+description: 关于marikdown的一些用法总结
 ---
 
 使用内嵌HTML语言，需要在config.toml中加入如下：

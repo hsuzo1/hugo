@@ -2,6 +2,7 @@
 title = "About"
 date = "2020-10-27"
 author = "David Chang"
+keywords = "张旭州 博客 About"
 +++
   
   
@@ -14,7 +15,7 @@ author = "David Chang"
   
 
 
-![Zhang](logo.png) 
+![Zhang](/logo.svg) 
 **Hi**, My name is David Chang. 
 
 记录下我容易遗失的，哪怕有一天我忘了它在何处。

@@ -8,6 +8,8 @@
   name="keywords"
   content="{{ with .Params.Keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.Keywords }}{{ end }}"
 />
+<!-- <meta content="{{ delimit .Keywords ", " }}" name="keywords"> -->
+
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="{{ .Permalink }}" />
 

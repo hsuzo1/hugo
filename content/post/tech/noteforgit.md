@@ -1,8 +1,10 @@
 ---
-title: "Noteforgit"
+title: "GIT命令的常用方法"
 date: 2020-10-25T21:34:23+08:00
 draft: false
-Tags : ["Hugoo"]
+categories: ["tech"]
+Tags : ["Hugo", "Git"]
+Description: 记录一下GIT方法push网站的命令
 ---
 
 ### Hugo Package

@@ -15,16 +15,17 @@ summaryLength = 70
   # "light" or "dark"
   defaultTheme = "light"
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 4
+  showMenuItems = 5
   # Enable to show reading time in minutes for posts
   showReadingTime = false
+  description = "张旭州的个人博客。Site stuff for having fun in my life."
   
 
 [languages]
   [languages.en]
-    title = "Hsuzo's Blog"
-    subtitle = "聼其言觀其行"
-    keywords = ""
+    title = "张旭州的个人博客"
+    subtitle = "兼聽則明"
+    keywords = "张旭州 博客 Hugo 编程 日志　python"
     copyright = ""
     menuMore = "Show more"
     writtenBy = "Written by"
@@ -51,13 +52,23 @@ summaryLength = 70
         url = "/categories/tech"
         weight = 1
         [[languages.en.menu.main]]
-        identifier = "showcase"
-        name = "MDTips"
-        url = "/showcase"
+        identifier = "life"
+        name = "Life"
+        url = "/"
         weight = 2
+        [[languages.en.menu.main]]
+        identifier = "categories"
+        name = "Categories"
+        url = "/Categories"
+        weight = 3
+        [[languages.en.menu.main]]
+        identifier = "tags"
+        name = "Tags"
+        url = "/tags"
+        weight = 4
         [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/about"
-        weight = 3
+        weight = 5
 

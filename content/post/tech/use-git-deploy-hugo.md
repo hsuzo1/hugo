@@ -1,10 +1,11 @@
 ---
-title: "用 Hugo 创建 Blog 站点并部署到 VPS"
+title: "用Hugo创建Blog站点并部署到VPS"
 date: 2020-10-26T21:01:00+08:00
 draft: False
 categories: ["tech"]
 author : "David"
-Tags : ["Hugo", "Github"]
+Tags : ["Hugo", "Github", "vps"]
+description: 用Hugo创建Blog站点，并自动化部署到VPS上。
 
 ---
 

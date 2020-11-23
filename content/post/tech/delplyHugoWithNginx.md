@@ -5,6 +5,8 @@ draft: false
 categories: ["tech"]
 Tags : ["Hugo", "Nginx"]
 cover : /usegit/web-developer.jpg
+description: 记录使用Nginx和Hugo在VPS上搭建一个静态网站
+keywords: "Nginx Hugo VPS 静态网站"
 ---
 
 > *[pvere.net](https://pvera.net/posts/create-site-nginx-hugo/)*

@@ -3,7 +3,9 @@ title: "PySimpleGUI制作百度云图片文字识别软件"
 date: 2020-11-19T18:50:46+08:00
 draft: false
 categories: ["tech"]
-Tags : ["Python", "OCR", "Baidu", "API"]
+Tags : ["Python", "OCR", "Baidu", "API", "PySimpleGUI"]
+keywords: "python PySimpleGUI 百度云  OCR  GUI"
+description: 学习使用python的pysimplegui库编写一个百度云文字识别API的OCR软件，图形界面GUI目标实现。
 ---
   
 **python**本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了
@@ -86,3 +88,24 @@ pyinstaller -F -w sgTest.py
   
 {{< image src="/img/tech/Snipaste_2020-11-19_19-13-06.jpg"  position="center" style="border-radius: 8px;">}}
 > 比较麻烦的是，最后保存识别结果的功能还未摸索出来&#128524;
+
+11.23更新
+完善保存文件的方法：
+```python
+# pathlib的方法保存识别结果为txt文件
+def save_file_as():
+    filename = sg.popup_get_file('Save As', modal=True, keep_on_top=True, save_as=True, no_window=True, file_types=(("Text Files", "*.txt"),), default_extension='.txt')
+    if filename:
+        file = pathlib.Path(filename)
+        file.write_text(values.get('-BODY-'))
+        window['_INFO_'].update(value=file.absolute())
+        sg.popup_ok('Save Done')
+        return file
+
+    ......
+
+    if (event == 'Save') and (values.get('-BODY-') != "\n" ):
+        save_file_as()
+    if (event == '_INFO_'):
+        os.system(window['_INFO_'].get())
+```

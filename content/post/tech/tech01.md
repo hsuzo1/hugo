@@ -3,8 +3,9 @@ title: "Pure CSS Lightbox in Hugo theme"
 date: 2020-10-27T16:20:56+08:00
 draft: false
 categories: ["tech"]
-Tags : ["hugo"]
+Tags : ["hugo", "CSS", "lightbox"]
 cover : "https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/img/cover.png"
+description: 使用pure css显示图片灯箱的方法
 ---
 
 >from [jlelse's Blog](https://jlelse.blog/dev/css-lightbox-hugo/)
