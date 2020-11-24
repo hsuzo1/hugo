@@ -24,7 +24,7 @@ summaryLength = 70
 [languages]
   [languages.en]
     title = "张旭州的个人博客"
-    subtitle = "兼聽則明"
+    subtitle = ""
     keywords = "张旭州 博客 Hugo 编程 日志　python"
     copyright = ""
     menuMore = "Show more"

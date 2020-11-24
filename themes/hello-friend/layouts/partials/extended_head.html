@@ -28,6 +28,20 @@ Do not put anything in this file - it's only here so that hugo won't throw an er
 
 <!-- 判断文章头部元素是否启用数学公式 Math:True False -->
 {{ if .Params.Math  }}
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [["$", "$"]],
+            },
+            displayMath: [
+                ["$$", "$$"],
+                ["\[\[", "\]\]"],
+            ],
+            svg: {
+                fontCache: "global",
+            },
+        };
+    </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {{ end }}
