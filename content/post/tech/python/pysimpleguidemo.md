@@ -5,7 +5,6 @@ draft: false
 categories: ["tech"]
 Tags : ["Python", "OCR", "Baidu", "API", "PySimpleGUI"]
 keywords: "python PySimpleGUI 百度云  OCR  GUI"
-description: 学习使用python的pysimplegui库编写一个百度云文字识别API的OCR软件，图形界面GUI目标实现。
 ---
   
 **python**本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了

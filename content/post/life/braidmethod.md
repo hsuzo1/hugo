@@ -4,7 +4,6 @@ date: 2020-11-24T11:40:42+08:00
 draft: false
 categories: ["life"]
 Tags : ["braid", "生存"]
-description : 带娃总有一些技术要学习，尤其是带女娃，扎辫子就是其一。
 keywords : "编头发 扎辫子 育儿 "
 ---
 

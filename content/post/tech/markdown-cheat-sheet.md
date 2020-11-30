@@ -8,7 +8,7 @@ Descripton: "Markdown Cheat Sheet for use in your Markdown application."
 ---
 
 
-
+记录一下MD文档的常用方法<!--more-->
 ```markdown
 # Markdown Cheat Sheet
 
