@@ -146,7 +146,43 @@ for tag in tags:
 ```  
   
 
-至此，大功告成。总题目数**2000**，复习去了。
+至此，大功告成。总题目数**2000**，复习去了。  
 
+## 3. youtube上的参考教学资料  
+知乎上Dwzb的[BeautifulSoup全面总结](https://zhuanlan.zhihu.com/p/35354532)作为笔记收藏一下。
+比较详细的视频介绍：[Python Web Scraping](https://youtu.be/XVv6mJpFOb0)，源码介绍[www.jimshapedcoding.com](http://www.jimshapedcoding.com/courses/Python%20Web%20Scraping).
+```python
+from bs4 import BeautifulSoup
+import requests
+import time
 
-> 知乎上Dwzb的[BeautifulSoup全面总结](https://zhuanlan.zhihu.com/p/35354532)作为笔记收藏一下
+print('Put some skill that you are not familiar with')
+unfamiliar_skill = input('>')
+print(f'Filtering out {unfamiliar_skill}')
+
+def find_jobs():
+    html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=').text
+    soup = BeautifulSoup(html_text, 'lxml')
+    jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
+    for index, job in enumerate(jobs):
+        published_date = job.find('span', class_='sim-posted').span.text
+        if 'few' in published_date:
+            company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
+            skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
+            more_info = job.header.h2.a['href']
+            if unfamiliar_skill not in skills:
+                with open(f'posts/{index}.txt', 'w') as f:
+                    f.write(f"Company Name: {company_name.strip()} \n")
+                    f.write(f"Required Skills: {skills.strip()} \n")
+                    f.write(f'More Info: {more_info}')
+                print(f'File saved: {index}')
+
+if __name__ == '__main__':
+    while True:
+        find_jobs()
+        #IMPORTANT: KEEP THIS AMOUNT HIGHER AS POSSIBLE TO AVOID SCRAPING CONTINOUSLY A WEBSITE.
+        #YOU DO NOT WANT TO BE CONSIDERED AS A BOT WHO TRIES TO ATTACK A WEBSITE BY REQUESTING FROM IT TOO MUCH
+        time_wait = 10
+        print(f'Waiting {time_wait} minutes...')
+        time.sleep(time_wait * 60)
+```
