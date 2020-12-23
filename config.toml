@@ -54,7 +54,7 @@ summaryLength = 140
         [[languages.en.menu.main]]
         identifier = "life"
         name = "Life"
-        url = "/"
+        url = "/categories/life"
         weight = 2
         [[languages.en.menu.main]]
         identifier = "categories"
