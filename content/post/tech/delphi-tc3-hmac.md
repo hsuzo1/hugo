@@ -14,7 +14,7 @@ keywords : "张旭州 sms hmac delphi"
 
 ### 一、TC3鉴权单元
 为了方便复用，写了一个TC3鉴权单元文件：**TC3_Authorization.pas**：
-```
+```pascal
 {
 2021-02-15
 广西南宁
@@ -122,11 +122,11 @@ end.
 
 ### 二、、短信发送模块
 在implementation下 
-```
+```pascal
 uses
 Unit2, TC3_Authorization;
 ```
-```delphi
+```pascal
 procedure TForm1.btn_tc3_sendClick(Sender: TObject);
 var
   strMobile, SecretKey, SecretId,sdkappid,sign, params, tpl_id, strjson:string;
@@ -159,7 +159,7 @@ begin
 
   strMobile := phoneSet.Remove(Length(phoneSet)-1);
   list.Free;
-  
+
   sdkappid := edt_sdkappid.Text;
   sign := edt_sign.Text;
   params := edt_params.Text;
