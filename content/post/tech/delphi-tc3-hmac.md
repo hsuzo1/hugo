@@ -3,7 +3,7 @@ title: "Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信"
 date: 2021-02-16T22:09:20+08:00
 draft: false
 categories: ["tech"]
-Tags : ["delphi", "hmac", "sms", "tencent"]
+Tags : ["delphi", "hmac", "sms", "tencent",  "download"]
 keywords : "张旭州 sms hmac delphi"
 ---
 
