@@ -8,7 +8,7 @@ description : 記錄生活美食食譜，體會生活點滴。快餐似乎成爲
 keywords : "张旭州 披薩 網絡 食譜"
 ---
 
-{{ hmac "sha256" "Secret key" "Hello world, gophers!"}}
+
 ## 一、披薩配方
 #### 1.日常使用的配方之一，可根據需要分爲兩份量。
 - 高筋麵粉   200g    
