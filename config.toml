@@ -15,7 +15,7 @@ summaryLength = 140
   # "light" or "dark"
   defaultTheme = "light"
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 5
+  showMenuItems = 6
   # Enable to show reading time in minutes for posts
   showReadingTime = false
   description = "张旭州的个人博客。Site stuff for having fun in my life."
@@ -71,3 +71,10 @@ summaryLength = 140
         name = "About"
         url = "/about"
         weight = 5
+        [[languages.en.menu.main]]
+        identifier = "search"
+        name = "Search"
+        weight = 6
+
+[outputs]
+  home = ["HTML", "JSON"]
