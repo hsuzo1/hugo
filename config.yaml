@@ -1,0 +1,13 @@
+---
+baseurl: "https://blog.hsuzo.cn/"
+DefaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+languageCode: "zh-cn"
+title: "张旭州的个人博客"
+theme: "hello-friend"
+metaDataFormat: "yaml"
+algolia:
+  index: "index_Blog"
+  key: "4396461cccc9fdad58bbf857b69a2603"
+  appID: "KGKJAR2KGZ"
+---

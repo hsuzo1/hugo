@@ -4,7 +4,6 @@ date: 2020-10-22T09:42:40+08:00
 draft: false
 categories: ["tech"]
 Tags : ["git", "vs code"]
-draft: False
 description: "记录使用visual studio code 添加git远程仓库的方法"
 ---
 
