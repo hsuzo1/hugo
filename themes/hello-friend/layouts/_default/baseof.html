@@ -26,6 +26,14 @@
 
       <div class="content">
         {{ block "main" . }} {{ end }}
+        <!-- 搜索框 -->
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        <!-- 搜索框结束 -->
+
       </div>
 
       {{ block "footer" . }}

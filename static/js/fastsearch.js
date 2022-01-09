@@ -69,6 +69,12 @@ document.querySelector("#search-btn").onclick = function(e) {
     doSearch(e)
 }
   
+document.querySelector("#search-btn-mobile").onclick = function(e) { 
+  doSearch(e)
+  // 点击搜索时，隐藏移动端弹出菜单
+  document.getElementById('nav_menu').setAttribute('class', 'menu hidden')
+}
+
 function doSearch(e) {
     e.stopPropagation();
     if (firstRun) {

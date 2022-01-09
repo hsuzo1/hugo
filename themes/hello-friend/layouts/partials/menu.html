@@ -1,16 +1,10 @@
-<nav class="menu">
+<nav id='nav_menu' class="menu">
   <ul class="menu__inner menu__inner--desktop">
     {{ if or $.Site.Params.showMenuItems (eq $.Site.Params.showMenuItems 0) }}
     {{ range first $.Site.Params.showMenuItems $.Site.Menus.main }}
     {{ if not .HasChildren }}
     {{ if eq .Name "Search" }}
-    
-    <li><a id="search-btn" href="javascript:void(0);">🔍</a></li>
-    <div id="fastSearch">
-      <input id="searchInput" tabindex="0">
-      <ul id="searchResults">
-      </ul>
-    </div>
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
     {{ else }}
     <li><a href="{{ .URL }}">{{ .Name }}</a></li>
     {{ end }}
@@ -45,7 +39,12 @@
   <ul class="menu__inner menu__inner--mobile">
     {{ range $.Site.Menus.main }}
     {{ if not .HasChildren }}
+    {{ if eq .Name "Search" }}
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    {{ else }}
     <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+    {{ end }}
     {{ end }}
     {{ end }}
   </ul>
