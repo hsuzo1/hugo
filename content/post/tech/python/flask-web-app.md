@@ -15,7 +15,6 @@ SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives app
 >2. 有增删改功能
 >3. 使用网页模板  
 
-{{< image src="http://blogstatic.cn-gd.ufileos.com/tech2.gif"  position="center" style="border-radius: 8px;" alt="flask-with-mssql" caption="Flask" >}}
 
 ### 1. app.py
 ```python
