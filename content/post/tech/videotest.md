@@ -29,15 +29,12 @@ Tags : ["video", "4K", "lightbox"]
 #### 4..fancybox播放视频
 
 {{\< fancyvideo src="path" >}} 
-{{< fancyvideo src="http://vfx.mtime.cn/Video/2019/03/18/mp4/190318231014076505.mp4" >}}
+{{< fancyvideo src="https://vfx.mtime.cn/Video/2023/03/31/mp4/230331084255204126.mp4" >}}
   
 
-禁毒宣传短片1
-{{< fancyvideo src="https://vod-2class.justmonkey.cn/31e9d7c56d8c4479960073ee0983b495/a60b152c28ec435e87bc52a905282a8c-5456d705cfd07e668f702e78be66cb6f.mp4" >}}
+测试短片 Asteroid City - Official Trailer ：
+{{< fancyvideo src="https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/video/2023/Asteroid%20City%20-%20Official%20Trailer%20-%20Only%20In%20Theaters%20June%2016.mp4" >}}
   
-禁毒宣传短片2
-{{< fancyvideo src="https://vod-2class.justmonkey.cn/e454c68d333445bc9ff2874619aede9c/59d0b71d5a45488b81208963c21f61ac-5456d705cfd07e668f702e78be66cb6f.mp4" >}}
-   
    
 #### 5.以下通过fancybox实现图片灯箱并滚动显示
 
