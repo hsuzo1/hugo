@@ -9,7 +9,7 @@ usefancy: true
 
 
   
-{{< fancyvideo src="http://121.37.249.86/video/Magical%20Europe.mp4" >}}
+{{< fancyvideo src="https://objectstorage.ap-seoul-1.oraclecloud.com/n/cnkryvk1k7gi/b/bucket-20210403-1756/o/media%2Fvideo%2Fbbb.mp4" >}}
 
 ### 天翼云对象存储
 {{< fancyvideo src="http://oos-cn.ctyunapi.cn/testimg/Magical%20Europe.mp4" >}}

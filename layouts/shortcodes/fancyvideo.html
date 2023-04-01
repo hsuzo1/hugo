@@ -1,11 +1,9 @@
 {{ if .IsNamedParams }}
 
     <div class="fancybox" align="center">
-    
-        <video src="{{ .Get "src" | safeURL }}" controls="controls" preload="auto" width="80%">
+        <video src="{{ .Get "src" | safeURL }}" controls="controls" preload="auto" width="90%">
                 您的浏览器不支持 video 标签。
             </video>
-            
     </div>
 
 {{ end }}
