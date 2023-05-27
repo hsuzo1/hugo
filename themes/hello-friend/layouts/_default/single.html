@@ -98,14 +98,14 @@
   </div>
 
   {{ if (findRE "div class=.?fancybox.?" .Content 1)  }}
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <link href="https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.css" rel="stylesheet">
+    <script src="https://fastly.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   {{ end }}
 
   <!-- 动态添加lazy脚本 -->
   <!-- {{ if .HasShortcode "fancybox" }}
-    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js" async=""></script>
+    <script src="https://fastly.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js" async=""></script>
   {{ end }}  -->
   
 
