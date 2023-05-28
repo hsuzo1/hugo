@@ -4,7 +4,7 @@
   style="text-decoration: none;"
 >
   {{ if $.Site.Params.Logo.path }}
-    <img style="box-shadow: none;" src="{{ $.Site.Params.Logo.path }}" alt="{{ $.Site.Params.Logo.alt }}" />
+    <img style="box-shadow: none;" src="{{ $.Site.Params.Logo.path }}" height="44" alt="{{ $.Site.Params.Logo.alt }}" />
     {{ else }}
     <span class="logo__mark">{{ partial "greater-icon.html" . }}</span>
     <span class="logo__text"
