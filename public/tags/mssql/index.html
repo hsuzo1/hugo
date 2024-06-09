@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Mssql ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content=""
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/tags/mssql/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/tags/mssql/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Mssql">
+  <meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+
+
+<link rel="alternate" type="application/rss+xml" href="/tags/mssql/index.xml" title="" />
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="posts">
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/flask-web-app/">用Flask建立一个简单的Web App</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.12.29
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/mssql/">#mssql</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.It provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language. 网上的很多教程和视频都是基于本地SQLite数据库进行的操作，因为我个人的项目是在MSSQL上的，所以这里对Flask使用MS SQL Server的方法进行记录。 目标： MSSQL数据库存储数据 有
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/flask-web-app/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/flask-with-mssql/">在Flask中使用SQLAlchemy操作数据的方法</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.12.29
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/mssql/">#mssql</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/flask-with-mssql/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+    
+  </div>
+</div>
+
+  </div>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/math/</link>
+    <description>Recent content in Math on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 24 Nov 2020 09:14:23 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>辅导小学奥数时必须掌握的整除知识</title>
+      <link>//localhost:1313/post/life/math/</link>
+      <pubDate>Tue, 24 Nov 2020 09:14:23 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/life/math/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          小学生家长的必备知识点，整数被2、5、7、9、11、13等整除的判断技巧。
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

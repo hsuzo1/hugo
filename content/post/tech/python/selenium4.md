@@ -16,8 +16,8 @@ pip install selenium
 准备二：***下载对应浏览器的driver程序***  
 下载前需要确认电脑浏览器的***版本号***，再下载相对应的程序。
 - 微软Edge浏览器：[Microsoft Edge WebDriver](https://developer.microsoft.com/zh-cn/microsoft-edge/tools/webdriver/)
-- 谷歌浏览器：[chromedriver](https://npm.taobao.org/mirrors/chromedriver/)
-- 火狐浏览器：[geckodriver](https://npm.taobao.org/mirrors/geckodriver/)  
+- 谷歌浏览器：[chromedriver](https://googlechromelabs.github.io/chrome-for-testing/#stable)
+- 火狐浏览器：[geckodriver](https://github.com/mozilla/geckodriver/releases)  
 
 如果需要其他浏览器驱动程序，也可以在[淘宝镜像站](https://registry.npmmirror.com/binary.html)上查找。驱动程序下载后，可以保存在对应浏览器的程序文件夹中，也可以放在python脚本目录中，只要运行时指定好程序路径即可。
 ```python

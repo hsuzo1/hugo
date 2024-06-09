@@ -20,22 +20,24 @@ summaryLength = 140
   showReadingTime = false
   description = "张旭州的个人博客。Site stuff for having fun in my life."
   
-
+languageCode = 'en-us'
+title = '张旭州的个人博客'
 [languages]
   [languages.en]
-    title = "张旭州的个人博客"
-    subtitle = ""
-    keywords = "张旭州 博客 Hugo 编程 日志　python"
-    copyright = ""
-    menuMore = "Show more"
-    writtenBy = "Written by"
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
-    newerPosts = "Newer posts"
-    olderPosts = "Older posts"
-    minuteReadingTime = "min read"
-    dateFormatSingle = "2006.01.02"
-    dateFormatList = "2006.01.02"
+    [languages.en.params]
+      title = "张旭州的个人博客"
+      subtitle = ""
+      keywords = "张旭州 博客 Hugo 编程 日志　python"
+      copyright = ""
+      menuMore = "Show more"
+      writtenBy = "Written by"
+      readMore = "Read more"
+      readOtherPosts = "Read other posts"
+      newerPosts = "Newer posts"
+      olderPosts = "Older posts"
+      minuteReadingTime = "min read"
+      dateFormatSingle = "2006.01.02"
+      dateFormatList = "2006.01.02"
 
     [languages.en.params.logo]
       logoText = "兼聽則明"

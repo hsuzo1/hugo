@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Slimbox2 on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/slimbox2/</link>
+    <description>Recent content in Slimbox2 on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 13 Nov 2020 09:03:21 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/slimbox2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何使用Slimbox2显示图片灯箱</title>
+      <link>//localhost:1313/post/tech/slim2/</link>
+      <pubDate>Fri, 13 Nov 2020 09:03:21 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/slim2/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。文本记录了在Hugo中使用slimbox2来显示图片灯箱效果的过程。
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

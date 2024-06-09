@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Github版本控制的方法 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="https://github.com 官网登录 下载git客户端 1.生成秘钥📜 打开git客户端，执行命令 ssh-keygen -t rsa -C &amp;#34;github的邮箱账号&amp;#34; 注意，需要给.ssh的7000权限 sudo chmod -R 700 ~/.ssh 去这个目录，寻找id_rsa.pub文件，把文件的字符串复制。 登录官网github.com右上角人头像🤵➜setting"
+/>
+<meta
+  name="keywords"
+  content="github, git, 版本控制"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/github-version/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/github-version/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Github版本控制的方法">
+  <meta property="og:description" content="Github版本控制的方法">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-27T18:34:17+08:00">
+    <meta property="article:modified_time" content="2020-10-27T18:34:17+08:00">
+    <meta property="article:tag" content="Github">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Github版本控制的方法</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.10.27
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/github/">#github</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <blockquote>
+<ul>
+<li><a href="https://github.com"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  https://github.com
+</a></li>
+<li>官网登录</li>
+<li>下载git客户端</li>
+</ul>
+</blockquote>
+<h4 id="1生成秘钥128220-打开git客户端执行命令">1.生成秘钥📜 打开git客户端，执行命令</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;github的邮箱账号&#34;</span>
+</span></span></code></pre></div><p>注意，需要给.ssh的7000权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">700</span> ~/.ssh
+</span></span></code></pre></div><p>去这个目录，寻找<strong>id_rsa.pub</strong>文件，把文件的字符串复制。
+登录官网github.com右上角人头像🤵➜setting a ssh and gpg keys a new ssh key➜制的内容➜add ssh keys</p>
+<h4 id="2-验证秘钥">2. 验证秘钥</h4>
+<p>git客户端输入<code>ssh -T git@github.com</code> ,按提示输入 yes 提示successfully即可</p>
+<h4 id="3-在服务器添加完公钥之后ssh服务器然后报了这个错误">3. 在服务器添加完公钥之后，ssh服务器然后报了这个错误</h4>
+<pre tabindex="0"><code>sign_and_send_pubkey: signing failed: agent refused operation
+</code></pre><p>然后执行了以下命令才好。。</p>
+<pre tabindex="0"><code>eval &#34;$(ssh-agent -s)&#34;
+ssh-add
+</code></pre><h4 id="4建立身份标识">4.建立身份标识</h4>
+<pre tabindex="0"><code>git config --global user.name  &#39;github邮箱用户’
+git config --global user.email  github邮箱用户
+</code></pre><hr>
+<h3 id="案例1把项目提交到github仓库">案例1：把项目提交到github仓库</h3>
+<p>进入d盘，你的项目地址</p>
+<blockquote>
+<p>注意，有时候一些文件隐藏了.gitignore,凡是在目录中包含这个文件，将被忽略提交到github</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /d
+</span></span><span style="display:flex;"><span>mkdir www
+</span></span><span style="display:flex;"><span>cd www
+</span></span></code></pre></div><p>创建一个文件随便输入字符保存退出.设置全局编码，防止代码乱码</p>
+<pre tabindex="0"><code>git config --global gui.encoding utf-8
+</code></pre><p>把项目缓存本地仓库</p>
+<pre tabindex="0"><code>git add *
+</code></pre><p>提交到本地仓库并备注</p>
+<pre tabindex="0"><code>git commit –m “修改了文件”
+</code></pre><p>推送到github的仓库</p>
+<blockquote>
+<p>如何创建github仓库，登录官网，人头像旁有个+号 new repository
+创建完毕有有一个项目地址https://xxx.com/unrelaxs/test.git
+创建完仓库后，提交到github仓库</p>
+</blockquote>
+<p>配置一下项目的地址
+<code>git remote add origin https://xxx.com/unrelaxs/test.git</code>
+把本地分支推送到服务器分支上–u表示如果仓库没有则新建一个
+<code>git push –u origin master</code>[默认是master，如果有版本号则填写版本号]</p>
+<p>接着刷新<strong><a href="https://xxx.com/unrelaxs/test.git"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  https://xxx.com/unrelaxs/test.git
+</a></strong>这个网址，就能到你修改的内容了</p>
+<h3 id="案例2修改了文件却没有任何的操作想恢复到之前的代码">案例2：修改了文件，却没有任何的操作，想恢复到之前的代码</h3>
+<p>.代表所有文件 或者也可以指定具体路径下的文件
+<code>git checkout -- .</code></p>
+<h3 id="案例3-修改了文件commit到缓冲区了经过了add-和-commit但是没有提交到github">案例3： 修改了文件，commit到缓冲区了（经过了add 和 commit），但是没有提交到github</h3>
+<p><code>git reset HEAD .</code></p>
+<h3 id="案例4删除了文件如何恢复">案例4：删除了文件如何恢复？？</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log
+</span></span></code></pre></div><p>会弹出一个修改的列表：如</p>
+<pre tabindex="0"><code>commit c2d7f0dc6196c87e636d121bf7f163ad31d8915d
+</code></pre><p>commit 后的就是id了
+恢复54:35时间的东西</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout id .
+</span></span></code></pre></div><h3 id="案例5如何把对应版本代码克隆到本地">案例5：如何把对应版本代码克隆到本地</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone –b 版本号 代码链接
+</span></span></code></pre></div><h3 id="案例6在修改代码前必须要做的事">案例6：在修改代码前，必须要做的事</h3>
+<blockquote>
+<p>在修改前，必须是git pull 更新本地代码</p>
+</blockquote>
+<h3 id="案例7修改本地代码如何提交到服务器">案例7：修改本地代码如何提交到服务器？？</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git pull origin 1.0<span style="color:#f92672">(</span>指定1.0版本<span style="color:#f92672">)</span>或者 git pull
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit –m “修改了test文件”
+</span></span><span style="display:flex;"><span>***git push 后的origin1.0 是指定版本，可不填写***
+</span></span><span style="display:flex;"><span>git push origin 1.0
+</span></span></code></pre></div><h3 id="案例8从git上获取项目">案例8：从git上获取项目？？</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init 初始化一个仓库
+</span></span><span style="display:flex;"><span>git remote add origin 网址
+</span></span><span style="display:flex;"><span>git pull origin 分支
+</span></span><span style="display:flex;"><span>git checkout -b xx分支  <span style="color:#75715e">#如果没有该分支则尝试会创建这个分支</span>
+</span></span></code></pre></div><h3 id="案例9从git上面-clone下来的项目后如何拉取次分支以及合并主分支的代码呢">案例9：从git上面 clone下来的项目后，如何拉取次分支以及合并主分支的代码呢？</h3>
+<pre tabindex="0"><code>git init
+git clone http://xxxx
+git branch -r 查看远程仓库的分支，如果没有，请重新操作，还是不行，只能百度了
+git pull origin 分支名 注意了 origin是仓库名名，，如果 git branch -r 查看到 xx/origin/mobile  则第一个斜杠后，即origin为仓库名，mobile为分支名
+</code></pre><h3 id="案例10从git上面-clone下来别人的项目后如何提交到自己项目上">案例10：从git上面 clone下来别人的项目后，如何提交到自己项目上？</h3>
+<pre tabindex="0"><code>git init
+git clone http://xxx
+git remote add origin http://你自己的项目地址
+git pull origin master --allow-unrelated-histories
+git add .
+git commit -m &#34;版本合并&#34;
+git push origin master
+</code></pre><h3 id="案例11屏蔽某个目录某个文件不提交到git">案例11：屏蔽某个目录，某个文件不提交到git</h3>
+<p><strong>.gitignore</strong>文件语法如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 此为注释 – 将被 Git 忽略</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>*.a       <span style="color:#75715e"># 忽略所有 .a 结尾的文件</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>!lib.a    <span style="color:#75715e"># 但 lib.a 除外</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/TODO     <span style="color:#75715e"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>build/    <span style="color:#75715e"># 忽略 build/ 目录下的所有文件</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>doc/*.txt <span style="color:#75715e"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span>
+</span></span></code></pre></div><p>在项目根目录创建 <strong>.gitignore</strong></p>
+<h3 id="案例12新建一个分支拉取另外一个分支代码-并把新的分支合并到另外一个分支">案例12：新建一个分支，拉取另外一个分支代码, 并把新的分支合并到另外一个分支</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout -b feature_line
+</span></span><span style="display:flex;"><span>git pull origin develop  //拉取develop代码
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;创建了个分支&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin feature_line
+</span></span><span style="display:flex;"><span>git checkout -b develop   //切换develop分支
+</span></span><span style="display:flex;"><span>git pull origin develop
+</span></span><span style="display:flex;"><span>git merge feature_line   //合并分支
+</span></span><span style="display:flex;"><span>git push origin develop //推送合并后的结果
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h3 id="案例13同个电脑用不同的账号账号对应不同的-github平台">案例13：同个电脑用不同的账号，账号对应不同的 github平台</h3>
+<ol>
+<li>生成<strong>sshkey ssh-keygen -t rsa -C &ldquo;邮箱账号&rdquo;</strong>
+注意不要全部回车键  这里要写存储的路径如</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;gg&#34;</span>
+</span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
+</span></span><span style="display:flex;"><span>Enter file in which to save the key <span style="color:#f92672">(</span>/c/Users/Administrator/.ssh/id_rsa<span style="color:#f92672">)</span>: 
+</span></span></code></pre></div><p>这里填写绝对路径 或者相对路径 命名两个账号都不同如：<strong>/C/Users/Administrator/.ssh/id_rsa_one</strong></p>
+<p>接着全部回车键，默认</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;gg&#34;</span>
+</span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
+</span></span><span style="display:flex;"><span>Enter file in which to save the key <span style="color:#f92672">(</span>/c/Users/Administrator/.ssh/id_rsa<span style="color:#f92672">)</span>: 
+</span></span></code></pre></div><p>这里填写绝对路径 或者相对路径 命名两个账号都不同如：<strong>/c/Users/Administrator/.ssh/id_rsa_two</strong></p>
+<ol start="2">
+<li>
+<p>进去/c/Users/Administrator/.ssh/ 这个目录
+把 id_rsa_one.pub 跟two.pub 的秘钥 分别粘贴到不同的平台</p>
+</li>
+<li>
+<p>在这个目录 /c/Users/Administrator/.ssh/ 创建一个config文件，注意没有后缀
+config文件内容如下：</p>
+</li>
+</ol>
+<pre tabindex="0"><code>Host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_rsa_two
+
+Host github_1033
+  HostName gitee.com
+  IdentityFile ~/.ssh/id_rsa_one
+</code></pre><p>注意了，上面我分别是 github.com 分别对应的是 github.com的平台，秘钥是<strong>id_rsa_two</strong> ，在github后台别粘贴错秘钥！！</p>
+<p>而 github_1033 对应是 gitee.com的平台（码云），秘钥是 <strong>id_rsa_one</strong></p>
+<ol start="4">
+<li>在添加源的时候</li>
+</ol>
+<pre tabindex="0"><code>git remote add origin git@github_1033:unrelaxs/object-design.git
+</code></pre><p>码云明天的ssh项目地址是：<strong><a href="mailto:git@gitee.com"
+  
+  
+>
+  git@gitee.com
+</a>:unrelaxs/object-design.git</strong>
+因此我把gitee.com改为github_1033就行了</p>
+<p>4.1对比两个commit，并导出所有的文件</p>
+<pre tabindex="0"><code>git archive -o ./export.zip 39e4d8cc9744877999b3f0554b48afe01ae83114 $(git diff --diff-filter=ACMR --name-only 25a0a906f4eb11d1da9654048c3af95ac50a8dac 39e4d8cc9744877999b3f0554b48afe01ae83114)
+</code></pre><p>a0ca27310aab94205d18c3415bd40b9821de2650 开始 commitId
+7b9cead0f411ce42637f7633cfbb7c9078d3202e 结束 commitId</p>
+<ol start="5">
+<li>忽略某文件夹下所有的内容提交，但保存该文件夹
+在文件夹下 创建一个.gitignore，内容如下</li>
+</ol>
+<pre tabindex="0"><code># ignore all except .gitignore file
+*
+!.gitignore
+</code></pre><p>😜</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/vps-secur/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Vps 安全设置几个方法</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/tech01/">
+                  <span class="button__text">Pure CSS Lightbox in Hugo theme</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

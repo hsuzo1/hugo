@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        GIT命令的常用方法 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Hugo Package wget https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_0.76.5_Linux-64bit.tar.gz tar -xzvf hugo_0.76.5_Linux-64bit.tar.gz sudo mv hugo /usr/local/bin/hugo hugo version 创建仓库hug0 本地新建目录 g:\hugo\hugo\ 新建一个测速网页文件index.html &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;我的第一个 HTML 页面&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;p&amp;gt;body 元素的内容会显示在浏览器中。&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;title 元素的内容会显示在浏览器的标题栏中。&amp;lt;/p&amp;gt"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/noteforgit/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/noteforgit/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="GIT命令的常用方法">
+  <meta property="og:description" content="记录一下GIT方法push网站的命令">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-25T21:34:23+08:00">
+    <meta property="article:modified_time" content="2020-10-25T21:34:23+08:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Git">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">GIT命令的常用方法</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.10.25
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/git/">#Git</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <h3 id="hugo-package">Hugo Package</h3>
+<pre tabindex="0"><code>wget https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_0.76.5_Linux-64bit.tar.gz
+tar -xzvf hugo_0.76.5_Linux-64bit.tar.gz
+sudo mv hugo /usr/local/bin/hugo
+hugo version
+</code></pre><h3 id="创建仓库hug0">创建仓库hug0</h3>
+<h5 id="本地新建目录">本地新建目录</h5>
+<p>g:\hugo\hugo\</p>
+<p>新建一个测速网页文件index.html</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">title</span>&gt;我的第一个 HTML 页面&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span>&gt;body 元素的内容会显示在浏览器中。&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span>&gt;title 元素的内容会显示在浏览器的标题栏中。&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><pre tabindex="0"><code>git init
+echo ^&lt;h1^&gt; Test Caddy Working^&lt;/h1^&gt;
+git add .
+git commit -m &#34;first Test&#34;
+git remote add origin https://github.com/hsuzo1/hug0
+git push -u origin master
+</code></pre><h3 id="push后在仓库的master下可见了">push后在仓库的master下可见了</h3>
+<p>创建vps上的网页目录</p>
+<pre tabindex="0"><code>mkdir /var/www
+mkdir /var/www/hugo
+cd /var/www
+</code></pre><pre tabindex="0"><code>echo &#34;deb [trusted=yes] https://apt.fury.io/caddy/ /&#34; | sudo tee -a /etc/apt/sources.list.d/caddy-fury.list
+sudo apt update
+sudo apt install caddy
+</code></pre><h4 id="修改caddy配置文件以通过域名访问">修改caddy配置文件以通过域名访问</h4>
+<pre tabindex="0"><code>blog.hsuzo.cn
+root * /var/www/hugo
+file_server
+</code></pre><p>再编辑Caddyfile</p>
+<pre tabindex="0"><code>http://blog.hsuzo.cn
+git github.com/hsuzo1/hug0 .
+root /var/www/hugo
+
+sudo setcap &#39;cap_net_bind_service=+ep&#39; /usr/bin/caddy
+
+curl https://getcaddy.com | bash -s personal http.git,http.hugo
+</code></pre>
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/use-git-deploy-hugo/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">用Hugo创建Blog站点并部署到VPS</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/vs/">
+                  <span class="button__text">GIT添加远程仓库</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

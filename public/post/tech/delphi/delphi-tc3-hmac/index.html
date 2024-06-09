@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。 参考了 高文杰 先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256"
+/>
+<meta
+  name="keywords"
+  content="张旭州, sms, hmac, delphi"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/delphi/delphi-tc3-hmac/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/delphi/delphi-tc3-hmac/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信">
+  <meta property="og:description" content="腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。 参考了 高文杰 先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-02-16T22:09:20+08:00">
+    <meta property="article:modified_time" content="2021-02-16T22:09:20+08:00">
+    <meta property="article:tag" content="Delphi">
+    <meta property="article:tag" content="Hmac">
+    <meta property="article:tag" content="Sms">
+    <meta property="article:tag" content="Tencent">
+    <meta property="article:tag" content="Download">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021.02.16
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/delphi/">#delphi</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/hmac/">#hmac</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/sms/">#sms</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/tencent/">#tencent</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/download/">#download</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p>腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。<br>
+参考了<a href="https://blog.csdn.net/xunchima123/article/details/93863574"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  高文杰
+</a>先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256 V3版本的鉴权接口。本文最后提供了源码及编译成品。</p>
+
+  <img src="/img/tech/20210216223459.jpg"  alt="tencent sms"  class="center"  style="border-radius: 8px;"  />
+
+
+<h3 id="一tc3鉴权单元">一、TC3鉴权单元</h3>
+<p>为了方便复用，写了一个TC3鉴权单元文件：<strong>TC3_Authorization.pas</strong>：</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">{
+2021-02-15
+广西南宁
+张旭州
+腾讯云 TC3-HMAC-SHA256 生成鉴权数据
+}
+ 
+unit TC3_Authorization;
+ 
+interface
+ 
+uses
+  System.SysUtils, System.hash, System.NetEncoding, System.DateUtils;
+ 
+{ -------------------------------------------------------------------------------
+  过程名:    genTC3Auth
+  作者:      张旭州
+  日期:      2021.02.15
+  参数:      SecretKey, SecretId, sDomain, bodyJSON, Service: string
+  参数说明： AccessKeyID，AccessKeySecret，域名, 待发送的数据主体JSON， 服务ocr, cvm
+  返回值:    string
+  
+  参数参考如下：
+    SecretKey := &#39;您的腾讯云SecretKey&#39;;
+    SecretId := &#39;您的腾讯云SecretId&#39;;
+    Service := &#39;sms&#39;  //发送短信
+    sDomain := &#39;sms.tencentcloudapi.com&#39;   //短信发送的域名
+  ------------------------------------------------------------------------------- }
+function genTC3Auth(SecretKey, SecretId, sDomain, bodyJSON, Service: string): string;
+ 
+implementation
+ 
+ 
+function DateTimeToUnix(const AValue: TDateTime): Int64;
+// 日期转Unix时间戳
+begin
+  Result := System.DateUtils.DateTimeToUnix(AValue) - 8 * 60 * 60;
+end;
+ 
+//腾讯云TC3 V3签名鉴权
+function genTC3Auth(SecretKey, SecretId, sDomain, bodyJSON, Service: string): string;
+var
+  httpRequestMethod: string; // = &#34;POST&#34;;
+  canonicalUri: string; //= &#34;/&#34;;
+  canonicalQueryString: string; //= &#34;&#34;;
+  canonicalHeaders: string; // = &#34;content-type:application/json; charset=utf-8\n&#34; + &#34;host:&#34; + host + &#34;\n&#34;;
+  signedHeaders: string; //= &#34;content-type;host&#34;;
+  SecretDate, SecretService, SecretSigning, Signature: TBytes;
+  StringToSign, payload, CanonicalRequest, HashedRequestPayload, HashedCanonicalRequest: string;
+  sDate,timestamp : string;
+  Authorization, CredentialScope : string;
+begin
+  sDate := FormatDateTime(&#39;YYYY-MM-DD&#39;, now());
+  timestamp := DateTimeToUnix(now).ToString;
+  httpRequestMethod := &#39;POST&#39;;
+  canonicalUri := &#39;/&#39;;
+  canonicalQueryString := &#39;&#39;;
+  canonicalHeaders := &#39;content-type:application/json&#39; + #10
+      + &#39;host:&#39; + sDomain + #10;
+  signedHeaders := &#39;content-type;host&#39;;
+ 
+  payload := bodyJSON;
+  //待发送的数据的哈希值:
+  HashedRequestPayload := THashSHA2.GetHashString(payload);
+ 
+  //拼接规范请求串
+  CanonicalRequest := httpRequestMethod + #10
+      + canonicalUri + #10
+      + canonicalQueryString + #10
+      + canonicalHeaders + #10
+      + signedHeaders + #10
+      + HashedRequestPayload;
+ 
+  //计算派生签名密钥
+  SecretDate := THashSHA2.GetHMACAsBytes(sDate, TEncoding.utf8.GetBytes(&#39;TC3&#39; + SecretKey));
+  SecretService := THashSHA2.GetHMACAsBytes(Service, SecretDate);
+  SecretSigning := THashSHA2.GetHMACAsBytes(&#39;tc3_request&#39;, SecretService);
+ 
+  //规范请求串的哈希值
+  HashedCanonicalRequest := THashSHA2.GetHashString(CanonicalRequest);
+  //组装待签名字符串
+  StringToSign := &#39;TC3-HMAC-SHA256&#39; + #10
+      + timestamp + #10
+      + sDate + &#39;/&#39; + Service + &#39;/tc3_request&#39; + #10
+      + HashedCanonicalRequest;
+  //计算签名
+  Signature := THashSHA2.GetHMACAsBytes(Bytesof(StringToSign), SecretSigning);
+//  Application.MessageBox(PChar(THash.DigestAsString(Signature)),
+//      &#39;提示&#39;, MB_OK + MB_ICONINFORMATION + MB_TOPMOST);
+ 
+  CredentialScope := sDate + &#39;/&#39; + Service + &#39;/tc3_request&#39;;
+  //拼接 Authorization
+  Authorization :=
+    &#39;TC3-HMAC-SHA256&#39; + &#39; &#39; +
+    &#39;Credential=&#39; + SecretId + &#39;/&#39; + CredentialScope + &#39;, &#39; +
+    &#39;SignedHeaders=&#39; + SignedHeaders + &#39;, &#39; +
+    &#39;Signature=&#39; + StringReplace(PChar(THash.DigestAsString(Signature)), Chr(13) + Chr(10), &#39;&#39;,
+    [rfReplaceAll]);
+ 
+  Result := Authorization;
+end;
+ 
+end.
+</code></pre><h3 id="二短信发送模块">二、、短信发送模块</h3>
+<p>在implementation下</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">uses
+Unit2, TC3_Authorization;
+</code></pre><pre tabindex="0"><code class="language-pascal" data-lang="pascal">procedure TForm1.btn_tc3_sendClick(Sender: TObject);
+var
+  strMobile, SecretKey, SecretId,sdkappid,sign, params, tpl_id, strjson:string;
+  tc3 : string;
+  url : string;
+  http : TIdHTTP;
+  jsonToSend : TStringStream;
+  Aresult:string;
+  //申明变量
+  Root:TJSONObject;    //uses System.JSON;
+  jsonArray: TJSONArray; // JSON数组变量
+  list : TStringList;
+  i : Integer;
+  phoneSet : string;
+ 
+begin
+  if (trim(edt_key.Text) = &#39;&#39;) or (Trim(edt_id.Text)=&#39;&#39;) then
+  begin
+    ShowMessage(&#39;使用TC3鉴权方式发送需要提供腾讯云账户的Key和Id&#39;);
+    exit;
+  end;
+  SecretKey := trim(edt_key.Text);
+  SecretId := Trim(edt_id.Text);
+  list := TStringList.Create;
+  list.CommaText := edt_strMobile.Text;
+  for i := 0 to list.Count -1  do
+  begin
+    phoneSet := phoneSet + &#39;&#34;86&#39; + list[i] + &#39;&#34;,&#39;
+  end;
+
+  strMobile := phoneSet.Remove(Length(phoneSet)-1);
+  list.Free;
+
+  sdkappid := edt_sdkappid.Text;
+  sign := edt_sign.Text;
+  params := edt_params.Text;
+  tpl_id := edt_tpl_id.Text;
+ 
+  strjson := &#39;{&#39;
+  + &#39;&#34;PhoneNumberSet&#34;:[&#39;
+  + strMobile
+  + &#39;],&#39;
+  + &#39;&#34;TemplateParamSet&#34;:&#39; + params
+  + &#39;,&#39;
+  + &#39;&#34;TemplateID&#34;:&#34;&#39;
+  + tpl_id
+  + &#39;&#34;,&#39;
+  + &#39;&#34;SmsSdkAppid&#34;:&#34;&#39;
+  + sdkappid
+  + &#39;&#34;,&#39;
+  + &#39;&#34;Sign&#34;:&#34;&#39;
+  + sign
+  +&#39;&#34;}&#39;;
+ 
+  tc3 := TC3_Authorization.genTC3Auth(SecretKey, SecretId, &#39;sms.tencentcloudapi.com&#39;,
+     strjson, &#39;sms&#39;);
+  url := &#39;https://sms.tencentcloudapi.com/&#39;;
+  http := TIdHttp.Create(nil);
+  http.HandleRedirects := True;
+  http.ReadTimeout := 3000;
+  http.Request.ContentType := &#39;application/json&#39;;//设置内容类型为json
+ 
+  jsonToSend := TStringStream.Create(strjson, TEncoding.UTF8);
+  jsonToSend.Position := 0;//将流位置置为0
+  http.Request.CustomHeaders.Clear;
+  http.Request.CustomHeaders.AddValue(&#39;Authorization&#39;, &#39; &#39; + tc3);
+  http.Request.CustomHeaders.AddValue(&#39;Content-Type&#39;, &#39; application/json&#39;);
+  http.Request.CustomHeaders.AddValue(&#39;Host&#39;, &#39; sms.tencentcloudapi.com&#39;);
+  http.Request.CustomHeaders.AddValue(&#39;X-TC-Action&#39;, &#39; SendSms&#39;);
+  http.Request.CustomHeaders.AddValue(&#39;X-TC-Timestamp&#39;, &#39; &#39; + gwj_DateTimeToUnix(now).ToString);
+  http.Request.CustomHeaders.AddValue(&#39;X-TC-Version&#39;, &#39; 2019-07-11&#39;);
+ 
+  http.Request.AcceptCharSet := &#39;UTF-8&#39;;
+  http.Request.AcceptEncoding := &#39;UTF-8&#39;;
+  http.Request.AcceptLanguage := &#39;UTF-8&#39;;
+  http.Request.CharSet := &#39;UTF-8&#39;;
+//  http.HTTPOptions := IdHTTP.HTTPOptions + [hoKeepOrigProtocol];
+ 
+  Aresult := http.Post(url, jsonToSend);//用MEMO控件接收POST后的数据返回
+  Aresult := UnicodeToChinese(Aresult);
+  Memo1.Text := Aresult;
+  jsonToSend.free;
+  http.free;
+ 
+  //发送成功的示例
+  //{&#34;Response&#34;:{&#34;SendStatusSet&#34;:[{&#34;SerialNo&#34;:&#34;2019:2892974270720676287&#34;,&#34;PhoneNumber&#34;:&#34;+8613377131696&#34;,&#34;Fee&#34;:1,&#34;SessionContext&#34;:&#34;&#34;,&#34;Code&#34;:&#34;Ok&#34;,&#34;Message&#34;:&#34;send success&#34;,&#34;IsoCode&#34;:&#34;CN&#34;}],&#34;RequestId&#34;:&#34;b2e1fdcb-e877-4bbe-89cc-e7cae7cb567d&#34;}}
+ 
+  Root:= TJSONObject.ParseJSONValue(Trim(Aresult)) as TJSONObject;   //uses System.JSON;
+  Root := Root.GetValue(&#39;Response&#39;) as TJSONObject;
+  jsonArray := Root.GetValue(&#39;SendStatusSet&#39;) as TJSONArray ;
+ 
+  Root := jsonArray.Get(0) as TJSONObject; //第一个号码结果
+ 
+  edt_result.Text := Root.GetValue(&#39;Code&#39;).Value;
+  edt_errmsg.Text := Root.GetValue(&#39;Message&#39;).Value;
+  edt_ext.Text := Root.GetValue(&#39;SessionContext&#39;).Value;
+end;
+</code></pre><p><strong>点击按钮下载本文源代码：</strong>
+<style>
+    .download{
+    background-color: #dee5e9;
+    border: 1px solid #7b9cb0;
+    border-radius: 5px;
+    color: #316586;
+    padding: .15em .3em .1em;
+    text-decoration: none;
+    padding: 7px 30px;
+}
+
+</style>
+
+
+<div style="align-items: center;text-align: center;">
+  <a class="download" href="/files/DelphiWithTencentSMS.zip" download="/files/DelphiWithTencentSMS.zip">download</a>
+  
+</div>
+</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/gofirst/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Go語言初見</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/python/flask-wtf-with-fetch/">
+                  <span class="button__text">Flask动态切换选项并通过Fetch查询显示</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

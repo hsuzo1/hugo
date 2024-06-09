@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Markdown Cheat Sheet ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="记录一下MD文档的常用方法
+"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/markdown-cheat-sheet/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/markdown-cheat-sheet/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Markdown Cheat Sheet">
+  <meta property="og:description" content="记录一下MD文档的常用方法">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-30T16:20:56+08:00">
+    <meta property="article:modified_time" content="2020-10-30T16:20:56+08:00">
+    <meta property="article:tag" content="Markdown">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Markdown Cheat Sheet</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.10.30
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/markdown/">#markdown</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p>记录一下MD文档的常用方法</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Markdown Cheat Sheet
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Thanks for visiting [<span style="color:#f92672">The Markdown Guide</span>](<span style="color:#a6e22e">https://www.markdownguide.org</span>)!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [<span style="color:#f92672">basic syntax</span>](<span style="color:#a6e22e">https://www.markdownguide.org/basic-syntax</span>) and [<span style="color:#f92672">extended syntax</span>](<span style="color:#a6e22e">https://www.markdownguide.org/extended-syntax</span>).
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Basic Syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Heading
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span># H1
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## H2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">### H3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Bold
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">**bold text**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Italic
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="font-style:italic">*italicized text*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Blockquote
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">&gt; </span><span style="font-style:italic">blockquote
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Ordered List
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> First item
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Second item
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> Third item
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Unordered List
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> First item
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Second item
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Third item
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Code
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">`code`</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Horizontal Rule
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Link
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>[<span style="color:#f92672">title</span>](<span style="color:#a6e22e">https://www.example.com</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Image
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>![<span style="color:#f92672">alt text</span>](<span style="color:#a6e22e">image.jpg</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Extended Syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Table
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>| Syntax | Description |
+</span></span><span style="display:flex;"><span>| ----------- | ----------- |
+</span></span><span style="display:flex;"><span>| Header | Title |
+</span></span><span style="display:flex;"><span>| Paragraph | Text |
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Fenced Code Block
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>\```
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  &#34;firstName&#34;: &#34;John&#34;,
+</span></span><span style="display:flex;"><span>  &#34;lastName&#34;: &#34;Smith&#34;,
+</span></span><span style="display:flex;"><span>  &#34;age&#34;: 25
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>\```
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Footnote
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Here&#39;s a sentence with a footnote. [^1]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[^1]: This is the footnote.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Heading ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### My Great Heading {#custom-id}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Definition List
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>term
+</span></span><span style="display:flex;"><span>: definition
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Strikethrough
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">~~The world is flat.~~</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Task List
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [x]</span> Write the press release
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> Update the website
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> Contact the media
+</span></span></code></pre></div>
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/markdownextend/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">MarkDownTips</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/web-font/">
+                  <span class="button__text">网页中引用GoogleFont的方法</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

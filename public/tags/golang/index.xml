@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/golang/</link>
+    <description>Recent content in Golang on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 24 Feb 2021 20:20:27 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Go語言初見</title>
+      <link>//localhost:1313/post/tech/gofirst/</link>
+      <pubDate>Wed, 24 Feb 2021 20:20:27 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/gofirst/</guid>
+      <description>
+        
+          &lt;img src=&#34;//localhost:1313/img/tech/golangfirst%20%28Small%29.jpg&#34;/&gt;
+          
+        
+        
+        
+          近期偶然對 Go 語言產生了興趣，於是初略學習了一下，感覺確實非常犀利。 Go 于 2009 年由谷歌开发完成。它解决了一个问题，创建出一种没有 C++等语言的过重包袱和过分设计的语言。 这使得 Go 在性能和速度上都有极大提升，使用 Go 工作成为一件乐事。 此外，大部分第一次使用 Go 语言的开发者不会感觉到不便，因为 Go
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

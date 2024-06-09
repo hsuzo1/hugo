@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Baidu on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/baidu/</link>
+    <description>Recent content in Baidu on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 19 Nov 2020 18:50:46 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/baidu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PySimpleGUI制作百度云图片文字识别软件</title>
+      <link>//localhost:1313/post/tech/python/pysimpleguidemo/</link>
+      <pubDate>Thu, 19 Nov 2020 18:50:46 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/pysimpleguidemo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          python本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了 这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

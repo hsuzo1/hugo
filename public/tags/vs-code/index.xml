@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vs Code on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/vs-code/</link>
+    <description>Recent content in Vs Code on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 22 Oct 2020 09:42:40 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/vs-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GIT添加远程仓库</title>
+      <link>//localhost:1313/post/tech/vs/</link>
+      <pubDate>Thu, 22 Oct 2020 09:42:40 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/vs/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          记录使用visual studio code 添加git远程仓库的方法
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

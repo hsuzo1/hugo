@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Video on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/video/</link>
+    <description>Recent content in Video on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Nov 2020 19:12:02 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/video/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>晚高峰的4K油管视频效率</title>
+      <link>//localhost:1313/post/tech/vps/2020-11/</link>
+      <pubDate>Sun, 15 Nov 2020 19:12:02 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/vps/2020-11/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          在晚高峰时段测试了一下机场速度，相比之下，搬瓦工的双十一特惠就有点小贵了。
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Magical Europe - 4K Timelapse 歐洲30國縮時攝影</title>
+      <link>//localhost:1313/post/tech/videojs/</link>
+      <pubDate>Tue, 10 Nov 2020 17:07:10 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/videojs/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          您的浏览器不支持 video 标签。 天翼云对象存储 您的浏览器不支持 video 标签。 {{\&amp;lt; param date &amp;gt;}}
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>LightBox and HTML5 Video</title>
+      <link>//localhost:1313/post/tech/videotest/</link>
+      <pubDate>Sat, 31 Oct 2020 23:06:48 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/videotest/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          1.以下内置单张图片显示 2.HTML5方式播放4K视频 如果不启用confing.toml则无法使用 3.内置播放youtube视频功能 使用方法：{{&amp;lt; youtube IdejM6wCkxA &amp;gt;}} 注意：需要外网连接才能正常播放 4..fancybox播放视频 测试短片 Asteroid City - Official Trailer ： 您的浏览器不支持 video 标签。 使用方法：{{&amp;
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

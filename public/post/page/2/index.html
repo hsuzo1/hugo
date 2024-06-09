@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Posts ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content=""
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Posts">
+  <meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+
+
+<link rel="alternate" type="application/rss+xml" href="/post/index.xml" title="" />
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="posts">
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/2024longzhou/">不一样的龙年</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2024.06.08
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/life/">#life</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            生活的变化超出大家的想象，这个龙年很不一样。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/2024longzhou/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/selenium4/">Selenium4使用方法小结</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2023.05.28
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            Selenium是支持web浏览器自动化的一系列工具和库的综合项目，目前版本为selenium4.9.1。通过该工具您可以自动化操控chrome、firefox、edge等主流浏览器，效果相当于您亲手操作。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/selenium4/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/cloudflarepages/">使用Cloudflare的Pages托管Github的Hugo静态页面</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2023.03.31
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            使用Cloudflare的Pages托管网页
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/cloudflarepages/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/2022springnight/">2022年特别的除夕夜</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2022.01.31
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/%E6%98%A5%E8%8A%82/">#春节</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            2022年1月31日，农历牛年除夕夜，第一次单独看春晚。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/2022springnight/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/daughterbirthday/">小女儿七岁生日咯</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2022.01.23
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/gift/">#gift</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/birthday/">#birthday</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/photo/">#photo</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            女儿7岁生日，许了一个愿望，要了一个特别的礼物。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/daughterbirthday/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/2022newyear/">2022來到了，慢慢品味生活🍕</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2022.01.02
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/life/">#life</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/food/">#food</a>&nbsp;
+            
+          </span>
+        
+
+        
+          <figure class="post-cover">
+         
+            <img src="https://s4.ax1x.com/2022/01/02/T7p3lD.jpg" alt="2022來到了，慢慢品味生活🍕" />
+            
+
+            
+          </figure>
+        
+
+        <div class="post-content">
+          
+            記錄生活美食食譜，體會生活點滴。快餐似乎成爲一部分人的全部，生活美食的意義在於與家人朋友分享，傳遞的是感情，是對生活的慢享受。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/2022newyear/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/delphi/embedbplform/">Delphi实现BPL窗体嵌入主程序内</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.03.17
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/delphi/">#delphi</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/bpl/">#bpl</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/download/">#download</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Delphi中的BPL文件类似于windows中DLL文件，可以封装完整的VCL和其他函数。如在开发使用中采用“主程序”+“bpl”模式，不仅可以大大减少主程序的体积，还能将各功能模块 分布开发，提高同步开发的速度。另外，如后期需要更改个别功能时仅要修改对应的bpl文件即可，而不必
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/delphi/embedbplform/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/2021spring/">2021寒假结束新战役打响</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.03.01
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/family/">#family</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              2021寒假结束了，孩子们开始新的学习。 您的浏览器不支持 video 标签。 Pluto开学前一天的自习，自学七年级的有理数部分，对于基本概念的掌握已经很不错了。 您的浏览器不支持 video 标签。 2021.3.1 Pluto日常训练。好朋友手臂骨折了，也仍然坚持单臂训练，他还有什么理由偷懒呢。 您的浏览器不支持 video 标签。 2021.2.28
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/2021spring/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/go/go-closure/">Go中闭包的简单使用</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.03.01
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/go/">#go</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Github上的文章 the-way-to-go_ZH_CN 对闭包的解释为： 匿名函数同样被称之为闭包（函数式语言的术语）：它们被允许调用定义在其它环境下的变量。闭包可使得某个函数捕捉到一些外部状态，例如：函数被创建时的状态。另一种表示方式为：一个闭包继承了函数所声明时的作用域。这种状态（作用域内的变量）都被共享到闭包
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/go/go-closure/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/gofirst/">Go語言初見</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.02.24
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/golang/">#golang</a>&nbsp;
+            
+          </span>
+        
+
+        
+          <figure class="post-cover">
+         
+            <img src="//localhost:1313/img/tech/golangfirst%20%28Small%29.jpg" alt="Go語言初見" />
+            
+
+            
+          </figure>
+        
+
+        <div class="post-content">
+          
+            
+              近期偶然對 Go 語言產生了興趣，於是初略學習了一下，感覺確實非常犀利。 Go 于 2009 年由谷歌开发完成。它解决了一个问题，创建出一种没有 C++等语言的过重包袱和过分设计的语言。 这使得 Go 在性能和速度上都有极大提升，使用 Go 工作成为一件乐事。 此外，大部分第一次使用 Go 语言的开发者不会感觉到不便，因为 Go
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/gofirst/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/delphi/delphi-tc3-hmac/">Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.02.16
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/delphi/">#delphi</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/hmac/">#hmac</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/sms/">#sms</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/tencent/">#tencent</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/download/">#download</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。 参考了 高文杰 先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/delphi/delphi-tc3-hmac/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/flask-wtf-with-fetch/">Flask动态切换选项并通过Fetch查询显示</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.01.30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/jquery/">#jquery</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Flask-WTF 提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在 https://flask-wtf.readthedocs.io/en/stable/ 。 具体功能如下: 集成 wtforms。 带有 csrf 令牌的安全表单。 全局的 csrf 保护。 支持验证码（Recaptcha）
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/flask-wtf-with-fetch/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/">Sqlalchemy中Query的方法汇总</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021.01.14
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/sqlalchemy/">#sqlalchemy</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              SQLAlchemy 是flask中必备的库，能操作各种关系数据库。数据库映射的方法在 廖雪峰 的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 query 方法。 遍历 for user in session.query(User).order_by(User.id): print(user.name, user.fullname) 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 或者： for name, fullname in session.query(User.name, User.fullname): print(name, fullname) # 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 再看一
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/sqlalchemy-query-cheetsheet/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/flask-web-app/">用Flask建立一个简单的Web App</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.12.29
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/mssql/">#mssql</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.It provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language. 网上的很多教程和视频都是基于本地SQLite数据库进行的操作，因为我个人的项目是在MSSQL上的，所以这里对Flask使用MS SQL Server的方法进行记录。 目标： MSSQL数据库存储数据 有
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/flask-web-app/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/flask-with-mssql/">在Flask中使用SQLAlchemy操作数据的方法</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.12.29
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/mssql/">#mssql</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/flask-with-mssql/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/embedpdf/">使用Streamlit在Web中嵌入显示PDF文件</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.12.23
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/pdf/">#PDF</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/streamlit/">#streamlit</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/embedpdf/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/crabgxela/">Python爬取广西干部网络学院的训练题库</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/scrap/">#scrap</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              即将面临职业测试，但是备考资料实在太多，光知识点就447页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的960道题，才能提交批改🙀。这个时间长
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/crabgxela/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/streamlitocr/streamlitocr/">Streamlit配合Nginx搭建在线OCR识别网站</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.27
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/streamlit/">#streamlit</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/ocr/">#ocr</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/streamlitocr/streamlitocr/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/braidmethod/">有女生的家长必备技能之扎辫子</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.24
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/braid/">#braid</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/%E7%94%9F%E5%AD%98/">#生存</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              生活中，总有一些严峻考验，是崩溃还是胜利，就看你是否有做好准备。比如说，妻子不在家，而女儿急着要去练舞蹈。这时，作为一名女生的家长，编头发是一个重大考验。 如果此时掌握了一点方法的话，可以从容化危为安，赢得女儿的赞赏。 当然，一般情况下，没办法像上面这些家长一样现代高效解决。我需要的
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/braidmethod/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/math/">辅导小学奥数时必须掌握的整除知识</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.24
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/math/">#math</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/%E6%95%B4%E9%99%A4/">#整除</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/%E5%B0%8F%E5%AD%A6/">#小学</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/%E5%A5%A5%E6%95%B0/">#奥数</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            小学生家长的必备知识点，整数被2、5、7、9、11、13等整除的判断技巧。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/math/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/python/pysimpleguidemo/">PySimpleGUI制作百度云图片文字识别软件</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.19
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/python/">#Python</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/ocr/">#OCR</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/baidu/">#Baidu</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/api/">#API</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/pysimplegui/">#PySimpleGUI</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              python本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了 这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/python/pysimpleguidemo/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/vps/2020-11/">晚高峰的4K油管视频效率</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.15
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/vps/">#vps</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/youtube/">#youtube</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/4k/">#4K</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/video/">#video</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            在晚高峰时段测试了一下机场速度，相比之下，搬瓦工的双十一特惠就有点小贵了。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/vps/2020-11/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/slim2/">如何使用Slimbox2显示图片灯箱</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.13
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/slimbox2/">#slimbox2</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/lightbox/">#lightbox</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/image/">#image</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。文本记录了在Hugo中使用slimbox2来显示图片灯箱效果的过程。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/slim2/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/game/2020-11/">DiabloIII 2.6.10上线试玩</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.12
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/diablo/">#Diablo</a>&nbsp;
+            
+          </span>
+        
+
+        
+          <figure class="post-cover">
+         
+            <img src="//localhost:1313/img/game/DiabloIII_2020-11-12_22-10-19.jpg" alt="DiabloIII 2.6.10上线试玩" />
+            
+
+            
+          </figure>
+        
+
+        <div class="post-content">
+          
+            暗黑3新补丁2.6.10发布，上线试玩发现22赛季还未开。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/game/2020-11/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/delplyhugowithnginx/">使用Nginx和Hugo建立静态网站</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.11
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/nginx/">#Nginx</a>&nbsp;
+            
+          </span>
+        
+
+        
+          <figure class="post-cover">
+         
+            <img src="//localhost:1313/usegit/web-developer.jpg" alt="使用Nginx和Hugo建立静态网站" />
+            
+
+            
+          </figure>
+        
+
+        <div class="post-content">
+          
+            记录使用Nginx和Hugo在VPS上搭建一个静态网站
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/delplyhugowithnginx/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/videojs/">Magical Europe - 4K Timelapse 歐洲30國縮時攝影</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.10
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/video/">#video</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/4k/">#4K</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/video/">#video</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/videojs/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/scpssh/">SSH、SCP、SFTP使用</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.10
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/ssh/">#SSH</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/scp/">#SCP</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/ftp/">#FTP</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              SSH背景 笔者之前对于SSH(Secure Shell, 安全外壳协议)的了解仅仅知道一般用来进行访问远程主机、是用来替代telnet的不安全链接而发展的。常用的也只有ssh和scp，后来发现还有sftp，经过了解知道各个的作用。接下来讲叙述在学习和开发的过程中该如何使用他们。 ssh $ ssh # out: usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy]
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/scpssh/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/dynamicusejs/">在Hugo网页中动态引用JS与CSS文件</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.11.09
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/js/">#JS</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/css/">#CSS</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              为了最大节约带宽和服务器资源，除了尝试在CDN中缓存CSS、js文件之外，我想到尽量设置网页不主动加载一些不必要的外部库。 例如，一些纯文字的页面就不需要jquery库的支持，而使用图片灯箱的页面则自动加载fancybox的资源库。 因此，对于一些需要展示图片的网页，我就动态启用外部
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/dynamicusejs/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/videotest/">LightBox and HTML5 Video</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.31
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/video/">#video</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/4k/">#4K</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/lightbox/">#lightbox</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              1.以下内置单张图片显示 2.HTML5方式播放4K视频 如果不启用confing.toml则无法使用 3.内置播放youtube视频功能 使用方法：{{&lt; youtube IdejM6wCkxA &gt;}} 注意：需要外网连接才能正常播放 4..fancybox播放视频 测试短片 Asteroid City - Official Trailer ： 您的浏览器不支持 video 标签。 使用方法：{{&
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/videotest/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/markdownextend/">MarkDownTips</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.31
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by david</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/markdown/">#markdown</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            关于marikdown的一些用法总结
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/markdownextend/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/markdown-cheat-sheet/">Markdown Cheat Sheet</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/markdown/">#markdown</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              <p>记录一下MD文档的常用方法</p>
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/markdown-cheat-sheet/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/web-font/">网页中引用GoogleFont的方法</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.29
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/other/">#other</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/googlefont/">#googlefont</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              <blockquote>
+<p>全世界是一个巨大的舞台，所有红尘男女均只是演员罢了。上场下场各有其时。每个人一生都扮演着许多角色，从出生到死亡有七种阶段。<br>
+———莎士比亚</p>
+</blockquote>
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/web-font/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/vps-secur/">Vps 安全设置几个方法</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.29
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/vps/">#vps</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/ssh/">#ssh</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/security/">#security</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            提高Vps安全性的几个常用方法
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/vps-secur/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/github-version/">Github版本控制的方法</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.27
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/github/">#github</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            Github版本控制的方法
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/github-version/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/tech01/">Pure CSS Lightbox in Hugo theme</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.27
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/hugo/">#hugo</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/css/">#CSS</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/lightbox/">#lightbox</a>&nbsp;
+            
+          </span>
+        
+
+        
+          <figure class="post-cover">
+         
+            <img src="https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/img/cover.png" alt="Pure CSS Lightbox in Hugo theme" />
+            
+
+            
+          </figure>
+        
+
+        <div class="post-content">
+          
+            使用pure css显示图片灯箱的方法
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/tech01/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/use-git-deploy-hugo/">用Hugo创建Blog站点并部署到VPS</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.26
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by David</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/github/">#Github</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/vps/">#vps</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            用Hugo创建Blog站点，并自动化部署到VPS上。
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/use-git-deploy-hugo/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/noteforgit/">GIT命令的常用方法</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.25
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/git/">#Git</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            记录一下GIT方法push网站的命令
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/noteforgit/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/tech/vs/">GIT添加远程仓库</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.22
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="//localhost:1313/tags/git/">#git</a>&nbsp;
+            
+              <a href="//localhost:1313/tags/vs-code/">#vs code</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            记录使用visual studio code 添加git远程仓库的方法
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/tech/vs/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/life/zh/001/">Hugo的中文博文测试</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.20
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+          
+            Description for the featured image, used as the alt text
+            
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/life/zh/001/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="//localhost:1313/post/abc/">第一个博客内容</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020.10.20
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Getting started Installation Create a new Hugo site: $ hugo new site [path] Clone this repository into themes/ directory: $ cd [path] $ git clone https://github.com/vaga/hugo-theme-m10c.git themes/m10c Add this line in the config.toml file: theme = &#34;m10c&#34; Configuration In your config.toml file, define the following variables in params: author: Name of the author description: Short description of the author avatar: Path of file containing the author avatar image menu_item_separator: Separator between each menu item. HTML allowed (default: &quot; - “) To add a menu item, add the following lines in menu: [[menu.main]] identifier = &ldquo;tags&rdquo; name = &ldquo;Tags&rdquo; url = &ldquo;/tags/&rdquo; Read Hugo documentations for more informations about menu To add a social link, add the following lines in params: [[params.social]] name = &ldquo;github&rdquo; url = &ldquo; https://github.com/vaga" To change theme colors, add the following lines in params: [params.style]
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/post/abc/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <span class="button previous">
+        <a href="/post/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Newer posts</span>
+        </a>
+      </span>
+    
+    
+      <span class="button next">
+        <a href="/post/page/3/">
+          <span class="button__text">Older posts</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+    
+  </div>
+</div>
+
+  </div>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

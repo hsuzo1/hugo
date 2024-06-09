@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mssql on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/mssql/</link>
+    <description>Recent content in Mssql on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 29 Dec 2020 13:07:19 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/mssql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用Flask建立一个简单的Web App</title>
+      <link>//localhost:1313/post/tech/python/flask-web-app/</link>
+      <pubDate>Tue, 29 Dec 2020 13:07:19 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-web-app/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.It provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language. 网上的很多教程和视频都是基于本地SQLite数据库进行的操作，因为我个人的项目是在MSSQL上的，所以这里对Flask使用MS SQL Server的方法进行记录。 目标： MSSQL数据库存储数据 有
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>在Flask中使用SQLAlchemy操作数据的方法</title>
+      <link>//localhost:1313/post/tech/python/flask-with-mssql/</link>
+      <pubDate>Tue, 29 Dec 2020 10:47:35 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-with-mssql/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

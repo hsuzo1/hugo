@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        MarkDownTips ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="使用内嵌HTML语言，需要在config.toml中加入如下： [markup.goldmark.renderer] unsafe=true 参考式 参考式超链接一般用在学术论文上面，或者另一种情况，如果某一个链接在文章中多处使用，那么使用引用 的方式创建链接将非常好，它可以让你对链接进行统一的管理。 语法说明： 参考式链接分为两部分，文中的写法 [链接文字][链"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/markdownextend/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/markdownextend/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="MarkDownTips">
+  <meta property="og:description" content="关于marikdown的一些用法总结">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-31T16:20:56+08:00">
+    <meta property="article:modified_time" content="2020-10-31T16:20:56+08:00">
+    <meta property="article:tag" content="Markdown">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">MarkDownTips</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.10.31
+        </span>
+
+        
+          
+        
+      
+
+      
+        <span class="post-author"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9998;&nbsp;Written by david</span
+        >
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/markdown/">#markdown</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p>使用内嵌HTML语言，需要在config.toml中加入如下：</p>
+<pre tabindex="0"><code>[markup.goldmark.renderer]
+  unsafe=true
+</code></pre><h2 id="参考式">参考式</h2>
+<p>参考式超链接一般用在学术论文上面，或者另一种情况，如果某一个链接在文章中多处使用，那么使用引用 的方式创建链接将非常好，它可以让你对链接进行统一的管理。
+语法说明： 参考式链接分为两部分，文中的写法 [链接文字][链接标记]，在文本的任意位置添加[链接标记]:链接地址 “链接标题”，链接地址与链接标题前有一个空格。
+如果链接文字本身可以做为链接标记，你也可以写成[链接文字][] [链接文字]：链接地址的形式，见代码的最后一行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>我经常去的几个网站<span style="color:#f92672">[</span>Google<span style="color:#f92672">][</span>1<span style="color:#f92672">]</span>,<span style="color:#f92672">[</span>Demi的随笔和技术空间<span style="color:#f92672">][</span>2<span style="color:#f92672">]</span>,<span style="color:#f92672">[</span>Demi的随笔和技术空间<span style="color:#f92672">][]</span>。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>:http://www.google.com
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>2<span style="color:#f92672">]</span>:https://yuhongjun.github.io/ <span style="color:#e6db74">&#34;Demi的随笔和技术空间&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Demi的随笔和技术空间<span style="color:#f92672">]</span>:https://yuhongjun.github.io/
+</span></span></code></pre></div><p>显示效果如下：
+我经常去的几个网站<a href="http://www.google.com"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Google
+</a>,<a href="https://yuhongjun.github.io/"
+   title="Demi的随笔和技术空间"
+  
+    target="_blank" rel="noopener"
+  
+>
+  Demi的随笔和技术空间
+</a>,<a href="https://yuhongjun.github.io/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Demi的随笔和技术空间
+</a>。</p>
+<h2 id="锚点">锚点</h2>
+<p>网页中，锚点其实就是页内超链接，也就是链接本文档内部的某些元素，实现当前页面中的跳转。比如我这里写下一个锚点，点击回到目录，就能跳转到目录。 在目录中点击这一节，就能跳过来。还有下一节的注脚。这些根本上都是用锚点来实现的。</p>
+<p>注意：
+Markdown Extra 只支持在<strong>标题</strong>后插入锚点，其它地方无效。
+Leanote 编辑器右侧显示效果区域暂时不支持锚点跳转，所以点来点去发现没有跳转不必惊慌，但是你发布成笔记或博文后是支持跳转的。</p>
+<pre tabindex="0"><code>## 0. 跳转测试{#index}
+....................
+。。。。。。。
+...........
+跳转到[跳转测试](#index)
+</code></pre><h2 id="注脚">注脚</h2>
+<p>语法说明：
+在需要添加注脚的文字后加上脚注名字[^注脚名字],称为加注。 然后在文本的任意位置(一般在最后)添加脚注，脚注前必须有对应的脚注名字。
+注意：经测试注脚与注脚之间必须空一行，不然会失效。成功后会发现，即使你没有把注脚写在文末，经Markdown转换后，也会自动归类到文章的最后。</p>
+<pre tabindex="0"><code>使用 Markdown[^1]可以效率的书写文档, 直接转换成 HTML[^2], 你可以使用 Leanote[^Le] 编辑器进行书写。
+
+[^1]:Markdown是一种纯文本标记语言
+
+[^2]:HyperText Markup Language 超文本标记语言
+
+[^Le]:开源笔记平台，支持Markdown和笔记直接发为博文
+</code></pre><p>效果如下：
+使用 Markdown<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>可以效率的书写文档, 直接转换成 HTML<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, 你可以使用 Leanote<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> 编辑器进行书写。</p>
+<h2 id="粘贴-html-原始码">粘贴 HTML 原始码</h2>
+<p>在代码区块里面， &amp; 、 &lt; 和 &gt; 会自动转成 HTML 实体，这样的方式让你非常容易使用 Markdown 插入范例用的 HTML 原始码，只需要复制贴上，剩下的 Markdown 都会帮你处理，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;footer&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>   © 2016 ***
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>显示结果如下：</p>
+<!-- raw HTML omitted -->
+<p>** <!-- raw HTML omitted -->居中加粗<!-- raw HTML omitted --> **</p>
+<pre tabindex="0"><code>&lt;center&gt;居中&lt;/center&gt; 
+
+**&lt;center&gt; 居中加粗&lt;/center&gt;**
+</code></pre><p>没有空格<br>
+ 半角空格<br>
+  半角空格两个<br>
+ 全角空格<br>
+  全角空格两个，以后就是用这个做为缩进</p>
+<pre tabindex="0"><code>没有空格  
+&amp;ensp;半角空格  
+&amp;ensp;&amp;ensp;半角空格两个  
+&amp;emsp;全角空格  
+&amp;emsp;&amp;emsp;全角空格两个，以后就是用这个做为缩进 
+
+`&lt;font face=&#34;华文行楷&#34;&gt;华文行楷&lt;/font&gt; ` 
+
+&lt;font face=&#34;华文行楷&#34;&gt;华文行楷&lt;/font&gt;
+
+`&lt;center&gt;&lt;font face=&#34;华文行楷&#34; size=100px color=&#34;red&#34;&gt;华文行楷居中&lt;/font&gt;&lt;/center&gt; `
+
+&lt;center&gt;&lt;font face=&#34;华文行楷&#34; size=100px color=&#34;red&#34;&gt;华文行楷居中&lt;/font&gt;&lt;/center&gt;  
+
+```html
+&lt;font Size=1&gt;我是几号字来着1&lt;/font&gt;  
+&lt;font Size=2&gt;我是几号字来着 --&gt; 2号&lt;/font&gt;  
+&lt;font Size=3&gt;我是几号字来着 --&gt; 3号&lt;/font&gt;  
+&lt;font Size=4&gt;我是几号字来着 --&gt; 4号&lt;/font&gt;  
+&lt;font Size=5&gt;我是几号字来着 --&gt; 5号&lt;/font&gt;  
+&lt;font Size=6&gt;我是几号字来着 --&gt; 6号&lt;/font&gt;  
+&lt;font Size=7&gt;我是几号字来着 --&gt; 7号&lt;/font&gt;  
+
+&lt;center&gt;&lt;font Size=5&gt;居中加入5号字&lt;/font&gt;&lt;/center&gt;  
+&lt;center&gt;&lt;font size=5 face=&#34;华文行楷&#34;&gt;华文行楷居中5号字&lt;/font&gt;&lt;/center&gt;
+</code></pre><p><!-- raw HTML omitted -->我是几号字来着1<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->我是几号字来着 &ndash;&gt; 2号<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->我是几号字来着 &ndash;&gt; 3号<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->我是几号字来着 &ndash;&gt; 4号<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->我是几号字来着 &ndash;&gt; 5号<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->我是几号字来着 &ndash;&gt; 6号<!-- raw HTML omitted --></p>
+<p><!-- raw HTML omitted -->我是几号字来着 &ndash;&gt; 7号<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Markdown是一种纯文本标记语言&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>HyperText Markup Language 超文本标记语言&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>开源笔记平台，支持Markdown和笔记直接发为博文&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/videotest/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">LightBox and HTML5 Video</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/markdown-cheat-sheet/">
+                  <span class="button__text">Markdown Cheat Sheet</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

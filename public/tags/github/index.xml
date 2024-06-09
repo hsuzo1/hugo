@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/github/</link>
+    <description>Recent content in Github on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 27 Oct 2020 18:34:17 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github版本控制的方法</title>
+      <link>//localhost:1313/post/tech/github-version/</link>
+      <pubDate>Tue, 27 Oct 2020 18:34:17 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/github-version/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Github版本控制的方法
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>用Hugo创建Blog站点并部署到VPS</title>
+      <link>//localhost:1313/post/tech/use-git-deploy-hugo/</link>
+      <pubDate>Mon, 26 Oct 2020 21:01:00 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/use-git-deploy-hugo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          用Hugo创建Blog站点，并自动化部署到VPS上。
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

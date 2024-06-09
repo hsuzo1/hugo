@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        LightBox and HTML5 Video ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="1.以下内置单张图片显示 2.HTML5方式播放4K视频 如果不启用confing.toml则无法使用 3.内置播放youtube视频功能 使用方法：{{&amp;lt; youtube IdejM6wCkxA &amp;gt;}} 注意：需要外网连接才能正常播放 4..fancybox播放视频 测试短片 Asteroid City - Official Trailer ： 您的浏览器不支持 video 标签。 使用方法：{{&amp;"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/videotest/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/videotest/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="LightBox and HTML5 Video">
+  <meta property="og:description" content="1.以下内置单张图片显示 2.HTML5方式播放4K视频 如果不启用confing.toml则无法使用 3.内置播放youtube视频功能 使用方法：{{&lt; youtube IdejM6wCkxA &gt;}} 注意：需要外网连接才能正常播放 4..fancybox播放视频 测试短片 Asteroid City - Official Trailer ： 您的浏览器不支持 video 标签。 使用方法：{{&amp;">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-31T23:06:48+08:00">
+    <meta property="article:modified_time" content="2020-10-31T23:06:48+08:00">
+    <meta property="article:tag" content="Video">
+    <meta property="article:tag" content="4K">
+    <meta property="article:tag" content="Lightbox">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">LightBox and HTML5 Video</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.10.31
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/video/">#video</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/4k/">#4K</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/lightbox/">#lightbox</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <h3 id="1以下内置单张图片显示">1.以下内置单张图片显示</h3>
+<p><p>
+    <img loading="lazy" src="/usegit/Vienna.Philharmon.jpg" alt="imaged"  class="center" />
+</p></p>
+<h3 id="2html5方式播放4k视频">2.HTML5方式播放4K视频</h3>
+<p>如果不启用confing.toml则无法使用</p>
+<!-- raw HTML omitted -->
+<h3 id="3内置播放youtube视频功能">3.内置播放youtube视频功能</h3>
+<p>
+
+    
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IdejM6wCkxA?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"
+      ></iframe>
+    </div>
+<br>
+使用方法：{{&lt; youtube IdejM6wCkxA &gt;}}<br>
+注意：需要外网连接才能正常播放</p>
+<h3 id="4fancybox播放视频">4..fancybox播放视频</h3>
+<p>测试短片 Asteroid City - Official Trailer ：
+
+
+    <div class="fancybox" align="center">
+        <video src="https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/video/2023/Asteroid%20City%20-%20Official%20Trailer%20-%20Only%20In%20Theaters%20June%2016.mp4" controls="controls" preload="auto" width="90%">
+                您的浏览器不支持 video 标签。
+            </video>
+    </div>
+
+
+使用方法：{{&lt; fancyvideo src=&ldquo;path&rdquo; &gt;}}</p>
+<h3 id="5以下通过fancybox实现图片灯箱并滚动显示">5.以下通过fancybox实现图片灯箱并滚动显示</h3>
+<p>
+
+
+  
+    
+    
+    
+      
+    
+    
+      
+    
+
+    
+   
+
+    
+    
+    
+    
+
+    <div class="fancybox" align="center">
+      <a data-fancybox="gallery" href="/img/esmeralda.jpg" data-caption="esmeralda">
+        <img src="/img/esmeralda.jpg" width="500" loading="lazy" alt="esmeralda" /> 
+        
+      </a>
+      <p style="font-size: 0.8rem;">esmeralda</p>
+    </div>
+  
+
+<!-- raw HTML omitted -->
+
+
+
+  
+    
+    
+    
+      
+    
+    
+      
+    
+
+    
+   
+
+    
+    
+    
+    
+
+    <div class="fancybox" align="center">
+      <a data-fancybox="gallery" href="/img/free-colorful-lights-wallpaper-1.jpg" data-caption="colorful lights">
+        <img src="/img/free-colorful-lights-wallpaper-1.jpg" width="500" loading="lazy" alt="colorful lights" /> 
+        
+      </a>
+      <p style="font-size: 0.8rem;">colorful lights</p>
+    </div>
+  
+
+<!-- raw HTML omitted -->
+
+
+
+  
+    
+    
+    
+      
+    
+    
+      
+    
+
+    
+   
+
+    
+    
+    
+    
+
+    <div class="fancybox" align="center">
+      <a data-fancybox="gallery" href="/img/Pope-Edouard-de-Beaumont-1844.jpg" data-caption="Pope Edouard de Beaumont-1844">
+        <img src="/img/Pope-Edouard-de-Beaumont-1844.jpg" width="500" loading="lazy" alt="Pope Edouard de Beaumont-1844" /> 
+        
+      </a>
+      <p style="font-size: 0.8rem;">Pope Edouard de Beaumont-1844</p>
+    </div>
+  
+
+<!-- raw HTML omitted -->
+
+
+
+  
+    
+    
+    
+      
+    
+    
+      
+    
+
+    
+   
+
+    
+    
+    
+    
+
+    <div class="fancybox" align="center">
+      <a data-fancybox="gallery" href="/img/Victor_Hugo-Hunchback.jpg" data-caption="Victor Hugo Hunchback">
+        <img src="/img/Victor_Hugo-Hunchback.jpg" width="500" loading="lazy" alt="Victor Hugo Hunchback" /> 
+        
+      </a>
+      <p style="font-size: 0.8rem;">Victor Hugo Hunchback</p>
+    </div>
+  
+
+<!-- raw HTML omitted --></p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/dynamicusejs/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">在Hugo网页中动态引用JS与CSS文件</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/markdownextend/">
+                  <span class="button__text">MarkDownTips</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

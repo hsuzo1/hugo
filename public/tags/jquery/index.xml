@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jquery on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/jquery/</link>
+    <description>Recent content in Jquery on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 30 Jan 2021 08:21:07 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Flask动态切换选项并通过Fetch查询显示</title>
+      <link>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</link>
+      <pubDate>Sat, 30 Jan 2021 08:21:07 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Flask-WTF 提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在 https://flask-wtf.readthedocs.io/en/stable/ 。 具体功能如下: 集成 wtforms。 带有 csrf 令牌的安全表单。 全局的 csrf 保护。 支持验证码（Recaptcha）
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

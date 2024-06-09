@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Streamlit on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/streamlit/</link>
+    <description>Recent content in Streamlit on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 23 Dec 2020 20:16:15 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/streamlit/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用Streamlit在Web中嵌入显示PDF文件</title>
+      <link>//localhost:1313/post/tech/python/embedpdf/</link>
+      <pubDate>Wed, 23 Dec 2020 20:16:15 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/embedpdf/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Streamlit配合Nginx搭建在线OCR识别网站</title>
+      <link>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</link>
+      <pubDate>Fri, 27 Nov 2020 10:10:13 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

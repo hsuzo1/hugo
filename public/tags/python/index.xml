@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/python/</link>
+    <description>Recent content in Python on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 May 2023 21:21:47 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Selenium4使用方法小结</title>
+      <link>//localhost:1313/post/tech/python/selenium4/</link>
+      <pubDate>Sun, 28 May 2023 21:21:47 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/selenium4/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Selenium是支持web浏览器自动化的一系列工具和库的综合项目，目前版本为selenium4.9.1。通过该工具您可以自动化操控chrome、firefox、edge等主流浏览器，效果相当于您亲手操作。
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Flask动态切换选项并通过Fetch查询显示</title>
+      <link>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</link>
+      <pubDate>Sat, 30 Jan 2021 08:21:07 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Flask-WTF 提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在 https://flask-wtf.readthedocs.io/en/stable/ 。 具体功能如下: 集成 wtforms。 带有 csrf 令牌的安全表单。 全局的 csrf 保护。 支持验证码（Recaptcha）
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Sqlalchemy中Query的方法汇总</title>
+      <link>//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/</link>
+      <pubDate>Thu, 14 Jan 2021 09:53:16 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SQLAlchemy 是flask中必备的库，能操作各种关系数据库。数据库映射的方法在 廖雪峰 的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 query 方法。 遍历 for user in session.query(User).order_by(User.id): print(user.name, user.fullname) 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 或者： for name, fullname in session.query(User.name, User.fullname): print(name, fullname) # 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 再看一
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>用Flask建立一个简单的Web App</title>
+      <link>//localhost:1313/post/tech/python/flask-web-app/</link>
+      <pubDate>Tue, 29 Dec 2020 13:07:19 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-web-app/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.It provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language. 网上的很多教程和视频都是基于本地SQLite数据库进行的操作，因为我个人的项目是在MSSQL上的，所以这里对Flask使用MS SQL Server的方法进行记录。 目标： MSSQL数据库存储数据 有
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>在Flask中使用SQLAlchemy操作数据的方法</title>
+      <link>//localhost:1313/post/tech/python/flask-with-mssql/</link>
+      <pubDate>Tue, 29 Dec 2020 10:47:35 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-with-mssql/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>使用Streamlit在Web中嵌入显示PDF文件</title>
+      <link>//localhost:1313/post/tech/python/embedpdf/</link>
+      <pubDate>Wed, 23 Dec 2020 20:16:15 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/embedpdf/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Python爬取广西干部网络学院的训练题库</title>
+      <link>//localhost:1313/post/tech/python/crabgxela/</link>
+      <pubDate>Mon, 30 Nov 2020 19:24:55 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/crabgxela/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          即将面临职业测试，但是备考资料实在太多，光知识点就447页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的960道题，才能提交批改🙀。这个时间长
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Streamlit配合Nginx搭建在线OCR识别网站</title>
+      <link>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</link>
+      <pubDate>Fri, 27 Nov 2020 10:10:13 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>PySimpleGUI制作百度云图片文字识别软件</title>
+      <link>//localhost:1313/post/tech/python/pysimpleguidemo/</link>
+      <pubDate>Thu, 19 Nov 2020 18:50:46 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/pysimpleguidemo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          python本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了 这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

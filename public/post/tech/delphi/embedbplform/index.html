@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Delphi实现BPL窗体嵌入主程序内 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Delphi中的BPL文件类似于windows中DLL文件，可以封装完整的VCL和其他函数。如在开发使用中采用“主程序”&#43;“bpl”模式，不仅可以大大减少主程序的体积，还能将各功能模块 分布开发，提高同步开发的速度。另外，如后期需要更改个别功能时仅要修改对应的bpl文件即可，而不必"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/delphi/embedbplform/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/delphi/embedbplform/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Delphi实现BPL窗体嵌入主程序内">
+  <meta property="og:description" content="Delphi中的BPL文件类似于windows中DLL文件，可以封装完整的VCL和其他函数。如在开发使用中采用“主程序”&#43;“bpl”模式，不仅可以大大减少主程序的体积，还能将各功能模块 分布开发，提高同步开发的速度。另外，如后期需要更改个别功能时仅要修改对应的bpl文件即可，而不必">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-03-17T19:59:31+08:00">
+    <meta property="article:modified_time" content="2021-03-17T19:59:31+08:00">
+    <meta property="article:tag" content="Delphi">
+    <meta property="article:tag" content="Bpl">
+    <meta property="article:tag" content="Download">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Delphi实现BPL窗体嵌入主程序内</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021.03.17
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/delphi/">#delphi</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/bpl/">#bpl</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/download/">#download</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p>Delphi中的BPL文件类似于windows中DLL文件，可以封装完整的VCL和其他函数。如在开发使用中采用“主程序”+“bpl”模式，不仅可以大大减少主程序的体积，还能将各功能模块
+分布开发，提高同步开发的速度。另外，如后期需要更改个别功能时仅要修改对应的bpl文件即可，而不必重新编译发布整个程序文件。</p>
+<h3 id="测试用的vcl程序主要属性">测试用的VCL程序主要属性</h3>
+<ul>
+<li>测试使用的是Delphi 10.2和windows10系统</li>
+<li>添加一个Mainmenu和Panel，Panel设置为align=alClient，Mainmenu添加一个菜单“Open BPL Form”用于激活子窗口。</li>
+<li>新建一个Package包，命名为“bplForm.bpl”；</li>
+<li>bplForm.bpl包中添加一个Form，主要属性如下：align=alClient，BorderSytle=bsNone，WIndowState=wsMaximized。界面上放置一个<strong>Button</strong>，用于实现关闭功能，其他组件随便添加。</li>
+</ul>
+
+  <img src="/img/tech/Snipaste_2021-03-17_19-app.gif"  class="center"  style="width:80%"  />
+
+
+<h3 id="各主要功能代码">各主要功能代码</h3>
+<p><strong>bplForm.bpl</strong>中的Form2如下：</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">procedure TForm2.Button1Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+initialization
+  RegisterClass(TForm2);
+
+finalization
+  UnRegisterClass(TForm2);
+  FreeAndNil(Form2);
+</code></pre><p>主程序中代码如下：
+1.private中定义动态装载包的过程：</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">procedure LoadMDIForm(BplFile, TFrmName : String);
+</code></pre><p>2.其他如下</p>
+<pre tabindex="0"><code class="language-pascal" data-lang="pascal">var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+//声明一些全局变量
+var
+  BPLHandle : Cardinal;//HModule;
+  AForm : TForm;
+  LoadedBplFileName : String;
+
+
+{ TForm1 }
+procedure TForm1.BplForm1Click(Sender: TObject);
+begin
+    // 动态装载包
+  LoadMDIForm(&#39;bplForm.bpl&#39; , &#39;TForm2&#39;);
+end;
+
+procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    // 关闭主程序时，清理包
+  if BPLHandle &lt;&gt; 0 then
+  begin
+    UnRegisterModuleClasses(BPLHandle);
+    UnloadPackage(BPLHandle);     //卸载包
+  end;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  LoadedBplFileName := &#39;&#39;;
+end;
+
+procedure TForm1.LoadMDIForm(BplFile, TFrmName: String);
+var
+  AClass : TClass;
+begin
+  if Not FileExists(ExtractFilePath(paramstr(0)) + BplFile) then
+  begin
+    Application.MessageBox(PChar(&#39;找不到文件 &#39; + BplFile) , &#39;MSG&#39;, MB_OK);
+    Exit;
+  end;
+
+  Try
+    if (AForm &lt;&gt; Nil) And (AForm.Showing) then FreeAndNil(AForm);
+    if LoadedBplFileName &lt;&gt; BplFile then
+    begin
+      if BPLHandle &lt;&gt; 0 then
+      begin
+        UnloadPackage(BPLHandle);
+        BPLHandle := 0;
+      end;
+      BPLHandle := LoadPackage(BplFile);
+    end;
+    AClass := GetClass(TFrmName);
+    if AClass &lt;&gt; nil then
+    begin
+      Application.CreateForm(TComponentClass(AClass) , AForm);
+      // 将bpl中的Form嵌入到主程序中的Panel中，实现与主程序同步缩放
+      AForm.parent := Form1.Panel1;
+      AForm.bringToFront;
+      AForm.Show;
+    end;
+  Except
+    on E: Exception do
+    begin
+      Application.MessageBox(PChar(&#39;窗口嵌入失败！错误信息如下：&#39;+#13+ E.Message ) , &#39;公文管理&#39;, MB_OK);
+      Exit;
+    end;
+  End;
+  LoadedBplFileName := BplFile;
+end;
+</code></pre><h3 id="最关键的一处设置">最关键的一处设置</h3>
+<p>要实现动态加载package包还需要在IDE进行一点设置，否则<strong>GetClass(TFrmName)<strong>将始终返回</strong>nil</strong>，从而无法达到预期。</p>
+<ul>
+<li>勾选“link with runtime package”为 <strong>True</strong></li>
+<li>在下方的“Runtime packages”中手动添加要加载的包名称，同时删除下方默认的系统包。最终如下图：
+
+  <img src="/img/tech/Snipaste_2021-03-17_19-setting.jpg"  class="center"  />
+
+</li>
+</ul>
+<blockquote>
+<p>其他参考文章<a href="https://www.cnblogs.com/dingjie/articles/195195.html"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  https://www.cnblogs.com/dingjie/articles/195195.html
+</a></p>
+</blockquote>
+<p><strong>点击按钮下载本文源代码：</strong>
+<style>
+    .download{
+    background-color: #dee5e9;
+    border: 1px solid #7b9cb0;
+    border-radius: 5px;
+    color: #316586;
+    padding: .15em .3em .1em;
+    text-decoration: none;
+    padding: 7px 30px;
+}
+
+</style>
+
+
+<div style="align-items: center;text-align: center;">
+  <a class="download" href="/files/BPLFormSimpleDemo.zip" download="/files/BPLFormSimpleDemo.zip">download</a>
+  
+</div>
+</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/life/2022newyear/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">2022來到了，慢慢品味生活🍕</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/life/2021spring/">
+                  <span class="button__text">2021寒假结束新战役打响</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

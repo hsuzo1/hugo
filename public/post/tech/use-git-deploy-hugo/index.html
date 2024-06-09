@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        用Hugo创建Blog站点并部署到VPS ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="本文来源于 XEON CHOW 博客，并进行修改。 基本思路 Blog 网站整个的搭建流程大致如下： Windows 本地用 Hugo 进行网站的配置和编辑调试； 使用 Git 工具将 Windows 本地生成的网站文件夹远程部署到 VPS 服务器上； VPS上通过Git Hook自动编译发布网页文件 VPS 上使用 Nginx 作为 Web 网页服务器。 网页申请 SSL 证书并强制开启 HTTPS 一、VPS端配置情"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/use-git-deploy-hugo/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/use-git-deploy-hugo/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="用Hugo创建Blog站点并部署到VPS">
+  <meta property="og:description" content="用Hugo创建Blog站点，并自动化部署到VPS上。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-10-26T21:01:00+08:00">
+    <meta property="article:modified_time" content="2020-10-26T21:01:00+08:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="Github">
+    <meta property="article:tag" content="Vps">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">用Hugo创建Blog站点并部署到VPS</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.10.26
+        </span>
+
+        
+          
+        
+      
+
+      
+        <span class="post-author"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9998;&nbsp;Written by David</span
+        >
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/hugo/">#Hugo</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/github/">#Github</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/vps/">#vps</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <blockquote>
+<p>本文来源于<a href="https://enit.xyz/tech/deploy-hugo-on-vps/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  XEON CHOW
+</a>博客，并进行修改。</p>
+</blockquote>
+
+  <img src="/usegit/Snipaste_2020-10-26_21-34-06.png"  alt="Hello Friend"  class="center"  style="border-radius: 8px;"  />
+
+
+<h3 id="基本思路">基本思路</h3>
+<blockquote>
+<p>Blog 网站整个的搭建流程大致如下：
+Windows 本地用 Hugo 进行网站的配置和编辑调试；
+使用 Git 工具将 Windows 本地生成的网站文件夹远程部署到 VPS 服务器上；
+VPS上通过Git Hook自动编译发布网页文件
+VPS 上使用 Nginx 作为 Web 网页服务器。
+网页申请 SSL 证书并强制开启 HTTPS</p>
+</blockquote>
+<h2 id="一vps端配置情况">一、VPS端配置情况</h2>
+<h3 id="1安装hugo客户端以及rsync">1.安装Hugo客户端以及rsync</h3>
+<p>方式一</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install hugo
+</span></span><span style="display:flex;"><span>hugo version
+</span></span></code></pre></div><p>方式二</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_0.76.5_Linux-64bit.tar.gz
+</span></span><span style="display:flex;"><span>tar -xzvf hugo_0.76.5_Linux-64bit.tar.gz
+</span></span><span style="display:flex;"><span>sudo mv hugo /usr/local/bin/hugo  <span style="color:#75715e"># 随便您想放置的目录即可</span>
+</span></span><span style="display:flex;"><span>hugo version
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>apt install rsync
+</span></span></code></pre></div><h3 id="2安装git仓库并配置权限">2.安装Git仓库，并配置权限</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get update
+</span></span><span style="display:flex;"><span>apt-get install git-core
+</span></span></code></pre></div><p>添加 git 用户</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>useradd git
+</span></span><span style="display:flex;"><span>vi /etc/sudoers
+</span></span></code></pre></div><h4 id="1在--user-privilege-specification-配置字段下添加">1.在  User privilege specification 配置字段下添加</h4>
+<p><code>git	ALL=(ALL:ALL) ALL</code>
+从而使得 git 用户拥有 sudo 权限</p>
+<h4 id="2给-sudoer-文件添加权限">2.给 sudoer 文件添加权限</h4>
+<p><code>chmod 740 /etc/sudoers</code></p>
+<h4 id="3编辑-etcpasswd-文件">3.编辑 /etc/passwd 文件</h4>
+<p><code>vi /etc/passwd</code>
+将最后一行 git 用户的 /bin/sh 改为 /bin/bash，是 git 用户也拥有 bash 脚本解释器。</p>
+<h4 id="4创建-git-用户密码并建立用户目录配置权限">4.创建 git 用户密码，并建立用户目录、配置权限</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd git
+</span></span><span style="display:flex;"><span>mkdir /home/git
+</span></span><span style="display:flex;"><span>chown -R git:git /home/git
+</span></span></code></pre></div><h2 id="新建-vps-端的-git-仓库">新建 VPS 端的 git 仓库</h2>
+<h4 id="1在-vps-上新建一个-git-仓库作为远程仓库切换到-git-用户并转到-git-用户文件夹">1.在 VPS 上新建一个 git 仓库作为远程仓库。切换到 git 用户并转到 git 用户文件夹</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>su git
+</span></span><span style="display:flex;"><span>cd /home/git
+</span></span><span style="display:flex;"><span>mkdir blog.git
+</span></span><span style="display:flex;"><span>cd blog.git
+</span></span></code></pre></div><h4 id="2初始化仓库">2.初始化仓库</h4>
+<p><code>git init --bare</code></p>
+<h4 id="3在-homegit-路径下创建存放-ssh-公钥的文件夹-ssh-并进入在该文件夹下新建公钥文件并编辑">3.在 /home/git 路径下创建存放 SSH 公钥的文件夹 .ssh 并进入，在该文件夹下新建公钥文件并编辑</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /home/git
+</span></span><span style="display:flex;"><span>mkdir .ssh
+</span></span><span style="display:flex;"><span>cd .ssh
+</span></span><span style="display:flex;"><span>vi authorized_keys
+</span></span></code></pre></div><p>将前文 Windows 本地 /c/Users/Xeon/.ssh/ 位置生成的 SSH 公钥文件 id_rsa.pub 内容复制粘贴到 authorized_keys 文件中并 ：wq 保存。</p>
+<h4 id="4新建网页文件存放目录通过root用户新建-varwww-路径并转到-varwww-文件夹">4.新建网页文件存放目录，通过root用户新建 /var/www 路径，并转到 /var/www 文件夹</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>exit
+</span></span><span style="display:flex;"><span>mkdir -p /var/www
+</span></span><span style="display:flex;"><span>cd /var/www
+</span></span><span style="display:flex;"><span>mkdir blog
+</span></span></code></pre></div><h4 id="5修改-varwwwblog-文件夹权限给用户git赋予tmp的操作权限提示后输入root密码">5.修改 /var/www/blog 文件夹权限，给用户Git赋予/tmp的操作权限，提示后输入root密码：</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chown -R git:git /var/www/blog/
+</span></span><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">777</span> /tmp
+</span></span></code></pre></div><h3 id="设置-git-钩子脚本">设置 git 钩子脚本</h3>
+<p>创建一个 git 钩子脚本，主要目的是当 Windows 本地的文件被远程推送到 VPS 的 blog.git 仓库时，触发脚本自动将 blog.git 里的内容。</p>
+<h4 id="1切换为-git-用户和文件夹新建-post-receive-脚本文件">1.切换为 git 用户和文件夹，新建 post-receive 脚本文件</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>su git
+</span></span><span style="display:flex;"><span>cd
+</span></span><span style="display:flex;"><span>cd blog.git/hooks/
+</span></span><span style="display:flex;"><span>vi post-receive
+</span></span></code></pre></div><p>post-receive内容如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash -e
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A place to clone the remote repo so Hugo can build from it</span>
+</span></span><span style="display:flex;"><span>WORKING_DIRECTORY<span style="color:#f92672">=</span>/home/git/clone
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Backup folder in case something goes wrong during this script</span>
+</span></span><span style="display:flex;"><span>BACKUP_WWW<span style="color:#f92672">=</span>/home/git/backup_html
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Domain name so Hugo can generate links correctly</span>
+</span></span><span style="display:flex;"><span>MY_DOMAIN<span style="color:#f92672">=</span>blog.chihuashi.xyz
+</span></span><span style="display:flex;"><span>GIT_REPO<span style="color:#f92672">=</span>/home/git/blog.git
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#TMP_DIR_CLONE=/tmp/blog</span>
+</span></span><span style="display:flex;"><span>PUBLIC_WWW<span style="color:#f92672">=</span>/var/www/blog
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># If something goes wrong, put the previous version back in place</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> cleanup <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;A problem occurred. Reverting to backup.&#34;</span>
+</span></span><span style="display:flex;"><span>    rsync -aqz --del $BACKUP_WWW/ $PUBLIC_WWW
+</span></span><span style="display:flex;"><span>    rm -rf $WORKING_DIRECTORY
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>trap cleanup EXIT
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Clear out the working directory</span>
+</span></span><span style="display:flex;"><span>rm -rf $WORKING_DIRECTORY
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Make a backup copy of current website version</span>
+</span></span><span style="display:flex;"><span>rsync -aqz $PUBLIC_WWW/ $BACKUP_WWW
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Clone the new version from GitHub</span>
+</span></span><span style="display:flex;"><span>git clone $GIT_REPO $WORKING_DIRECTORY
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Delete old version</span>
+</span></span><span style="display:flex;"><span>rm -rf $PUBLIC_WWW/*
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Have Hugo generate the new static HTML directly into the public WWW folder</span>
+</span></span><span style="display:flex;"><span>/usr/bin/hugo -s $WORKING_DIRECTORY -d $PUBLIC_WWW -b <span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">${</span>MY_DOMAIN<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Clear out working directory</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># cp -rf $TMP_DIR_CLONE/* $PUBLIC_WWW</span>
+</span></span><span style="display:flex;"><span>rm -rf $WORKING_DIRECTORY
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Exit without trapping, since everything went well</span>
+</span></span><span style="display:flex;"><span>trap - EXIT
+</span></span></code></pre></div><p>2.给 post-receive 脚本文件添加可执行权限</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chmod +x post-receive
+</span></span></code></pre></div><h2 id="二windows-本地-git-设置">二、Windows 本地 Git 设置</h2>
+<p>在 Windows 本地安装 Git 的方法参考其他。</p>
+<p>安装后需要在本地新建一个 git 用户，设置用户名和邮箱（仅作用户识别使用，可填写任意邮箱地址）。在任意路径下打开 Git Bash 命令窗口，输入以下指令：</p>
+<pre tabindex="0"><code>git config --global user.name &#34;name&#34;
+git config --global user.email &#34;emailaddress&#34;
+</code></pre><p>其中 &ldquo;name&rdquo; 和 &ldquo;emailaddress&rdquo; 字段填入自己的用户名和邮件地址（均可任意填写）。</p>
+<p>为了后续远程推送文件方便，在本地生成 ssh 密钥备用：
+<code>ssh-keygen -t rsa -C &quot;emailaddress&quot;</code>
+bash 会要求输入 Windows 用户的密码，无密码直接 enter。从而在 c/Users/Xeon/.ssh/ 路径下会生产 ssh 密钥，有公钥 id_rsa.pub 和密钥 id_rsa 两个文件。</p>
+<p>在 Hugo 生成的静态网页文件夹，即 D:\Hugo\Sites\blog\public 文件夹中打开 Git Bash 窗口，输入以下命令：</p>
+<pre tabindex="0"><code>git init
+git add --all
+git commit -m &#34;Description&#34;
+</code></pre><p>上面三个命令的意思分别是：
+创建 git 仓库；
+添加全部文件；
+提交文件，其中 -m 表示本次更新的描述，描述内容为 &ldquo;Description&rdquo; 中的内容，按情况自行填写。
+从而本地的 Git 仓库搭建完成，远程提交静态网页文件之前需要现在 VPS 上进行设置。</p>
+<h2 id="三windows-本地推送">三、Windows 本地推送</h2>
+<p>首先在 Windows 本地测试一下能否以 git 用户 ssh 登陆到 VPS
+<code>ssh -p &quot;22&quot; git@VPS_ip</code>
+若提示 WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!，可将 Windows 本地 /c/Users/Xeon/.ssh/ 下的 known_hosts 文件删除。</p>
+<p>本地推送</p>
+<p>回到已经创建为本地仓库的 D:\Hugo\Sites\blog\public 文件夹中打开 Git Bash 窗口，输入以下命令添加远程仓库：</p>
+<pre tabindex="0"><code>git remote add origin git@your_VPS_IP:/home/git/blog.git
+git remote set-url origin ssh://git@your_VPS_IP:SSH_Port/home/git/blog.git
+</code></pre><p>以上命令中的 your_VPS_IP 为你 VPS 的 IP，SSH_Port 为你的 VPS SSH 登陆端口（一般默认为22）。
+以上命令仅在初次推送前设置，以后无需设置。</p>
+<p>推送本地仓库到 VPS：
+<code>git push origin master</code></p>
+<p>此时用浏览器访问域名 your_domain.com，即可打开自己的 blog 站点，并且自动开启了 HTTPS 加密。</p>
+<p>以后 Windows 本地更新内容后，只需在 D:\Hugo\Sites\blog\public 路径下打开 Git Bash 输入以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add --all
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;description&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin master
+</span></span></code></pre></div><p>即可将更新内容推送到 VPS。</p>
+<blockquote>
+<p>自定义映射远程服务器IP地址的域名
+每次远程登录都要这样ssh <a href="mailto:root@114.xxx.xxx.xxx"
+  
+  
+>
+  root@114.xxx.xxx.xxx
+</a>，很麻烦有没有？！没有配域名的而且IP地址复杂后更加恶心有没有？！来一起配置一下对于本地的服务器的域名！编辑/c/windows/system32/drivers/etc目录下的hosts文件，用editplus打开即可，如下添加一行：
+114.xxx.xxx.xxx (空格) ts.aliyun.com (回车换行)</p>
+</blockquote>
+<h2 id="四有关证书申请和配置">四、有关证书申请和配置</h2>
+<p>使用 acme 申请 SSL 证书，在此之前先要做好域名的解析。我使用 CloudFlare 进行域名解析，因此可以直接使用 CloudFlare 的 API 进行申请，比较方便，若使用其他解析服务，需要手动添加两条 txt 解析，可自行搜索教程。以下步骤均在 root 用户下。</p>
+<h4 id="1安装-acme">1.安装 acme</h4>
+<p>新建一个文件夹 /home/tls 存放证书和密钥</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf /home/tls <span style="color:#f92672">&amp;&amp;</span> mkdir -p /home/tls
+</span></span><span style="display:flex;"><span>curl https://get.acme.sh | sh
+</span></span><span style="display:flex;"><span>source ~/.bashrc
+</span></span></code></pre></div><h4 id="2导入-cloudflare-的-api">2.导入 CloudFlare 的 API</h4>
+<p>在 CloudFlare 的个人账户页面，找到 API Tokens-Global API Key，点击 view 查看，将 API Key 复制保存下来。在 VPS 上输入以下命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export CF_Key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your_API_Key&#34;</span>
+</span></span><span style="display:flex;"><span>export CF_Email<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your_CloudFlare_Email&#34;</span>
+</span></span></code></pre></div><p>其中 CF_Key 和 CF_Email 填入自己的 API Key 和 CloudFlare 账户邮箱。</p>
+<h4 id="3申请证书">3.申请证书</h4>
+<p><code>~/.acme.sh/acme.sh --issue --dns dns_cf -d your_domain.com -d *.your_domain.com -k ec-256</code>
+以上命令中的 your_domain.com 替换为自己的域名，这个命令会生成 *.your_domain.com 泛域名的 SSL 证书，即 your_domain.com 下所有的二级、三级域名都会受到证书保护。所申请到的证书文件存放在 ~/.acme.sh/your_domain.com_ecc 文件夹下，~ 代表当前用户目录，若当前是 root 用户，则 ~ 代表 /root。</p>
+<h4 id="4安装证书并启用自动更新">4.安装证书并启用自动更新</h4>
+<p>将证书安装到 /home/tls 路径下</p>
+<pre tabindex="0"><code>~/.acme.sh/acme.sh --installcert -d your_domain.com -d *.your_domain.com --fullchainpath /home/tls/your_domain.com.crt --keypath /home/tls/your_domain.com.key --ecc
+acme.sh --upgrade --auto-upgrade
+</code></pre><p>同样将以上命令中的 your_domain.com 替换为自己的域名，此时在 /home/tls 路径下会生成证书文件 your_domain.com.crt 和密钥文件 your_domain.com.key。第二行命令设置证书到期自动更新。</p>
+<h4 id="5vps-上-nginx-设置">5.VPS 上 Nginx 设置</h4>
+<p>安装 Nginx</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get install nginx -y
+</span></span><span style="display:flex;"><span>vi /etc/nginx/sites-enabled/default
+</span></span></code></pre></div><p>用以下内容覆盖原配置default：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">server</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">当</span> <span style="color:#960050;background-color:#1e0010">http</span> <span style="color:#960050;background-color:#1e0010">协议被请求时，统一转发到</span> <span style="color:#960050;background-color:#1e0010">https</span> <span style="color:#960050;background-color:#1e0010">协议上</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">80;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">[::]:80;</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">IPV6</span> <span style="color:#960050;background-color:#1e0010">协议</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">server_name</span> <span style="color:#960050;background-color:#1e0010">your_domain.com;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">rewrite</span> <span style="color:#960050;background-color:#1e0010">^(.*)$</span> <span style="color:#960050;background-color:#1e0010">https:</span><span style="color:#75715e">//$host$1 permanent;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">server</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">443</span> <span style="color:#960050;background-color:#1e0010">ssl;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">[::]:443</span> <span style="color:#960050;background-color:#1e0010">ssl;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">ssl_certificate</span> <span style="color:#960050;background-color:#1e0010">/home/tls/your_domain.com.crt;</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">证书的绝对路径</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">ssl_certificate_key</span> <span style="color:#960050;background-color:#1e0010">/home/tls/your_domain.com.key;</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">证书密钥的绝对路径</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">server_name</span> <span style="color:#960050;background-color:#1e0010">your_domain.com;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">location</span> <span style="color:#960050;background-color:#1e0010">/</span> <span style="color:#960050;background-color:#1e0010">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">root</span> <span style="color:#960050;background-color:#1e0010">/var/www/blog/;</span> <span style="color:#960050;background-color:#1e0010">#站点文件的路径</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">index</span> <span style="color:#960050;background-color:#1e0010">index.html;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">证书验证</span> <span style="color:#960050;background-color:#1e0010">location</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">location</span> <span style="color:#960050;background-color:#1e0010">/.well-known/acme-challenge/</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">root</span> <span style="color:#960050;background-color:#1e0010">/home/tls/;</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">证书文件夹的路径</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#960050;background-color:#1e0010">log_not_found</span> <span style="color:#960050;background-color:#1e0010">off;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
+</span></span></code></pre></div><p>同样，将 your_domain.com 替换为自己的域名。以上 Nginx 配置文件的大概含义见注释，详细含义见 Nginx 官方文档。</p>
+<h5 id="修改配置文件后需要重启-nginx">修改配置文件后需要重启 Nginx</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl restart nginx
+</span></span></code></pre></div>
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/tech01/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Pure CSS Lightbox in Hugo theme</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/noteforgit/">
+                  <span class="button__text">GIT命令的常用方法</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

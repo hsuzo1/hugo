@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CSS on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/css/</link>
+    <description>Recent content in CSS on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 09 Nov 2020 20:08:25 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>在Hugo网页中动态引用JS与CSS文件</title>
+      <link>//localhost:1313/post/tech/dynamicusejs/</link>
+      <pubDate>Mon, 09 Nov 2020 20:08:25 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/dynamicusejs/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          为了最大节约带宽和服务器资源，除了尝试在CDN中缓存CSS、js文件之外，我想到尽量设置网页不主动加载一些不必要的外部库。 例如，一些纯文字的页面就不需要jquery库的支持，而使用图片灯箱的页面则自动加载fancybox的资源库。 因此，对于一些需要展示图片的网页，我就动态启用外部
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Pure CSS Lightbox in Hugo theme</title>
+      <link>//localhost:1313/post/tech/tech01/</link>
+      <pubDate>Tue, 27 Oct 2020 16:20:56 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/tech01/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/img/cover.png&#34;/&gt;
+          
+        
+        
+        
+          使用pure css显示图片灯箱的方法
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

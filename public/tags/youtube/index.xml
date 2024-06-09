@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Youtube on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/youtube/</link>
+    <description>Recent content in Youtube on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 15 Nov 2020 19:12:02 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>晚高峰的4K油管视频效率</title>
+      <link>//localhost:1313/post/tech/vps/2020-11/</link>
+      <pubDate>Sun, 15 Nov 2020 19:12:02 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/vps/2020-11/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          在晚高峰时段测试了一下机场速度，相比之下，搬瓦工的双十一特惠就有点小贵了。
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

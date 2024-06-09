@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        如何使用Slimbox2显示图片灯箱 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="本文主要介绍如何使用Slimbox 2。 Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。 官方网站 此库需要单独使用jQuery 1.下载并安装 从 这里 下载并解压缩。 解压缩后，将css和js目录放置在任何位置。 2.加载CSS和JS 将以"
+/>
+<meta
+  name="keywords"
+  content="slimbox2, lightbox, 图片灯箱, hugo"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/slim2/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/slim2/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="如何使用Slimbox2显示图片灯箱">
+  <meta property="og:description" content="Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。文本记录了在Hugo中使用slimbox2来显示图片灯箱效果的过程。">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-11-13T09:03:21+08:00">
+    <meta property="article:modified_time" content="2020-11-13T09:03:21+08:00">
+    <meta property="article:tag" content="Slimbox2">
+    <meta property="article:tag" content="Lightbox">
+    <meta property="article:tag" content="Image">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">如何使用Slimbox2显示图片灯箱</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.11.13
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/slimbox2/">#slimbox2</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/lightbox/">#lightbox</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/image/">#image</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p>本文主要介绍如何使用Slimbox 2。
+Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。</p>
+<p><a href="http://www.digitalia.be/software/slimbox2"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  官方网站
+</a></p>
+<blockquote>
+<p>此库需要单独使用<em>jQuery</em></p>
+</blockquote>
+<h3 id="1下载并安装">1.下载并安装</h3>
+<p>从<a href="http://www.digitalia.be/software/slimbox2#download"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  <strong>这里</strong>
+</a>下载并解压缩。
+解压缩后，将css和js目录放置在任何位置。</p>
+<h3 id="2加载css和js">2.加载CSS和JS</h3>
+<p>将以下内容写在html文件的 <strong>&lt;head&gt;</strong> 中，请根据您自己网站的环境更改路径。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;css/slimbox2.css&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/css&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">media</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;screen&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;js/jquery.js&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;js/slimbox2.js&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">ready</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;a[rel*=lightbox]&#39;</span>).<span style="color:#a6e22e">slimbox</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><h3 id="3使用方法">3.使用方法</h3>
+<p>只需将 <strong>rel =“ lightbox”</strong> 属性添加到原始图片<strong>a</strong>元素链接中。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/sample1.jpg&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lightbox&#34;</span>&gt;画像1&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><p>对于要分组并使其可导航的相关图像集，需要向属性<strong>rel</strong>的名称<strong>lightbox</strong>后添加一个组名，例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/image-1.jpg&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lightbox-cats&#34;</span>&gt;image #1&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/image-2.jpg&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lightbox-cats&#34;</span>&gt;image #2&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/image-3.jpg&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lightbox-cats&#34;</span>&gt;image #3&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><blockquote>
+<p>如果在同一页面上有多个将灯箱应用到的链接，则当鼠标悬停在上方时，将始终显示“ PREV”和“ NEXT”按钮。</p>
+</blockquote>
+<h3 id="4显示图片标题">4.显示图片标题</h3>
+<p>如果要在左下角显示图像的标题，请将<strong>title</strong>属性添加到a元素。<br>
+如果需要，您甚至可以在标题中使用HTML。您必须用HTML实体替换 <strong>&lt;</strong> 和 <strong>&gt;</strong> 字符，并使用<strong>单引号</strong>而不是双引号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;images/sample1.jpg&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;lightbox&#34;</span> <span style="color:#a6e22e">title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sample&#34;</span>&gt;画像1&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><h3 id="5其他功能选项">5.其他功能选项</h3>
+<p>选项以以下形式设置：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">ready</span>(<span style="color:#66d9ef">function</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;a[rel*=lightbox]&#39;</span>).<span style="color:#a6e22e">slimbox</span>({
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">resizeDuration</span>    <span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">imageFadeDuration</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>初始值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>loop</td>
+<td>false</td>
+<td>第一次或最后一次到达时是​​否存在循环</td>
+</tr>
+<tr>
+<td>overlayOpacity</td>
+<td>0.8</td>
+<td>叠加透明度</td>
+</tr>
+<tr>
+<td>overlayFadeDuration</td>
+<td>400</td>
+<td>叠加速度</td>
+</tr>
+<tr>
+<td>resizeDuration</td>
+<td>400</td>
+<td>加载图像时调整大小的速度</td>
+</tr>
+<tr>
+<td>resizeEasing</td>
+<td>swing</td>
+<td>缓和</td>
+</tr>
+<tr>
+<td>initialWidth</td>
+<td>250</td>
+<td>初始盒宽</td>
+</tr>
+<tr>
+<td>initialHeight</td>
+<td>250</td>
+<td>初始盒子高度</td>
+</tr>
+<tr>
+<td>imageFadeDuration</td>
+<td>400</td>
+<td>图像淡入速度</td>
+</tr>
+<tr>
+<td>captionAnimationDuration</td>
+<td>400</td>
+<td>字幕的出现速度</td>
+</tr>
+<tr>
+<td>counterText</td>
+<td>Image {x} sur {y}</td>
+<td>左下角显示的图像的索引文本</td>
+</tr>
+<tr>
+<td>closeKeys</td>
+<td>[27，88，67]</td>
+<td>“ CLOSE”键盘按键代码分配</td>
+</tr>
+<tr>
+<td>previousKeys</td>
+<td>[37，80]</td>
+<td>“ PREV”键盘的键代码分配</td>
+</tr>
+<tr>
+<td>nextKeys</td>
+<td>[39，78]</td>
+<td>“ NEXT”键盘的键代码分配</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/vps/2020-11/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">晚高峰的4K油管视频效率</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/game/2020-11/">
+                  <span class="button__text">DiabloIII 2.6.10上线试玩</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FTP on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/ftp/</link>
+    <description>Recent content in FTP on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 10 Nov 2020 10:32:02 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSH、SCP、SFTP使用</title>
+      <link>//localhost:1313/post/tech/scpssh/</link>
+      <pubDate>Tue, 10 Nov 2020 10:32:02 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/scpssh/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SSH背景 笔者之前对于SSH(Secure Shell, 安全外壳协议)的了解仅仅知道一般用来进行访问远程主机、是用来替代telnet的不安全链接而发展的。常用的也只有ssh和scp，后来发现还有sftp，经过了解知道各个的作用。接下来讲叙述在学习和开发的过程中该如何使用他们。 ssh $ ssh # out: usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy]
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

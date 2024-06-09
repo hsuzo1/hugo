@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech on </title>
+    
+    
+    
+    <link>//localhost:1313/categories/tech/</link>
+    <description>Recent content in Tech on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 28 May 2023 21:21:47 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Selenium4使用方法小结</title>
+      <link>//localhost:1313/post/tech/python/selenium4/</link>
+      <pubDate>Sun, 28 May 2023 21:21:47 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/selenium4/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Selenium是支持web浏览器自动化的一系列工具和库的综合项目，目前版本为selenium4.9.1。通过该工具您可以自动化操控chrome、firefox、edge等主流浏览器，效果相当于您亲手操作。
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>使用Cloudflare的Pages托管Github的Hugo静态页面</title>
+      <link>//localhost:1313/post/tech/cloudflarepages/</link>
+      <pubDate>Fri, 31 Mar 2023 21:59:44 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/cloudflarepages/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          使用Cloudflare的Pages托管网页
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Delphi实现BPL窗体嵌入主程序内</title>
+      <link>//localhost:1313/post/tech/delphi/embedbplform/</link>
+      <pubDate>Wed, 17 Mar 2021 19:59:31 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/delphi/embedbplform/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Delphi中的BPL文件类似于windows中DLL文件，可以封装完整的VCL和其他函数。如在开发使用中采用“主程序”+“bpl”模式，不仅可以大大减少主程序的体积，还能将各功能模块 分布开发，提高同步开发的速度。另外，如后期需要更改个别功能时仅要修改对应的bpl文件即可，而不必
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Go中闭包的简单使用</title>
+      <link>//localhost:1313/post/tech/go/go-closure/</link>
+      <pubDate>Mon, 01 Mar 2021 20:18:56 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/go/go-closure/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Github上的文章 the-way-to-go_ZH_CN 对闭包的解释为： 匿名函数同样被称之为闭包（函数式语言的术语）：它们被允许调用定义在其它环境下的变量。闭包可使得某个函数捕捉到一些外部状态，例如：函数被创建时的状态。另一种表示方式为：一个闭包继承了函数所声明时的作用域。这种状态（作用域内的变量）都被共享到闭包
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Go語言初見</title>
+      <link>//localhost:1313/post/tech/gofirst/</link>
+      <pubDate>Wed, 24 Feb 2021 20:20:27 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/gofirst/</guid>
+      <description>
+        
+          &lt;img src=&#34;//localhost:1313/img/tech/golangfirst%20%28Small%29.jpg&#34;/&gt;
+          
+        
+        
+        
+          近期偶然對 Go 語言產生了興趣，於是初略學習了一下，感覺確實非常犀利。 Go 于 2009 年由谷歌开发完成。它解决了一个问题，创建出一种没有 C++等语言的过重包袱和过分设计的语言。 这使得 Go 在性能和速度上都有极大提升，使用 Go 工作成为一件乐事。 此外，大部分第一次使用 Go 语言的开发者不会感觉到不便，因为 Go
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信</title>
+      <link>//localhost:1313/post/tech/delphi/delphi-tc3-hmac/</link>
+      <pubDate>Tue, 16 Feb 2021 22:09:20 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/delphi/delphi-tc3-hmac/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。 参考了 高文杰 先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Flask动态切换选项并通过Fetch查询显示</title>
+      <link>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</link>
+      <pubDate>Sat, 30 Jan 2021 08:21:07 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Flask-WTF 提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在 https://flask-wtf.readthedocs.io/en/stable/ 。 具体功能如下: 集成 wtforms。 带有 csrf 令牌的安全表单。 全局的 csrf 保护。 支持验证码（Recaptcha）
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Sqlalchemy中Query的方法汇总</title>
+      <link>//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/</link>
+      <pubDate>Thu, 14 Jan 2021 09:53:16 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SQLAlchemy 是flask中必备的库，能操作各种关系数据库。数据库映射的方法在 廖雪峰 的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 query 方法。 遍历 for user in session.query(User).order_by(User.id): print(user.name, user.fullname) 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 或者： for name, fullname in session.query(User.name, User.fullname): print(name, fullname) # 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 再看一
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>用Flask建立一个简单的Web App</title>
+      <link>//localhost:1313/post/tech/python/flask-web-app/</link>
+      <pubDate>Tue, 29 Dec 2020 13:07:19 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-web-app/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.It provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language. 网上的很多教程和视频都是基于本地SQLite数据库进行的操作，因为我个人的项目是在MSSQL上的，所以这里对Flask使用MS SQL Server的方法进行记录。 目标： MSSQL数据库存储数据 有
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>在Flask中使用SQLAlchemy操作数据的方法</title>
+      <link>//localhost:1313/post/tech/python/flask-with-mssql/</link>
+      <pubDate>Tue, 29 Dec 2020 10:47:35 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/flask-with-mssql/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>使用Streamlit在Web中嵌入显示PDF文件</title>
+      <link>//localhost:1313/post/tech/python/embedpdf/</link>
+      <pubDate>Wed, 23 Dec 2020 20:16:15 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/embedpdf/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Python爬取广西干部网络学院的训练题库</title>
+      <link>//localhost:1313/post/tech/python/crabgxela/</link>
+      <pubDate>Mon, 30 Nov 2020 19:24:55 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/crabgxela/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          即将面临职业测试，但是备考资料实在太多，光知识点就447页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的960道题，才能提交批改🙀。这个时间长
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Streamlit配合Nginx搭建在线OCR识别网站</title>
+      <link>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</link>
+      <pubDate>Fri, 27 Nov 2020 10:10:13 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>PySimpleGUI制作百度云图片文字识别软件</title>
+      <link>//localhost:1313/post/tech/python/pysimpleguidemo/</link>
+      <pubDate>Thu, 19 Nov 2020 18:50:46 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/python/pysimpleguidemo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          python本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了 这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>如何使用Slimbox2显示图片灯箱</title>
+      <link>//localhost:1313/post/tech/slim2/</link>
+      <pubDate>Fri, 13 Nov 2020 09:03:21 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/slim2/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。文本记录了在Hugo中使用slimbox2来显示图片灯箱效果的过程。
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>使用Nginx和Hugo建立静态网站</title>
+      <link>//localhost:1313/post/tech/delplyhugowithnginx/</link>
+      <pubDate>Wed, 11 Nov 2020 15:28:15 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/delplyhugowithnginx/</guid>
+      <description>
+        
+          &lt;img src=&#34;//localhost:1313/usegit/web-developer.jpg&#34;/&gt;
+          
+        
+        
+        
+          记录使用Nginx和Hugo在VPS上搭建一个静态网站
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Magical Europe - 4K Timelapse 歐洲30國縮時攝影</title>
+      <link>//localhost:1313/post/tech/videojs/</link>
+      <pubDate>Tue, 10 Nov 2020 17:07:10 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/videojs/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          您的浏览器不支持 video 标签。 天翼云对象存储 您的浏览器不支持 video 标签。 {{\&amp;lt; param date &amp;gt;}}
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>SSH、SCP、SFTP使用</title>
+      <link>//localhost:1313/post/tech/scpssh/</link>
+      <pubDate>Tue, 10 Nov 2020 10:32:02 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/scpssh/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          SSH背景 笔者之前对于SSH(Secure Shell, 安全外壳协议)的了解仅仅知道一般用来进行访问远程主机、是用来替代telnet的不安全链接而发展的。常用的也只有ssh和scp，后来发现还有sftp，经过了解知道各个的作用。接下来讲叙述在学习和开发的过程中该如何使用他们。 ssh $ ssh # out: usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy]
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>在Hugo网页中动态引用JS与CSS文件</title>
+      <link>//localhost:1313/post/tech/dynamicusejs/</link>
+      <pubDate>Mon, 09 Nov 2020 20:08:25 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/dynamicusejs/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          为了最大节约带宽和服务器资源，除了尝试在CDN中缓存CSS、js文件之外，我想到尽量设置网页不主动加载一些不必要的外部库。 例如，一些纯文字的页面就不需要jquery库的支持，而使用图片灯箱的页面则自动加载fancybox的资源库。 因此，对于一些需要展示图片的网页，我就动态启用外部
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>MarkDownTips</title>
+      <link>//localhost:1313/post/tech/markdownextend/</link>
+      <pubDate>Sat, 31 Oct 2020 16:20:56 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/markdownextend/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          关于marikdown的一些用法总结
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Markdown Cheat Sheet</title>
+      <link>//localhost:1313/post/tech/markdown-cheat-sheet/</link>
+      <pubDate>Fri, 30 Oct 2020 16:20:56 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/markdown-cheat-sheet/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          &lt;p&gt;记录一下MD文档的常用方法&lt;/p&gt;
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>网页中引用GoogleFont的方法</title>
+      <link>//localhost:1313/post/tech/web-font/</link>
+      <pubDate>Thu, 29 Oct 2020 19:18:06 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/web-font/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;全世界是一个巨大的舞台，所有红尘男女均只是演员罢了。上场下场各有其时。每个人一生都扮演着许多角色，从出生到死亡有七种阶段。&lt;br&gt;
+———莎士比亚&lt;/p&gt;
+&lt;/blockquote&gt;
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Vps 安全设置几个方法</title>
+      <link>//localhost:1313/post/tech/vps-secur/</link>
+      <pubDate>Thu, 29 Oct 2020 14:50:51 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/vps-secur/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          提高Vps安全性的几个常用方法
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Github版本控制的方法</title>
+      <link>//localhost:1313/post/tech/github-version/</link>
+      <pubDate>Tue, 27 Oct 2020 18:34:17 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/github-version/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Github版本控制的方法
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Pure CSS Lightbox in Hugo theme</title>
+      <link>//localhost:1313/post/tech/tech01/</link>
+      <pubDate>Tue, 27 Oct 2020 16:20:56 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/tech01/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/img/cover.png&#34;/&gt;
+          
+        
+        
+        
+          使用pure css显示图片灯箱的方法
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>用Hugo创建Blog站点并部署到VPS</title>
+      <link>//localhost:1313/post/tech/use-git-deploy-hugo/</link>
+      <pubDate>Mon, 26 Oct 2020 21:01:00 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/use-git-deploy-hugo/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          用Hugo创建Blog站点，并自动化部署到VPS上。
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>GIT命令的常用方法</title>
+      <link>//localhost:1313/post/tech/noteforgit/</link>
+      <pubDate>Sun, 25 Oct 2020 21:34:23 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/noteforgit/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          记录一下GIT方法push网站的命令
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>GIT添加远程仓库</title>
+      <link>//localhost:1313/post/tech/vs/</link>
+      <pubDate>Thu, 22 Oct 2020 09:42:40 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/vs/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          记录使用visual studio code 添加git远程仓库的方法
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

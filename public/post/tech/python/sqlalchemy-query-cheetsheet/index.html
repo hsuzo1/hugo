@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        Sqlalchemy中Query的方法汇总 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="SQLAlchemy 是flask中必备的库，能操作各种关系数据库。数据库映射的方法在 廖雪峰 的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 query 方法。 遍历 for user in session.query(User).order_by(User.id): print(user.name, user.fullname) 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 或者： for name, fullname in session.query(User.name, User.fullname): print(name, fullname) # 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 再看一"
+/>
+<meta
+  name="keywords"
+  content="flask, sqlalchemy, query"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/python/sqlalchemy-query-cheetsheet/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="Sqlalchemy中Query的方法汇总">
+  <meta property="og:description" content="SQLAlchemy 是flask中必备的库，能操作各种关系数据库。数据库映射的方法在 廖雪峰 的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 query 方法。 遍历 for user in session.query(User).order_by(User.id): print(user.name, user.fullname) 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 或者： for name, fullname in session.query(User.name, User.fullname): print(name, fullname) # 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 再看一">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-01-14T09:53:16+08:00">
+    <meta property="article:modified_time" content="2021-01-14T09:53:16+08:00">
+    <meta property="article:tag" content="Flask">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Sqlalchemy">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Sqlalchemy中Query的方法汇总</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021.01.14
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/sqlalchemy/">#sqlalchemy</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p><strong>SQLAlchemy</strong> 是<strong>flask</strong>中必备的库，能操作各种关系数据库。数据库映射的方法在<a href="https://www.liaoxuefeng.com/wiki/897692888725344/955081460091040"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  廖雪峰
+</a>的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 <strong>query</strong> 方法。</p>
+<h3 id="遍历">遍历</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>order_by(User<span style="color:#f92672">.</span>id):
+</span></span><span style="display:flex;"><span>    print(user<span style="color:#f92672">.</span>name, user<span style="color:#f92672">.</span>fullname)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>执行结果<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>ed Ed Jones
+</span></span><span style="display:flex;"><span>wendy Wendy Williams
+</span></span><span style="display:flex;"><span>mary Mary Contrary
+</span></span><span style="display:flex;"><span>fred Fred Flinstone
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, fullname <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name, User<span style="color:#f92672">.</span>fullname):
+</span></span><span style="display:flex;"><span>    print(name, fullname)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed Ed Jones
+</span></span><span style="display:flex;"><span>wendy Wendy Williams
+</span></span><span style="display:flex;"><span>mary Mary Contrary
+</span></span><span style="display:flex;"><span>fred Fred Flinstone
+</span></span></code></pre></div><p>再看一个例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name):
+</span></span><span style="display:flex;"><span>    print(name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;ed&#39;</span>,)
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;wendy&#39;</span>,)
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;mary&#39;</span>,)
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;fred&#39;</span>,)
+</span></span></code></pre></div><p>这时，返回结果为元组。</p>
+<hr>
+<h3 id="设置别名">设置别名</h3>
+<p>给返回的结果起一个别名（label）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>label(<span style="color:#e6db74">&#39;name_label&#39;</span>))<span style="color:#f92672">.</span>all():
+</span></span><span style="display:flex;"><span>    print(row<span style="color:#f92672">.</span>name_label)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span><span style="display:flex;"><span>wendy
+</span></span><span style="display:flex;"><span>mary
+</span></span><span style="display:flex;"><span>fred
+</span></span></code></pre></div><p>给数据表对象设置别名（aliased）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> aliased
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 把 User 别名设置为：user_alias</span>
+</span></span><span style="display:flex;"><span>user_alias <span style="color:#f92672">=</span> aliased(User, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;user_alias&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(user_alias):
+</span></span><span style="display:flex;"><span>    print(row)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span><span style="display:flex;"><span>wendy
+</span></span><span style="display:flex;"><span>mary
+</span></span><span style="display:flex;"><span>fred
+</span></span></code></pre></div><hr>
+<h3 id="切片">切片</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> u <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>order_by(User<span style="color:#f92672">.</span>id)[<span style="color:#ae81ff">1</span>:<span style="color:#ae81ff">3</span>]:
+</span></span><span style="display:flex;"><span>    print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>wendy
+</span></span><span style="display:flex;"><span>mary
+</span></span></code></pre></div><hr>
+<h3 id="查询">查询</h3>
+<p>查询，也就是 SQL 的 where 子句。在 SQLAlchemy 中，query 的查询可以通过 filter_by 或 filter 来实现。</p>
+<p>1.使用 filter_by：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter_by(fullname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Ed Jones&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span></code></pre></div><p>2.使用 filter：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>fullname<span style="color:#f92672">==</span><span style="color:#e6db74">&#39;Ed Jones&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span></code></pre></div><hr>
+<h3 id="运算符">运算符</h3>
+<ol>
+<li>等于：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>query<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ed&#39;</span>)
+</span></span></code></pre></div><ol start="2">
+<li>不等于</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>query<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;ed&#39;</span>)
+</span></span></code></pre></div><ol start="3">
+<li>LIKE 运算符：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 查询所有 &#34;e&#34; 开头的 name</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>like(<span style="color:#e6db74">&#34;e%&#34;</span>)):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span></code></pre></div><ol start="4">
+<li>IN 运算符：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>in_([<span style="color:#e6db74">&#39;ed&#39;</span>, <span style="color:#e6db74">&#39;wendy&#39;</span>, <span style="color:#e6db74">&#39;jack&#39;</span>])):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span><span style="display:flex;"><span>wendy
+</span></span></code></pre></div><ol start="5">
+<li>NOT IN 运算符：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(<span style="color:#f92672">~</span>User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>in_([<span style="color:#e6db74">&#39;ed&#39;</span>, <span style="color:#e6db74">&#39;wendy&#39;</span>, <span style="color:#e6db74">&#39;jack&#39;</span>])):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>mary
+</span></span><span style="display:flex;"><span>fred
+</span></span></code></pre></div><ol start="6">
+<li>IS NULL 运算符：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>query<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>query<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>is_(<span style="color:#66d9ef">None</span>))
+</span></span></code></pre></div><ol start="7">
+<li>IS NOT NULL 运算符：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>query<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">!=</span> <span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>query<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>isnot(<span style="color:#66d9ef">None</span>))
+</span></span></code></pre></div><ol start="8">
+<li>AND 运算符：</li>
+</ol>
+<p>方法1：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> and_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(and_(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ed&#39;</span>, User<span style="color:#f92672">.</span>fullname <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Ed Jones&#39;</span>)):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span></code></pre></div><p>方法2：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ed&#39;</span>, User<span style="color:#f92672">.</span>fullname <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Ed Jones&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span></code></pre></div><p>方法3：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ed&#39;</span>)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>fullname <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Ed Jones&#39;</span>):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span></code></pre></div><ol start="9">
+<li>OR 运算符：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> or_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(or_(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;ed&#39;</span>, User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;wendy&#39;</span>)):
+</span></span><span style="display:flex;"><span>    print(user)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span><span style="display:flex;"><span>wendy
+</span></span></code></pre></div><hr>
+<h3 id="query-包含的方法">query 包含的方法</h3>
+<ol>
+<li>all() ：</li>
+</ol>
+<p>返回一个包含所有对象的 list</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#f92672">&lt;</span>__main__<span style="color:#f92672">.</span>User object at <span style="color:#ae81ff">0x033DA410</span><span style="color:#f92672">&gt;</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>__main__<span style="color:#f92672">.</span>User object at <span style="color:#ae81ff">0x033DA470</span><span style="color:#f92672">&gt;</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>__main__<span style="color:#f92672">.</span>User object at <span style="color:#ae81ff">0x033DA4B0</span><span style="color:#f92672">&gt;</span>, 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>__main__<span style="color:#f92672">.</span>User object at <span style="color:#ae81ff">0x033DA510</span><span style="color:#f92672">&gt;</span>]
+</span></span></code></pre></div><ol start="2">
+<li>first() ：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>返回结果的第一个对象
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>first()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span></code></pre></div><ol start="3">
+<li>one() ：</li>
+</ol>
+<p>返回结果的实例对象</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>id <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>print(u<span style="color:#f92672">.</span>fullname)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span><span style="display:flex;"><span>Ed Jones
+</span></span></code></pre></div><p>如果有多个结果返回，使用 one() 将会报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 错误信息</span>
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>MultipleResultsFound: Multiple rows were found <span style="color:#66d9ef">for</span> one()
+</span></span></code></pre></div><p>如果查找的对象不存在，也会报错：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>id <span style="color:#f92672">==</span> <span style="color:#ae81ff">99</span>)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 错误信息</span>
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>NoResultFound: No row was found <span style="color:#66d9ef">for</span> one()
+</span></span></code></pre></div><p>我们可以用 one_or_none() 来处理对象未必存在的情况：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>id <span style="color:#f92672">==</span> <span style="color:#ae81ff">99</span>)<span style="color:#f92672">.</span>one_or_none()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>使用 scalar() 方法，返回结果的第一列的数值：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>id)<span style="color:#f92672">.</span>filter(User<span style="color:#f92672">.</span>name <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;wendy&#39;</span>)<span style="color:#f92672">.</span>scalar()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><hr>
+<h3 id="文本化-sql">文本化 SQL</h3>
+<p>使用 text() 方法可以用文本化的方式执行查询，使得语法更灵活，多数方法都支持这种文本化的方式，比如：filter() 和 order_by()。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 筛选 id&lt;3 再根据 id 排序</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(text(<span style="color:#e6db74">&#34;id&lt;3&#34;</span>))<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    order_by(text(<span style="color:#e6db74">&#34;id&#34;</span>))<span style="color:#f92672">.</span>all():
+</span></span><span style="display:flex;"><span>    print(user<span style="color:#f92672">.</span>name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span><span style="display:flex;"><span>wendy
+</span></span></code></pre></div><p>需要用冒号传递参数时，可以用 params() 方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 筛选出 id&lt;5 和 name=&#39;fred&#39;</span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(text(<span style="color:#e6db74">&#34;id&lt;:value and name=:name&#34;</span>))<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    params(value<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fred&#39;</span>)<span style="color:#f92672">.</span>order_by(User<span style="color:#f92672">.</span>id)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>fred
+</span></span></code></pre></div><p>使用 from_statement() 方法，支持直接写原生 SQL 语句：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    from_statement(text(<span style="color:#e6db74">&#34; SELECT * FROM users where name=&#39;ed&#39; &#34;</span>))<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed
+</span></span></code></pre></div><hr>
+<h3 id="计数">计数</h3>
+<p>返回查询结果的对象的数目。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>\
+</span></span><span style="display:flex;"><span>    filter(User<span style="color:#f92672">.</span>name<span style="color:#f92672">.</span>like(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%e</span><span style="color:#e6db74">d&#39;</span>))<span style="color:#f92672">.</span>count()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>需要单独计算某一类对象的数量，可以用 func() 和 group_by() 配合查询：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> func
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name, func<span style="color:#f92672">.</span>count(User<span style="color:#f92672">.</span>name))<span style="color:#f92672">.</span>group_by(User<span style="color:#f92672">.</span>name)<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>[(<span style="color:#e6db74">&#39;ed&#39;</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#e6db74">&#39;fred&#39;</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#e6db74">&#39;mary&#39;</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#e6db74">&#39;wendy&#39;</span>, <span style="color:#ae81ff">1</span>)]
+</span></span></code></pre></div><p>返回查询得到的的数值，我们使用 scalar() 方法：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(func<span style="color:#f92672">.</span>count(User<span style="color:#f92672">.</span>id))<span style="color:#f92672">.</span>scalar()
+</span></span><span style="display:flex;"><span>print(u)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><h2 id="其他例子汇总">其他例子汇总</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ae81ff">0.</span>like:模糊查询
+</span></span><span style="display:flex;"><span>result0 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>like(<span style="color:#e6db74">&#34;%&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;cp&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%&#34;</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1.</span>notlike<span style="color:#960050;background-color:#1e0010">：</span>模糊查询<span style="color:#960050;background-color:#1e0010">，</span>不在查询范围内
+</span></span><span style="display:flex;"><span>result1 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>notlike(<span style="color:#e6db74">&#34;%&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;cp&#34;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;%&#34;</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2.</span>in_:在某个范围内<span style="color:#960050;background-color:#1e0010">，</span>参数为元组或者列表类型的数据
+</span></span><span style="display:flex;"><span>result2 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>in_((<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3.</span>notin_<span style="color:#960050;background-color:#1e0010">：</span>和in_相反
+</span></span><span style="display:flex;"><span>result3 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>notin_((<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4.</span>is_:是否为null的比较
+</span></span><span style="display:flex;"><span>result4 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>is_(<span style="color:#66d9ef">None</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5.</span>isnot:不为null
+</span></span><span style="display:flex;"><span>result5 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>isnot(<span style="color:#66d9ef">None</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6.</span>startswith<span style="color:#960050;background-color:#1e0010">：</span>以某个数据开头
+</span></span><span style="display:flex;"><span>result6 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#34;t&#34;</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7.</span>endswith<span style="color:#960050;background-color:#1e0010">：</span>以某数据结尾
+</span></span><span style="display:flex;"><span>result7 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>endswith(<span style="color:#e6db74">&#34;t&#34;</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8.</span>contains<span style="color:#960050;background-color:#1e0010">：</span>数据中包含<span style="color:#960050;background-color:#1e0010">，</span>和like功能差不多
+</span></span><span style="display:flex;"><span>result8 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>protocolName<span style="color:#f92672">.</span>contains(<span style="color:#e6db74">&#34;cp&#34;</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9.</span>desc<span style="color:#960050;background-color:#1e0010">：</span>对查询出来的数据进行降序排序
+</span></span><span style="display:flex;"><span>result9 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>order_by(Protocols<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>desc())<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10.</span>asc<span style="color:#960050;background-color:#1e0010">：</span>对查询出来的数据进行升序排序
+</span></span><span style="display:flex;"><span>result10 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>order_by(Protocols<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>asc())<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">11.</span>between<span style="color:#960050;background-color:#1e0010">：</span>某个字段的参数在某个范围内
+</span></span><span style="display:flex;"><span>result11 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>protocolName)<span style="color:#f92672">.</span>filter(Protocols<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>between(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>))<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12.</span>distinct<span style="color:#960050;background-color:#1e0010">：</span>对查询出来的数据进行去重
+</span></span><span style="display:flex;"><span>result12 <span style="color:#f92672">=</span> db<span style="color:#f92672">.</span>session<span style="color:#f92672">.</span>query(Protocols<span style="color:#f92672">.</span>parent_protocol)<span style="color:#f92672">.</span>distinct()<span style="color:#f92672">.</span>all()
+</span></span></code></pre></div>
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/python/flask-wtf-with-fetch/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Flask动态切换选项并通过Fetch查询显示</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/python/flask-web-app/">
+                  <span class="button__text">用Flask建立一个简单的Web App</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

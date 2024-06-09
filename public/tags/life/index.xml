@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Life on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/life/</link>
+    <description>Recent content in Life on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 08 Jun 2024 23:02:31 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>不一样的龙年</title>
+      <link>//localhost:1313/post/life/2024longzhou/</link>
+      <pubDate>Sat, 08 Jun 2024 23:02:31 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/life/2024longzhou/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          生活的变化超出大家的想象，这个龙年很不一样。
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>2022來到了，慢慢品味生活🍕</title>
+      <link>//localhost:1313/post/life/2022newyear/</link>
+      <pubDate>Sun, 02 Jan 2022 17:52:55 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/life/2022newyear/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://s4.ax1x.com/2022/01/02/T7p3lD.jpg&#34;/&gt;
+          
+        
+        
+        
+          記錄生活美食食譜，體會生活點滴。快餐似乎成爲一部分人的全部，生活美食的意義在於與家人朋友分享，傳遞的是感情，是對生活的慢享受。
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

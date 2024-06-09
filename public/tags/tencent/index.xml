@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tencent on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/tencent/</link>
+    <description>Recent content in Tencent on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 16 Feb 2021 22:09:20 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/tencent/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信</title>
+      <link>//localhost:1313/post/tech/delphi/delphi-tc3-hmac/</link>
+      <pubDate>Tue, 16 Feb 2021 22:09:20 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/delphi/delphi-tc3-hmac/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。 参考了 高文杰 先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

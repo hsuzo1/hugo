@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        在Flask中使用SQLAlchemy操作数据的方法 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer"
+/>
+<meta
+  name="keywords"
+  content="张旭州"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/python/flask-with-mssql/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/python/flask-with-mssql/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="在Flask中使用SQLAlchemy操作数据的方法">
+  <meta property="og:description" content="1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-12-29T10:47:35+08:00">
+    <meta property="article:modified_time" content="2020-12-29T10:47:35+08:00">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Flask">
+    <meta property="article:tag" content="Mssql">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">在Flask中使用SQLAlchemy操作数据的方法</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.12.29
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/python/">#python</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/flask/">#flask</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/mssql/">#mssql</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <h2 id="1-简介">1 简介</h2>
+<p><a href="https://www.sqlalchemy.org/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  SQLAlchemy
+</a> 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer 和 Firebird）的企业级持久性模型。</p>
+<p>上面提到了 ORM，那 ORM 是什么？ORM 全称 Object Relational Mapping，中文译为对象关系映射，简单的说就是在数据库与业务实体对象之间建立了一种对应关系，我们可以用操作实体对象的方式来完成数据库的操作，ORM 封装了数据库操作，我们无需关心底层数据库是什么，也不用关心 SQL 语言，只需与数据对象交互即可。</p>
+<h2 id="2-使用">2 使用</h2>
+<p>SQLAlchemy 可以支持多种数据库，如：SQLite, Postgresql, MySQL, Oracle, MS-SQL, Firebird, Sybas等等。</p>
+<h3 id="21-安装">2.1 安装</h3>
+<p>在使用 SQLAlchemy 之前，我们首先要进行安装，使用 <code>pip install sqlalchemy</code> 即可。安装好后看一下版本，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> sqlalchemy
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> sqlalchemy<span style="color:#f92672">.</span>__version__
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;1.3.11&#39;</span>
+</span></span></code></pre></div><h3 id="22-创建连接">2.2 创建连接</h3>
+<p>SQLAlchemy 通过 Engine 来驱动，从图中可以看出 Engine 内维护了一个连接池（Pool）和方言（Dialect），Pool 就是用来存放连接的，Dialect 是用来判断要连接的是哪种数据库，我们创建连接要先创建 Engine，然后再通过 Engine 来创建连接。</p>
+<h4 id="221-sqlite">2.2.1 SQLite</h4>
+<p>我们先来看一下如何创建 Engine，几种创建方式如下所示：</p>
+<ul>
+<li>相对路径方式</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>)
+</span></span></code></pre></div><ul>
+<li>绝对路径方式</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Unix/Mac</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:////absolute/path/to/foo.db&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Windows</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///C:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">path</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">to</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">foo.db&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Windows 另一种写法</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;sqlite:///C:\path\to\foo.db&#39;</span>)
+</span></span></code></pre></div><ul>
+<li>创建内存数据库</li>
+</ul>
+<blockquote>
+<p>SQLite 可以创建内存数据库，其他数据库不可以。</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite://&#39;</span>)
+</span></span></code></pre></div><p>以相对路径方式为例，看一下实现示例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 Engine</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建连接</span>
+</span></span><span style="display:flex;"><span>conn <span style="color:#f92672">=</span> engine<span style="color:#f92672">.</span>connect()
+</span></span><span style="display:flex;"><span>echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span> 会将执行语句打印出来<span style="color:#960050;background-color:#1e0010">，</span>默认为 <span style="color:#66d9ef">False</span><span style="color:#960050;background-color:#1e0010">；</span>数据库<span style="color:#960050;background-color:#1e0010">（</span>foo<span style="color:#f92672">.</span>db<span style="color:#960050;background-color:#1e0010">）</span>不存在会自动创建<span style="color:#960050;background-color:#1e0010">。</span>
+</span></span></code></pre></div><h4 id="222-其他数据库">2.2.2 其他数据库</h4>
+<ul>
+<li>MySQL数据库</li>
+</ul>
+<p>在使用之前要进行第三方库的安装，使用 <code>pip install mysqlclient</code> 和 <code>pip install pymysql</code> 即可。</p>
+<p>创建 <strong>Engine</strong> 方式如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># default</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mysql://scott:tiger@localhost/foo&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># mysqlclient</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mysql+mysqldb://scott:tiger@localhost/foo&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># PyMySQL</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mysql+pymysql://scott:tiger@localhost/foo&#39;</span>)
+</span></span></code></pre></div><p>使用示例如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mysql://root:root@localhost:3306/mysql&#39;</span>,
+</span></span><span style="display:flex;"><span>                       echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>                       pool_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                       pool_recycle<span style="color:#f92672">=</span><span style="color:#ae81ff">3600</span>)
+</span></span><span style="display:flex;"><span>conn <span style="color:#f92672">=</span> engine<span style="color:#f92672">.</span>connect()
+</span></span></code></pre></div><p>参数说明如下所示：</p>
+<pre tabindex="0"><code>echo：值为 True 将执行语句打印出来，默认为 False。
+
+pool_size：连接池的大小，默认为 5，0 表示连接数无限制。
+
+pool_recycle：设置了 pool_recycle 后，SQLAlchemy 会在指定时间内回收连接，单位为秒。
+</code></pre><ul>
+<li>Oracle数据库<br>
+创建 Engine 方式如下所示：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;oracle://scott:tiger@127.0.0.1:1521/sidname&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;oracle+cx_oracle://scott:tiger@tnsname&#39;</span>)
+</span></span></code></pre></div><ul>
+<li>PostgreSQL数据库<br>
+创建 Engine 方式如下所示：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># default</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;postgresql://scott:tiger@localhost/mydatabase&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># psycopg2</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;postgresql+psycopg2://scott:tiger@localhost/mydatabase&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pg8000</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;postgresql+pg8000://scott:tiger@localhost/mydatabase&#39;</span>)
+</span></span></code></pre></div><ul>
+<li>MS SQL Server数据库<br>
+创建 Engine 方式如下所示：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># pyodbc</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mssql+pyodbc://scott:tiger@mydsn&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># pymssql</span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;mssql+pymssql://scott:tiger@hostname:port/dbname&#39;</span>)
+</span></span></code></pre></div><h3 id="23-创建表">2.3 创建表</h3>
+<p>表的创建通过映射类的方式实现，首先创建映射基类，后面的类需要继承它，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Base <span style="color:#f92672">=</span> declarative_base()
+</span></span></code></pre></div><p>创建具体映射类，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Column, Integer, String
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 映射基类</span>
+</span></span><span style="display:flex;"><span>Base <span style="color:#f92672">=</span> declarative_base()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体映射类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SysUser</span>(Base):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定映射表名</span>
+</span></span><span style="display:flex;"><span>    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sys_user&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># id 设置为主键</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> Column(Integer, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定 name 映射到 name 字段</span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">30</span>))
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建表</span>
+</span></span><span style="display:flex;"><span>Base<span style="color:#f92672">.</span>metadata<span style="color:#f92672">.</span>create_all(engine)
+</span></span></code></pre></div><h3 id="24-建立会话">2.4 建立会话</h3>
+<p>具体的操作需要使用 <strong>session</strong>，创建方式如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> sessionmaker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>Session <span style="color:#f92672">=</span> sessionmaker(bind<span style="color:#f92672">=</span>engine)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 Session 类实例</span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> Session()
+</span></span></code></pre></div><h3 id="25-基本操作">2.5 基本操作</h3>
+<h4 id="251-新增">2.5.1 新增</h4>
+<p>我们先新增一条数据，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Column, Integer, String
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> sessionmaker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 映射基类</span>
+</span></span><span style="display:flex;"><span>Base <span style="color:#f92672">=</span> declarative_base()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体映射类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SysUser</span>(Base):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定映射表名</span>
+</span></span><span style="display:flex;"><span>    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sys_user&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># id 设置为主键</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> Column(Integer, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定 name 映射到 name 字段</span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">30</span>))
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>Session <span style="color:#f92672">=</span> sessionmaker(bind<span style="color:#f92672">=</span>engine)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 Session 类实例</span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> Session()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 新增</span>
+</span></span><span style="display:flex;"><span>su <span style="color:#f92672">=</span> SysUser(id<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Jhon&#39;</span>, password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;123456&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 保存</span>
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span>add(su)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 提交</span>
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span>commit()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 关闭</span>
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><h4 id="252-查询数据的方法">2.5.2 查询数据的方法</h4>
+<p>查询操作如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Column, Integer, String
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> sessionmaker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 映射基类</span>
+</span></span><span style="display:flex;"><span>Base <span style="color:#f92672">=</span> declarative_base()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体映射类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SysUser</span>(Base):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定映射表名</span>
+</span></span><span style="display:flex;"><span>    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sys_user&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># id 设置为主键</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> Column(Integer, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定 name 映射到 name 字段</span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">30</span>))
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>Session <span style="color:#f92672">=</span> sessionmaker(bind<span style="color:#f92672">=</span>engine)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 Session 类实例</span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> Session()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查询一条数据，filter 相当于 where 条件</span>
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(SysUser)<span style="color:#f92672">.</span>filter(SysUser<span style="color:#f92672">.</span>id<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查询所有数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># session.query(SysUser).filter(SysUser.id==1).all()</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;name--&gt;&#39;</span>, u<span style="color:#f92672">.</span>name)
+</span></span></code></pre></div><h4 id="253-修改数据的方法">2.5.3 修改数据的方法</h4>
+<p>我们将 id=1 这条数据的 name 修改一下，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Column, Integer, String
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> sessionmaker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 映射基类</span>
+</span></span><span style="display:flex;"><span>Base <span style="color:#f92672">=</span> declarative_base()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体映射类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SysUser</span>(Base):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定映射表名</span>
+</span></span><span style="display:flex;"><span>    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sys_user&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># id 设置为主键</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> Column(Integer, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定 name 映射到 name 字段</span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">30</span>))
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>Session <span style="color:#f92672">=</span> sessionmaker(bind<span style="color:#f92672">=</span>engine)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 Session 类实例</span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> Session()
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(SysUser)<span style="color:#f92672">.</span>filter(SysUser<span style="color:#f92672">.</span>id<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;修改前名字--&gt;&#39;</span>, u<span style="color:#f92672">.</span>name)
+</span></span><span style="display:flex;"><span>u<span style="color:#f92672">.</span>name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;James&#39;</span>
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span>commit()
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;修改后名字--&gt;&#39;</span>, u<span style="color:#f92672">.</span>name)
+</span></span></code></pre></div><h4 id="254-删除数据的方法">2.5.4 删除数据的方法</h4>
+<p>我们将 id=1 这条数据删除，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> create_engine
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.ext.declarative <span style="color:#f92672">import</span> declarative_base
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy <span style="color:#f92672">import</span> Column, Integer, String
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sqlalchemy.orm <span style="color:#f92672">import</span> sessionmaker
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>engine <span style="color:#f92672">=</span> create_engine(<span style="color:#e6db74">&#39;sqlite:///foo.db&#39;</span>, echo<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 映射基类</span>
+</span></span><span style="display:flex;"><span>Base <span style="color:#f92672">=</span> declarative_base()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 具体映射类</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SysUser</span>(Base):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定映射表名</span>
+</span></span><span style="display:flex;"><span>    __tablename__ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;sys_user&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># id 设置为主键</span>
+</span></span><span style="display:flex;"><span>    id <span style="color:#f92672">=</span> Column(Integer, primary_key<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 指定 name 映射到 name 字段</span>
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">30</span>))
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span> Column(String(<span style="color:#ae81ff">32</span>))
+</span></span><span style="display:flex;"><span>Session <span style="color:#f92672">=</span> sessionmaker(bind<span style="color:#f92672">=</span>engine)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 Session 类实例</span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> Session()
+</span></span><span style="display:flex;"><span>u <span style="color:#f92672">=</span> session<span style="color:#f92672">.</span>query(SysUser)<span style="color:#f92672">.</span>filter(SysUser<span style="color:#f92672">.</span>id<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>one()
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span>delete(u)
+</span></span><span style="display:flex;"><span>session<span style="color:#f92672">.</span>commit()
+</span></span></code></pre></div><p>总结
+本文介绍了 SQLAlchemy 的基本概念和使用，对 Python 工程师使用 SQLAlchemy 提供了支撑。</p>
+<blockquote>
+<p>文章来自 <a href="http://www.ityouknow.com/python/2019/12/12/python-SQLAlchemy-086.html"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  纯洁的微笑
+</a> 博客</p>
+</blockquote>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/python/flask-web-app/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">用Flask建立一个简单的Web App</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/python/embedpdf/">
+                  <span class="button__text">使用Streamlit在Web中嵌入显示PDF文件</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

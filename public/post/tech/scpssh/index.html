@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+      <title>
+        SSH、SCP、SFTP使用 ::
+        
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="SSH背景 笔者之前对于SSH(Secure Shell, 安全外壳协议)的了解仅仅知道一般用来进行访问远程主机、是用来替代telnet的不安全链接而发展的。常用的也只有ssh和scp，后来发现还有sftp，经过了解知道各个的作用。接下来讲叙述在学习和开发的过程中该如何使用他们。 ssh $ ssh # out: usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy]"
+/>
+<meta
+  name="keywords"
+  content="张旭州 博客 Hugo 编程 日志　python"
+/>
+
+
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="//localhost:1313/post/tech/scpssh/" />
+
+
+
+
+
+<link rel="stylesheet" href="//localhost:1313/assets/style.css" />
+
+
+
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="//localhost:1313/img/favicon144.png"
+/>
+<link rel="shortcut icon" href="//localhost:1313/img/favicon.png" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@300;600;900&display=swap" rel="stylesheet">
+
+
+
+<meta property="og:url" content="//localhost:1313/post/tech/scpssh/">
+  <meta property="og:site_name" content="张旭州的个人博客">
+  <meta property="og:title" content="SSH、SCP、SFTP使用">
+  <meta property="og:description" content="SSH背景 笔者之前对于SSH(Secure Shell, 安全外壳协议)的了解仅仅知道一般用来进行访问远程主机、是用来替代telnet的不安全链接而发展的。常用的也只有ssh和scp，后来发现还有sftp，经过了解知道各个的作用。接下来讲叙述在学习和开发的过程中该如何使用他们。 ssh $ ssh # out: usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy]">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2020-11-10T10:32:02+08:00">
+    <meta property="article:modified_time" content="2020-11-10T10:32:02+08:00">
+    <meta property="article:tag" content="Ssh">
+    <meta property="article:tag" content="SCP">
+    <meta property="article:tag" content="FTP">
+
+
+
+
+
+<style>
+    #myBtn {
+    display: none;  
+    position: fixed;  
+    bottom: 25px;  
+    right: 50px;  
+    z-index: 99;  
+    border: none;  
+    outline: none;  
+    background-color: red;  
+    color: white;  
+    cursor: pointer;  
+    padding: 12px;  
+    border-radius: 8px;  
+    font-size: 18x;  
+    opacity:0.8; 
+    }
+
+    #myBtn:hover {
+     background-color: #555;  
+    }
+
+     
+    #fastSearch {
+    visibility: hidden;
+    position: fixed;
+     
+    top: 26px;
+    display: inline-block;
+    width: 320px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  #fastSearch input {
+    padding: 8px;
+    width: 90%;
+    height: 35px;
+    font-size: 1em;
+    color: #222129;
+    font-weight: bold;
+    background-color: #dadada;
+    border-radius: 3px 3px 0px 0px;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  #searchResults li {
+    list-style: none;
+    margin-left: 0em;
+    background-color: #fff;
+     
+  }
+
+  #searchResults li .title {
+    font-size: 0.9em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  #searchResults {
+    visibility: inherit;
+    display: inline-block;
+    width: 320px;
+    margin: 0;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 9px 8px -3px rgb(64 60 67 / 24%), 8px 0 8px -7px rgb(64 60 67 / 24%), -8px 0 8px -7px rgb(64 60 67 / 24%);
+  }
+
+  #searchResults a {
+    text-decoration: none !important;
+    text-align: left;
+    padding: 8px;
+    display: inline-block;
+    width: 100%;
+  }
+
+  #searchResults a:hover, #searchResults a:focus {
+    outline: 0;
+    background-color: #666;
+    color: #fff;
+  }
+
+   
+
+  @media (max-width:683px) {
+    #fastSearch, #search-btn {
+      top: 64px;
+    }
+  }
+
+</style>
+
+
+
+
+    
+    
+    
+    
+    
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <img style="box-shadow: none;" src="/logo.svg" height="44" alt="" />
+    
+</a>
+
+    <span class="header__right">
+      
+        <nav id='nav_menu' class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    <li><a id="search-btn" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+
+
+    
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+    
+    
+    <li><a href="/categories/tech">Technical</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories/life">Life</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/categories">Categories</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/tags">Tags</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about">About</a></li>
+    
+    
+    
+    
+    
+    
+    <li><a id="search-btn-mobile" href="javascript:void(0);">Search</a></li>
+    
+    
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">SSH、SCP、SFTP使用</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020.11.10
+        </span>
+
+        
+          
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="//localhost:1313/tags/ssh/">#SSH</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/scp/">#SCP</a>&nbsp;
+        
+          <a href="//localhost:1313/tags/ftp/">#FTP</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <h4 id="ssh背景">SSH背景</h4>
+<blockquote>
+<p>笔者之前对于SSH(Secure Shell, 安全外壳协议)的了解仅仅知道一般用来进行访问远程主机、是用来替代telnet的不安全链接而发展的。常用的也只有ssh和scp，后来发现还有sftp，经过了解知道各个的作用。接下来讲叙述在学习和开发的过程中该如何使用他们。</p>
+</blockquote>
+<h2 id="ssh">ssh</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># out:</span>
+</span></span><span style="display:flex;"><span>usage: ssh <span style="color:#f92672">[</span>-46AaCfGgKkMNnqsTtVvXxYy<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-B bind_interface<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-b bind_address<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-c cipher_spec<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-D <span style="color:#f92672">[</span>bind_address:<span style="color:#f92672">]</span>port<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-E log_file<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-e escape_char<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-F configfile<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-I pkcs11<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-i identity_file<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-J <span style="color:#f92672">[</span>user@<span style="color:#f92672">]</span>host<span style="color:#f92672">[</span>:port<span style="color:#f92672">]]</span> <span style="color:#f92672">[</span>-L address<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-l login_name<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-m mac_spec<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-O ctl_cmd<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-p port<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-Q query_option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-R address<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S ctl_path<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-W host:port<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-w local_tun<span style="color:#f92672">[</span>:remote_tun<span style="color:#f92672">]]</span> destination <span style="color:#f92672">[</span>command<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># eg：</span>
+</span></span><span style="display:flex;"><span>$ ssh -p <span style="color:#ae81ff">50000</span> root@192.168.10.10
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 这个应该是用的最多的命令了，由于SSH的默认端口为22，</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 通常情况下对于没有独立ip的情况下，有时候会使用NAT技术会将22端口映射出来，这时候就需要加上-p指定端口</span>
+</span></span></code></pre></div><h2 id="scp">scp</h2>
+<p>scp和cp命令相似，都是文件拷贝的命令，可以将本地文件拷贝到远程主机的目录下，也可以将远程主机文件拷贝到本地目录来。但是scp是安全的文件拷贝</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ scp
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># out:</span>
+</span></span><span style="display:flex;"><span>usage: scp <span style="color:#f92672">[</span>-346BCpqrv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-c cipher<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-F ssh_config<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-i identity_file<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">[</span>-l limit<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o ssh_option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-P port<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S program<span style="color:#f92672">]</span> source ... target
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># eg:</span>
+</span></span><span style="display:flex;"><span>$ scp -P <span style="color:#ae81ff">50000</span> /tmp/test.txt root@192.168.10.10:/tmp
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 将本地/tmp/test.txt上传到192.168.10.10这个ip地址对应的主机的/tmp目录下</span>
+</span></span></code></pre></div><h2 id="sftp">sftp</h2>
+<p>这个命令我用的极少，经了解其实sftp和ftp相似，由于ftp是不安全的的协议，在Linux操作系统中ftp的实现软件叫做vsftp，而sftp是基于SSH协议基础上，带有安全的文件传输。他的用法也极为简单</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sftp
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># out:</span>
+</span></span><span style="display:flex;"><span>usage: sftp <span style="color:#f92672">[</span>-46aCfpqrv<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-B buffer_size<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-b batchfile<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-c cipher<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">[</span>-D sftp_server_path<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-F ssh_config<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-i identity_file<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-l limit<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">[</span>-o ssh_option<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-P port<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-R num_requests<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-S program<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">[</span>-s subsystem | sftp_server<span style="color:#f92672">]</span> destination
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># eg:</span>
+</span></span><span style="display:flex;"><span>$ sftp -P <span style="color:#ae81ff">50000</span> root@192.168.10.10
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># out:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># sftp&gt; </span>
+</span></span><span style="display:flex;"><span>-------------------------------------------------------------------------------------
+</span></span><span style="display:flex;"><span>sftp&gt; help
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># out:</span>
+</span></span><span style="display:flex;"><span>Available commands:
+</span></span><span style="display:flex;"><span>bye                                Quit sftp
+</span></span><span style="display:flex;"><span>cd path                            Change remote directory to <span style="color:#e6db74">&#39;path&#39;</span>
+</span></span><span style="display:flex;"><span>chgrp grp path                     Change group of file <span style="color:#e6db74">&#39;path&#39;</span> to <span style="color:#e6db74">&#39;grp&#39;</span>
+</span></span><span style="display:flex;"><span>chmod mode path                    Change permissions of file <span style="color:#e6db74">&#39;path&#39;</span> to <span style="color:#e6db74">&#39;mode&#39;</span>
+</span></span><span style="display:flex;"><span>chown own path                     Change owner of file <span style="color:#e6db74">&#39;path&#39;</span> to <span style="color:#e6db74">&#39;own&#39;</span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">[</span>-hi<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>path<span style="color:#f92672">]</span>                    Display statistics <span style="color:#66d9ef">for</span> current directory or
+</span></span><span style="display:flex;"><span>                                   filesystem containing <span style="color:#e6db74">&#39;path&#39;</span>
+</span></span><span style="display:flex;"><span>exit                               Quit sftp
+</span></span><span style="display:flex;"><span>get <span style="color:#f92672">[</span>-afPpRr<span style="color:#f92672">]</span> remote <span style="color:#f92672">[</span>local<span style="color:#f92672">]</span>       Download file
+</span></span><span style="display:flex;"><span>reget <span style="color:#f92672">[</span>-fPpRr<span style="color:#f92672">]</span> remote <span style="color:#f92672">[</span>local<span style="color:#f92672">]</span>      Resume download file
+</span></span><span style="display:flex;"><span>reput <span style="color:#f92672">[</span>-fPpRr<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>local<span style="color:#f92672">]</span> remote      Resume upload file
+</span></span><span style="display:flex;"><span>help                               Display this help text
+</span></span><span style="display:flex;"><span>lcd path                           Change local directory to <span style="color:#e6db74">&#39;path&#39;</span>
+</span></span><span style="display:flex;"><span>lls <span style="color:#f92672">[</span>ls-options <span style="color:#f92672">[</span>path<span style="color:#f92672">]]</span>            Display local directory listing
+</span></span><span style="display:flex;"><span>lmkdir path                        Create local directory
+</span></span><span style="display:flex;"><span>ln <span style="color:#f92672">[</span>-s<span style="color:#f92672">]</span> oldpath newpath            Link remote file <span style="color:#f92672">(</span>-s <span style="color:#66d9ef">for</span> symlink<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>lpwd                               Print local working directory
+</span></span><span style="display:flex;"><span>ls <span style="color:#f92672">[</span>-1afhlnrSt<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>path<span style="color:#f92672">]</span>             Display remote directory listing
+</span></span><span style="display:flex;"><span>lumask umask                       Set local umask to <span style="color:#e6db74">&#39;umask&#39;</span>
+</span></span><span style="display:flex;"><span>mkdir path                         Create remote directory
+</span></span><span style="display:flex;"><span>progress                           Toggle display of progress meter
+</span></span><span style="display:flex;"><span>put <span style="color:#f92672">[</span>-afPpRr<span style="color:#f92672">]</span> local <span style="color:#f92672">[</span>remote<span style="color:#f92672">]</span>       Upload file
+</span></span><span style="display:flex;"><span>pwd                                Display remote working directory
+</span></span><span style="display:flex;"><span>quit                               Quit sftp
+</span></span><span style="display:flex;"><span>rename oldpath newpath             Rename remote file
+</span></span><span style="display:flex;"><span>rm path                            Delete remote file
+</span></span><span style="display:flex;"><span>rmdir path                         Remove remote directory
+</span></span><span style="display:flex;"><span>symlink oldpath newpath            Symlink remote file
+</span></span><span style="display:flex;"><span>version                            Show SFTP version
+</span></span><span style="display:flex;"><span>!command                           Execute <span style="color:#e6db74">&#39;command&#39;</span> in local shell
+</span></span><span style="display:flex;"><span>!                                  Escape to local shell
+</span></span><span style="display:flex;"><span>?                                  Synonym <span style="color:#66d9ef">for</span> help
+</span></span></code></pre></div><p><strong>注意</strong>： ssh中的-p与 scp和sftp中的-P不一样，在实际操作的过程中可能出现错误。要多加注意。</p>
+<h3 id="qa">Q&amp;A</h3>
+<blockquote>
+<p>其实关于SSH的只是还有很多比如免密连接，使用ssh-keygen生成公钥和私钥，在以后连接之后就不需要在输入密码等。</p>
+</blockquote>
+<blockquote>
+<p>文章转自
+<a href="http://eilene.cn/2019/04/07/SSH%E4%B8%89%E5%A4%A7%E5%88%A9%E5%99%A8-ssh%E3%80%81scp%E3%80%81sftp/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  光明携带者的博客
+</a></p>
+</blockquote>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="//localhost:1313/post/tech/videojs/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Magical Europe - 4K Timelapse 歐洲30國縮時攝影</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="//localhost:1313/post/tech/dynamicusejs/">
+                  <span class="button__text">在Hugo网页中动态引用JS与CSS文件</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+  
+
+  
+  
+  
+
+
+  
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+          
+      mybutton = document.getElementById("myBtn");
+
+      
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if ((document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) && (document.body.clientWidth >683 )) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+
+      
+      function topFunction() {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
+      }
+  </script>
+
+        
+        <div id="fastSearch">
+          <input id="searchInput" tabindex="0">
+          <ul id="searchResults">
+          </ul>
+        </div>
+        
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      
+      <div class="copyright copyright--user">
+        <span
+          >© 2024 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="//localhost:1313/assets/main.js" defer=true></script>
+<script src="//localhost:1313/assets/prism.js" defer=true></script>
+
+
+
+    
+    <script src="/js/fuse.min.js"></script> 
+    <script src="/js/fastsearch.js"></script>
+    
+    
+      
+    </div>
+
+    
+  </body>
+</html>

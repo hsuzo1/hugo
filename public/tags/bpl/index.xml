@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bpl on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/bpl/</link>
+    <description>Recent content in Bpl on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 17 Mar 2021 19:59:31 +0800</lastBuildDate>
+    
+	<atom:link href="//localhost:1313/tags/bpl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Delphi实现BPL窗体嵌入主程序内</title>
+      <link>//localhost:1313/post/tech/delphi/embedbplform/</link>
+      <pubDate>Wed, 17 Mar 2021 19:59:31 +0800</pubDate>
+      
+      <guid>//localhost:1313/post/tech/delphi/embedbplform/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Delphi中的BPL文件类似于windows中DLL文件，可以封装完整的VCL和其他函数。如在开发使用中采用“主程序”+“bpl”模式，不仅可以大大减少主程序的体积，还能将各功能模块 分布开发，提高同步开发的速度。另外，如后期需要更改个别功能时仅要修改对应的bpl文件即可，而不必
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>
