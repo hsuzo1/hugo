@@ -78,5 +78,9 @@ title = '张旭州的个人博客'
         name = "Search"
         weight = 6
 
+[services]
+  [services.googleAnalytics]
+    ID = 'G-MEASUREMENT_ID'
+
 [outputs]
   home = ["HTML", "JSON"]

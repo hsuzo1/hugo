@@ -9,24 +9,25 @@ Tags : ["video", "4K", "lightbox"]
 
 
 ### 1.以下内置单张图片显示
+
 ![imaged](/usegit/Vienna.Philharmon.jpg)
 
 ### 2.HTML5方式播放4K视频
-如果不启用confing.toml则无法使用
-<div align="center">
-    <video src="http://blog.hsuzo.cn:6001/Delphi.mp4" controls="controls" width="80%">
-    您的浏览器不支持 video 标签。
-    </video>
-</div>
+
+如果不启用config.toml则无法使用。  
+
+{{< fancyvideo src="https://sample-videos.com/video321/mp4/240/big_buck_bunny_240p_1mb.mp4" >}}  
 
 
 ### 3.内置播放youtube视频功能
+
 {{< youtube IdejM6wCkxA >}}  
 使用方法：{{\< youtube IdejM6wCkxA >}}  
 注意：需要外网连接才能正常播放
 
 
 ### 4..fancybox播放视频
+
 测试短片 Asteroid City - Official Trailer ：
 {{< fancyvideo src="https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/video/2023/Asteroid%20City%20-%20Official%20Trailer%20-%20Only%20In%20Theaters%20June%2016.mp4" >}}
 使用方法：{{\< fancyvideo src="path" >}}   
