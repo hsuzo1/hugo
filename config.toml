@@ -80,7 +80,7 @@ title = '张旭州的个人博客'
 
 [services]
   [services.googleAnalytics]
-    ID = 'G-MEASUREMENT_ID'
+    ID = 'G-0KTWGV9SPG'
 
 [outputs]
   home = ["HTML", "JSON"]
