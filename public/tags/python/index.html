@@ -23,7 +23,20 @@
 <link rel="canonical" href="//localhost:1313/tags/python/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,11 +65,11 @@
 
 
 <meta property="og:url" content="//localhost:1313/tags/python/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Python">
-  <meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Python">
+	<meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="website">
 
 
 
@@ -381,7 +394,40 @@
         <div class="post-content">
           
             
-              Flask-WTF 提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在 https://flask-wtf.readthedocs.io/en/stable/ 。 具体功能如下: 集成 wtforms。 带有 csrf 令牌的安全表单。 全局的 csrf 保护。 支持验证码（Recaptcha）
+              <p><a href="https://pypi.org/project/Flask-WTF/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Flask-WTF
+</a>提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在<a href="https://flask-wtf.readthedocs.io/en/stable/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  https://flask-wtf.readthedocs.io/en/stable/
+</a>。</p>
+<p><strong>具体功能如下:</strong></p>
+<ul>
+<li>集成 wtforms。</li>
+<li>带有 csrf 令牌的安全表单。</li>
+<li>全局的 csrf 保护。</li>
+<li>支持验证码（Recaptcha）。</li>
+<li>与 Flask-Uploads 一起支持文件上传。</li>
+<li>国际化集成。</li>
+</ul>
+<h3 id="安装方法">安装方法</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pip install Flask<span style="color:#f92672">-</span>WTF
+</span></span></code></pre></div><h3 id="创建表单">创建表单</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask_wtf <span style="color:#f92672">import</span> Form
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> wtforms <span style="color:#f92672">import</span> StringField
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> wtforms.validators <span style="color:#f92672">import</span> DataRequired
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyForm</span>(Form):
+</span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> StringField(<span style="color:#e6db74">&#39;name&#39;</span>, validators<span style="color:#f92672">=</span>[DataRequired()])
+</span></span></code></pre></div><p>另外，隐藏的 CSRF 令牌会被自动地创建。你可以在模板这样地渲染它:</p>
             
           
         </div>
@@ -427,7 +473,42 @@
         <div class="post-content">
           
             
-              SQLAlchemy 是flask中必备的库，能操作各种关系数据库。数据库映射的方法在 廖雪峰 的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 query 方法。 遍历 for user in session.query(User).order_by(User.id): print(user.name, user.fullname) 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 或者： for name, fullname in session.query(User.name, User.fullname): print(name, fullname) # 执行结果： ed Ed Jones wendy Wendy Williams mary Mary Contrary fred Fred Flinstone 再看一
+              <p><strong>SQLAlchemy</strong> 是<strong>flask</strong>中必备的库，能操作各种关系数据库。数据库映射的方法在<a href="https://www.liaoxuefeng.com/wiki/897692888725344/955081460091040"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  廖雪峰
+</a>的官方网站上有具体例子。本文主要是记录一下SQLAlchemy通过 session 对象执行查询的各种 <strong>query</strong> 方法。</p>
+<h3 id="遍历">遍历</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> user <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User)<span style="color:#f92672">.</span>order_by(User<span style="color:#f92672">.</span>id):
+</span></span><span style="display:flex;"><span>    print(user<span style="color:#f92672">.</span>name, user<span style="color:#f92672">.</span>fullname)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>执行结果<span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>ed Ed Jones
+</span></span><span style="display:flex;"><span>wendy Wendy Williams
+</span></span><span style="display:flex;"><span>mary Mary Contrary
+</span></span><span style="display:flex;"><span>fred Fred Flinstone
+</span></span></code></pre></div><p>或者：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, fullname <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name, User<span style="color:#f92672">.</span>fullname):
+</span></span><span style="display:flex;"><span>    print(name, fullname)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>ed Ed Jones
+</span></span><span style="display:flex;"><span>wendy Wendy Williams
+</span></span><span style="display:flex;"><span>mary Mary Contrary
+</span></span><span style="display:flex;"><span>fred Fred Flinstone
+</span></span></code></pre></div><p>再看一个例子：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> session<span style="color:#f92672">.</span>query(User<span style="color:#f92672">.</span>name):
+</span></span><span style="display:flex;"><span>    print(name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行结果：</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;ed&#39;</span>,)
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;wendy&#39;</span>,)
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;mary&#39;</span>,)
+</span></span><span style="display:flex;"><span>(<span style="color:#e6db74">&#39;fred&#39;</span>,)
+</span></span></code></pre></div><p>这时，返回结果为元组。</p>
             
           
         </div>
@@ -473,8 +554,6 @@
         <div class="post-content">
           
             
-              SQLAlchemy is the Python SQL toolkit and Object Relational Mapper that gives application developers the full power and flexibility of SQL.It provides a full suite of well known enterprise-level persistence patterns, designed for efficient and high-performing database access, adapted into a simple and Pythonic domain language. 网上的很多教程和视频都是基于本地SQLite数据库进行的操作，因为我个人的项目是在MSSQL上的，所以这里对Flask使用MS SQL Server的方法进行记录。 目标： MSSQL数据库存储数据 有
-            
           
         </div>
         
@@ -519,7 +598,15 @@
         <div class="post-content">
           
             
-              1 简介 SQLAlchemy 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer
+              <h2 id="1-简介">1 简介</h2>
+<p><a href="https://www.sqlalchemy.org/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  SQLAlchemy
+</a> 是一个使用 Python 实现的 ORM 框架，它的设计理念是：SQL 数据库的量级和性能比对象集合重要，对象集合的抽象比表和行重要；它采用了类似于 Java 里 Hibernate 的数据映射模型；它的目标是提供能兼容众多数据库（如：SQLite、MySQL、Postgres、Oracle、MS-SQL、SQLServer 和 Firebird）的企业级持久性模型。</p>
             
           
         </div>
@@ -565,8 +652,6 @@
         <div class="post-content">
           
             
-              本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我
-            
           
         </div>
         
@@ -609,7 +694,8 @@
         <div class="post-content">
           
             
-              即将面临职业测试，但是备考资料实在太多，光知识点就447页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的960道题，才能提交批改🙀。这个时间长
+              <p>即将面临职业测试，但是备考资料实在太多，光知识点就<strong>447</strong>页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的<strong>960</strong>道题，才能提交批改🙀。这个时间长度是个让人疯狂的状态。看了一下网页源码，居然直接嵌入了正确答案和解析。为了更加灵活的学习，干脆写了一个爬虫程序，将题库爬取下来，方便复习🌝<br>
+使用了BeautifulSoup4。</p>
             
           
         </div>
@@ -655,7 +741,15 @@
         <div class="post-content">
           
             
-              streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+              <p>streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要
+一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合<a href="https://www.streamlit.io/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  streamlit
+</a>的示例，开发一个webapp可以说是十分迅速。本文主要记录了app上线过程中的端口转发和后台运行问题，至于编写streamlit应用的方法，请自行学习。</p>
             
           
         </div>
@@ -705,7 +799,19 @@
         <div class="post-content">
           
             
-              python本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了 这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了
+              <p><strong>python</strong>本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了
+这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了解决软件的发布问题，只好又了解GUI方面知识。比较几款之后，发现<a href="https://pysimplegui.readthedocs.io"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  <strong>pysimplegui</strong>
+</a>非常适合上手。<br>
+
+  <img src="/img/tech/pysimplegui.png"  class="center"  style="border-radius: 8px;"  />
+
+</p>
             
           
         </div>
@@ -721,13 +827,6 @@
     <div class="pagination">
   <div class="pagination__buttons">
     
-    
-      <span class="button next">
-        <a href="/tags/python/page/2/">
-          <span class="button__text">Older posts</span>
-          <span class="button__icon">→</span>
-        </a>
-      </span>
     
   </div>
 </div>
@@ -751,7 +850,7 @@
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -772,16 +871,5 @@
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

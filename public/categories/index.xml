@@ -8,16 +8,32 @@
     <link>//localhost:1313/categories/</link>
     <description>Recent content in Categories on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sat, 08 Jun 2024 23:02:31 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
     
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
+    <lastBuildDate>Sat, 19 Sep 2026 16:25:12 +0800</lastBuildDate>
+    
+
+    
+    <atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>Life</title>
       <link>//localhost:1313/categories/life/</link>
-      <pubDate>Sat, 08 Jun 2024 23:02:31 +0800</pubDate>
+      <pubDate>Sat, 19 Sep 2026 16:25:12 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/categories/life/</guid>
       <description>
@@ -31,13 +47,15 @@
           
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>Tech</title>
       <link>//localhost:1313/categories/tech/</link>
       <pubDate>Sun, 28 May 2023 21:21:47 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/categories/tech/</guid>
       <description>
@@ -51,13 +69,15 @@
           
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>VPS</title>
       <link>//localhost:1313/categories/vps/</link>
       <pubDate>Sun, 15 Nov 2020 19:12:02 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/categories/vps/</guid>
       <description>
@@ -71,13 +91,15 @@
           
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>Game</title>
       <link>//localhost:1313/categories/game/</link>
       <pubDate>Thu, 12 Nov 2020 22:08:44 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/categories/game/</guid>
       <description>
@@ -91,13 +113,15 @@
           
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>Other</title>
       <link>//localhost:1313/categories/other/</link>
       <pubDate>Sat, 31 Oct 2020 23:06:48 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/categories/other/</guid>
       <description>
@@ -111,13 +135,15 @@
           
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>Hugo</title>
       <link>//localhost:1313/categories/hugo/</link>
       <pubDate>Tue, 20 Oct 2020 16:24:37 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/categories/hugo/</guid>
       <description>
@@ -131,7 +157,7 @@
           
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

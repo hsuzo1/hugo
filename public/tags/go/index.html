@@ -23,7 +23,20 @@
 <link rel="canonical" href="//localhost:1313/tags/go/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,11 +65,11 @@
 
 
 <meta property="og:url" content="//localhost:1313/tags/go/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Go">
-  <meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Go">
+	<meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="website">
 
 
 
@@ -337,7 +350,16 @@
         <div class="post-content">
           
             
-              Github上的文章 the-way-to-go_ZH_CN 对闭包的解释为： 匿名函数同样被称之为闭包（函数式语言的术语）：它们被允许调用定义在其它环境下的变量。闭包可使得某个函数捕捉到一些外部状态，例如：函数被创建时的状态。另一种表示方式为：一个闭包继承了函数所声明时的作用域。这种状态（作用域内的变量）都被共享到闭包
+              <p>Github上的文章<a href="https://github.com/unknwon/the-way-to-go_ZH_CN/blob/master/eBook/06.8.md"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  the-way-to-go_ZH_CN
+</a>对闭包的解释为：<br>
+匿名函数同样被称之为闭包（函数式语言的术语）：它们被允许调用定义在其它环境下的变量。闭包可使得某个函数捕捉到一些外部状态，例如：函数被创建时的状态。另一种表示方式为：一个闭包继承了函数所声明时的作用域。这种状态（作用域内的变量）都被共享到闭包的环境中，因此这些变量可以在闭包中被操作，直到被销毁。<br>
+CSDN上的说法：闭包是匿名函数与匿名函数所引用环境的组合。匿名函数有动态创建的特性，该特性使得匿名函数不用通过参数传递的方式，就可以直接引用外部的变量。这就类似于常规函数直接使用全局变量一样，个人理解为：匿名函数和它引用的变量以及环境，类似常规函数引用全局变量处于一个包的环境。</p>
             
           
         </div>
@@ -376,7 +398,7 @@
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -397,16 +419,5 @@
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

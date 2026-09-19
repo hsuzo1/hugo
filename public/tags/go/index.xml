@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/go/</link>
     <description>Recent content in Go on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Mon, 01 Mar 2021 20:18:56 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/go/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>Go中闭包的简单使用</title>
       <link>//localhost:1313/post/tech/go/go-closure/</link>
       <pubDate>Mon, 01 Mar 2021 20:18:56 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/go/go-closure/</guid>
       <description>
@@ -28,10 +44,19 @@
         
         
         
-          Github上的文章 the-way-to-go_ZH_CN 对闭包的解释为： 匿名函数同样被称之为闭包（函数式语言的术语）：它们被允许调用定义在其它环境下的变量。闭包可使得某个函数捕捉到一些外部状态，例如：函数被创建时的状态。另一种表示方式为：一个闭包继承了函数所声明时的作用域。这种状态（作用域内的变量）都被共享到闭包
+          &lt;p&gt;Github上的文章&lt;a href=&#34;https://github.com/unknwon/the-way-to-go_ZH_CN/blob/master/eBook/06.8.md&#34;
+  
+  
+    target=&#34;_blank&#34; rel=&#34;noopener&#34;
+  
+&gt;
+  the-way-to-go_ZH_CN
+&lt;/a&gt;对闭包的解释为：&lt;br&gt;
+匿名函数同样被称之为闭包（函数式语言的术语）：它们被允许调用定义在其它环境下的变量。闭包可使得某个函数捕捉到一些外部状态，例如：函数被创建时的状态。另一种表示方式为：一个闭包继承了函数所声明时的作用域。这种状态（作用域内的变量）都被共享到闭包的环境中，因此这些变量可以在闭包中被操作，直到被销毁。&lt;br&gt;
+CSDN上的说法：闭包是匿名函数与匿名函数所引用环境的组合。匿名函数有动态创建的特性，该特性使得匿名函数不用通过参数传递的方式，就可以直接引用外部的变量。这就类似于常规函数直接使用全局变量一样，个人理解为：匿名函数和它引用的变量以及环境，类似常规函数引用全局变量处于一个包的环境。&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

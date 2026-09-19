@@ -23,7 +23,20 @@
 <link rel="canonical" href="//localhost:1313/tags/ocr/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,11 +65,11 @@
 
 
 <meta property="og:url" content="//localhost:1313/tags/ocr/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Ocr">
-  <meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Ocr">
+	<meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="website">
 
 
 
@@ -341,7 +354,15 @@
         <div class="post-content">
           
             
-              streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+              <p>streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要
+一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合<a href="https://www.streamlit.io/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  streamlit
+</a>的示例，开发一个webapp可以说是十分迅速。本文主要记录了app上线过程中的端口转发和后台运行问题，至于编写streamlit应用的方法，请自行学习。</p>
             
           
         </div>
@@ -391,7 +412,19 @@
         <div class="post-content">
           
             
-              python本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了 这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了
+              <p><strong>python</strong>本身无疑是一款非常流行和强大的语言，对于小白来说比较容易上手学习。我也利用网络学习了一些基本的知识，特别是结合阿里云、百度、腾讯或者Azure等云服务商提供的API接口，也切实感受到了
+这个语言对解决实际问题的帮助。不过，这些project都是在命令行环境运行的多，为了解决软件的发布问题，只好又了解GUI方面知识。比较几款之后，发现<a href="https://pysimplegui.readthedocs.io"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  <strong>pysimplegui</strong>
+</a>非常适合上手。<br>
+
+  <img src="/img/tech/pysimplegui.png"  class="center"  style="border-radius: 8px;"  />
+
+</p>
             
           
         </div>
@@ -430,7 +463,7 @@
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -451,16 +484,5 @@
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

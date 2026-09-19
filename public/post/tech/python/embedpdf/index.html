@@ -11,7 +11,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我"
+  content="本文主要记录了使用streamlit在webapp中显示PDF文件的方法。
+Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步：
+st.markdown（）：这将使我们能够在应用程序中使用相同格式的HTML嵌入文件。 base64编码：为了能够通过我们发送pdf文件，我们需要在打开文件后使用base64编码对其进行编码。没有这个，您将无法看到显示的pdf –您只会收到404错误或其他错误。 import streamlit as st import base64 # 显示PDF文件的函数 def st_display_pdf(pdf_file): with open(pdf_file, &#34;rb&#34;) as f: base64_pdf = base64.b64encode(f.read()).decode(&#39;utf-8&#39;) pdf_display = f&#39;&lt;embed src=&#34;data:application/pdf;base64,{base64_pdf}&#34; width=&#34;800&#34; height=&#34;1000&#34; type=&#34;application/pdf&#34;&gt;&#39; st.markdown(pdf_display, unsafe_allow_html=True) def main(): st.title(&#34;在Streamlit中嵌入PDF文件&#34;) st.subheader(&#34;Learn Streamlit&#34;) st_display_pdf(&#34;PDFembed.pdf&#34;) if __name__ == &#39;__main__&#39;: main() "
 />
 <meta
   name="keywords"
@@ -23,7 +25,20 @@
 <link rel="canonical" href="//localhost:1313/post/tech/python/embedpdf/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,17 +67,19 @@
 
 
 <meta property="og:url" content="//localhost:1313/post/tech/python/embedpdf/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="使用Streamlit在Web中嵌入显示PDF文件">
-  <meta property="og:description" content="本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2020-12-23T20:16:15+08:00">
-    <meta property="article:modified_time" content="2020-12-23T20:16:15+08:00">
-    <meta property="article:tag" content="PDF">
-    <meta property="article:tag" content="Python">
-    <meta property="article:tag" content="Streamlit">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="使用Streamlit在Web中嵌入显示PDF文件">
+	<meta property="og:description" content="本文主要记录了使用streamlit在webapp中显示PDF文件的方法。
+Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步：
+st.markdown（）：这将使我们能够在应用程序中使用相同格式的HTML嵌入文件。 base64编码：为了能够通过我们发送pdf文件，我们需要在打开文件后使用base64编码对其进行编码。没有这个，您将无法看到显示的pdf –您只会收到404错误或其他错误。 import streamlit as st import base64 # 显示PDF文件的函数 def st_display_pdf(pdf_file): with open(pdf_file, &#34;rb&#34;) as f: base64_pdf = base64.b64encode(f.read()).decode(&#39;utf-8&#39;) pdf_display = f&#39;&lt;embed src=&#34;data:application/pdf;base64,{base64_pdf}&#34; width=&#34;800&#34; height=&#34;1000&#34; type=&#34;application/pdf&#34;&gt;&#39; st.markdown(pdf_display, unsafe_allow_html=True) def main(): st.title(&#34;在Streamlit中嵌入PDF文件&#34;) st.subheader(&#34;Learn Streamlit&#34;) st_display_pdf(&#34;PDFembed.pdf&#34;) if __name__ == &#39;__main__&#39;: main()">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2020-12-23T20:16:15+08:00">
+		<meta property="article:modified_time" content="2020-12-23T20:16:15+08:00">
+		<meta property="article:tag" content="PDF">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Streamlit">
 
 
 
@@ -356,7 +373,7 @@ Streamlit是一个如此出色的框架，可让您构建多个出色的数据�
 <li>st.markdown（）：这将使我们能够在应用程序中使用相同格式的HTML嵌入文件。</li>
 <li>base64编码：为了能够通过我们发送pdf文件，我们需要在打开文件后使用base64编码对其进行编码。没有这个，您将无法看到显示的pdf –您只会收到404错误或其他错误。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 显示PDF文件的函数</span>
@@ -463,7 +480,7 @@ Streamlit是一个如此出色的框架，可让您构建多个出色的数据�
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -484,16 +501,5 @@ Streamlit是一个如此出色的框架，可让您构建多个出色的数据�
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

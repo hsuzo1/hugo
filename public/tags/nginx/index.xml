@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/nginx/</link>
     <description>Recent content in Nginx on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Wed, 11 Nov 2020 15:28:15 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>使用Nginx和Hugo建立静态网站</title>
       <link>//localhost:1313/post/tech/delplyhugowithnginx/</link>
       <pubDate>Wed, 11 Nov 2020 15:28:15 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/delplyhugowithnginx/</guid>
       <description>
@@ -30,7 +46,7 @@
           记录使用Nginx和Hugo在VPS上搭建一个静态网站
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

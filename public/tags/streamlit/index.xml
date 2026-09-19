@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/streamlit/</link>
     <description>Recent content in Streamlit on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Wed, 23 Dec 2020 20:16:15 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/streamlit/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/streamlit/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>使用Streamlit在Web中嵌入显示PDF文件</title>
       <link>//localhost:1313/post/tech/python/embedpdf/</link>
       <pubDate>Wed, 23 Dec 2020 20:16:15 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/python/embedpdf/</guid>
       <description>
@@ -28,16 +44,43 @@
         
         
         
-          本文主要记录了使用streamlit在webapp中显示PDF文件的方法。 Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。 为了做到这一点，我们只需要步： st.markdown（）：这将使我
+          &lt;p&gt;本文主要记录了使用streamlit在webapp中显示PDF文件的方法。&lt;br&gt;
+Streamlit是一个如此出色的框架，可让您构建多个出色的数据科学应用程序。在本教程中，我们将了解如何将PDF文件嵌入我们的流式应用程序。
+为了做到这一点，我们只需要步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;st.markdown（）：这将使我们能够在应用程序中使用相同格式的HTML嵌入文件。&lt;/li&gt;
+&lt;li&gt;base64编码：为了能够通过我们发送pdf文件，我们需要在打开文件后使用base64编码对其进行编码。没有这个，您将无法看到显示的pdf –您只会收到404错误或其他错误。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; streamlit &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; st
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; base64
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 显示PDF文件的函数&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;st_display_pdf&lt;/span&gt;(pdf_file):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; open(pdf_file, &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;rb&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; f:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        base64_pdf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; base64&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;b64encode(f&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;read())&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;decode(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pdf_display &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;f&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;lt;embed src=&amp;#34;data:application/pdf;base64,&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{&lt;/span&gt;base64_pdf&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34; width=&amp;#34;800&amp;#34; height=&amp;#34;1000&amp;#34; type=&amp;#34;application/pdf&amp;#34;&amp;gt;&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    st&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;markdown(pdf_display, unsafe_allow_html&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    st&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;title(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;在Streamlit中嵌入PDF文件&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    st&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;subheader(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Learn Streamlit&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    st_display_pdf(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PDFembed.pdf&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    main()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>Streamlit配合Nginx搭建在线OCR识别网站</title>
       <link>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</link>
       <pubDate>Fri, 27 Nov 2020 10:10:13 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/python/streamlitocr/streamlitocr/</guid>
       <description>
@@ -48,10 +91,18 @@
         
         
         
-          streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要 一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合 streamlit 的示
+          &lt;p&gt;streamlit是一个用于构建机器学习、数据可视化的python框架。对于需要快速部署机器学习应用，或在网上展示一些小应用，又不想学习flask或django等的，streamlit简直是黑暗曙光。只需要
+一些基本的pthon的知识（如果这个都没有，那就不用往下看了），结合&lt;a href=&#34;https://www.streamlit.io/&#34;
+  
+  
+    target=&#34;_blank&#34; rel=&#34;noopener&#34;
+  
+&gt;
+  streamlit
+&lt;/a&gt;的示例，开发一个webapp可以说是十分迅速。本文主要记录了app上线过程中的端口转发和后台运行问题，至于编写streamlit应用的方法，请自行学习。&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

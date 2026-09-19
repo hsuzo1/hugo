@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/%E5%B0%8F%E5%AD%A6/</link>
     <description>Recent content in 小学 on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Tue, 24 Nov 2020 09:14:23 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/%E5%B0%8F%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/%E5%B0%8F%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>辅导小学奥数时必须掌握的整除知识</title>
       <link>//localhost:1313/post/life/math/</link>
       <pubDate>Tue, 24 Nov 2020 09:14:23 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/life/math/</guid>
       <description>
@@ -31,7 +47,7 @@
           小学生家长的必备知识点，整数被2、5、7、9、11、13等整除的判断技巧。
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

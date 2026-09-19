@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/scrap/</link>
     <description>Recent content in Scrap on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Mon, 30 Nov 2020 19:24:55 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/scrap/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/scrap/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>Python爬取广西干部网络学院的训练题库</title>
       <link>//localhost:1313/post/tech/python/crabgxela/</link>
       <pubDate>Mon, 30 Nov 2020 19:24:55 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/python/crabgxela/</guid>
       <description>
@@ -28,10 +44,11 @@
         
         
         
-          即将面临职业测试，但是备考资料实在太多，光知识点就447页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的960道题，才能提交批改🙀。这个时间长
+          &lt;p&gt;即将面临职业测试，但是备考资料实在太多，光知识点就&lt;strong&gt;447&lt;/strong&gt;页，真不愧是绝世武功的目录啊。不过，广西干部网络学院给大家提供了一个很好的模拟训练的平台，而且正式测试的题目也会从中间抽取。由于模拟平台的设计有点不友好，比如要练习单选题，你要做完全部的&lt;strong&gt;960&lt;/strong&gt;道题，才能提交批改🙀。这个时间长度是个让人疯狂的状态。看了一下网页源码，居然直接嵌入了正确答案和解析。为了更加灵活的学习，干脆写了一个爬虫程序，将题库爬取下来，方便复习🌝&lt;br&gt;
+使用了BeautifulSoup4。&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

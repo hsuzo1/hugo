@@ -11,7 +11,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="本文来源于 XEON CHOW 博客，并进行修改。 基本思路 Blog 网站整个的搭建流程大致如下： Windows 本地用 Hugo 进行网站的配置和编辑调试； 使用 Git 工具将 Windows 本地生成的网站文件夹远程部署到 VPS 服务器上； VPS上通过Git Hook自动编译发布网页文件 VPS 上使用 Nginx 作为 Web 网页服务器。 网页申请 SSL 证书并强制开启 HTTPS 一、VPS端配置情"
+  content=" 本文来源于XEON CHOW博客，并进行修改。
+基本思路 Blog 网站整个的搭建流程大致如下： Windows 本地用 Hugo 进行网站的配置和编辑调试； 使用 Git 工具将 Windows 本地生成的网站文件夹远程部署到 VPS 服务器上； VPS上通过Git Hook自动编译发布网页文件 VPS 上使用 Nginx 作为 Web 网页服务器。 网页申请 SSL 证书并强制开启 HTTPS
+一、VPS端配置情况 1.安装Hugo客户端以及rsync 方式一
+sudo apt-get install hugo hugo version 方式二
+"
 />
 <meta
   name="keywords"
@@ -23,7 +27,20 @@
 <link rel="canonical" href="//localhost:1313/post/tech/use-git-deploy-hugo/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,17 +69,17 @@
 
 
 <meta property="og:url" content="//localhost:1313/post/tech/use-git-deploy-hugo/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="用Hugo创建Blog站点并部署到VPS">
-  <meta property="og:description" content="用Hugo创建Blog站点，并自动化部署到VPS上。">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2020-10-26T21:01:00+08:00">
-    <meta property="article:modified_time" content="2020-10-26T21:01:00+08:00">
-    <meta property="article:tag" content="Hugo">
-    <meta property="article:tag" content="Github">
-    <meta property="article:tag" content="Vps">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="用Hugo创建Blog站点并部署到VPS">
+	<meta property="og:description" content="用Hugo创建Blog站点，并自动化部署到VPS上。">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2020-10-26T21:01:00+08:00">
+		<meta property="article:modified_time" content="2020-10-26T21:01:00+08:00">
+		<meta property="article:tag" content="Hugo">
+		<meta property="article:tag" content="Github">
+		<meta property="article:tag" content="Vps">
 
 
 
@@ -378,20 +395,20 @@ VPS 上使用 Nginx 作为 Web 网页服务器。
 <h2 id="一vps端配置情况">一、VPS端配置情况</h2>
 <h3 id="1安装hugo客户端以及rsync">1.安装Hugo客户端以及rsync</h3>
 <p>方式一</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install hugo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo apt-get install hugo
 </span></span><span style="display:flex;"><span>hugo version
 </span></span></code></pre></div><p>方式二</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_0.76.5_Linux-64bit.tar.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>wget https://github.com/gohugoio/hugo/releases/download/v0.76.5/hugo_0.76.5_Linux-64bit.tar.gz
 </span></span><span style="display:flex;"><span>tar -xzvf hugo_0.76.5_Linux-64bit.tar.gz
 </span></span><span style="display:flex;"><span>sudo mv hugo /usr/local/bin/hugo  <span style="color:#75715e"># 随便您想放置的目录即可</span>
 </span></span><span style="display:flex;"><span>hugo version
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>apt install rsync
 </span></span></code></pre></div><h3 id="2安装git仓库并配置权限">2.安装Git仓库，并配置权限</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get update
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get update
 </span></span><span style="display:flex;"><span>apt-get install git-core
 </span></span></code></pre></div><p>添加 git 用户</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>useradd git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>useradd git
 </span></span><span style="display:flex;"><span>vi /etc/sudoers
 </span></span></code></pre></div><h4 id="1在--user-privilege-specification-配置字段下添加">1.在  User privilege specification 配置字段下添加</h4>
 <p><code>git	ALL=(ALL:ALL) ALL</code>
@@ -402,41 +419,41 @@ VPS 上使用 Nginx 作为 Web 网页服务器。
 <p><code>vi /etc/passwd</code>
 将最后一行 git 用户的 /bin/sh 改为 /bin/bash，是 git 用户也拥有 bash 脚本解释器。</p>
 <h4 id="4创建-git-用户密码并建立用户目录配置权限">4.创建 git 用户密码，并建立用户目录、配置权限</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>passwd git
 </span></span><span style="display:flex;"><span>mkdir /home/git
 </span></span><span style="display:flex;"><span>chown -R git:git /home/git
 </span></span></code></pre></div><h2 id="新建-vps-端的-git-仓库">新建 VPS 端的 git 仓库</h2>
 <h4 id="1在-vps-上新建一个-git-仓库作为远程仓库切换到-git-用户并转到-git-用户文件夹">1.在 VPS 上新建一个 git 仓库作为远程仓库。切换到 git 用户并转到 git 用户文件夹</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>su git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>su git
 </span></span><span style="display:flex;"><span>cd /home/git
 </span></span><span style="display:flex;"><span>mkdir blog.git
 </span></span><span style="display:flex;"><span>cd blog.git
 </span></span></code></pre></div><h4 id="2初始化仓库">2.初始化仓库</h4>
 <p><code>git init --bare</code></p>
 <h4 id="3在-homegit-路径下创建存放-ssh-公钥的文件夹-ssh-并进入在该文件夹下新建公钥文件并编辑">3.在 /home/git 路径下创建存放 SSH 公钥的文件夹 .ssh 并进入，在该文件夹下新建公钥文件并编辑</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /home/git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /home/git
 </span></span><span style="display:flex;"><span>mkdir .ssh
 </span></span><span style="display:flex;"><span>cd .ssh
 </span></span><span style="display:flex;"><span>vi authorized_keys
 </span></span></code></pre></div><p>将前文 Windows 本地 /c/Users/Xeon/.ssh/ 位置生成的 SSH 公钥文件 id_rsa.pub 内容复制粘贴到 authorized_keys 文件中并 ：wq 保存。</p>
 <h4 id="4新建网页文件存放目录通过root用户新建-varwww-路径并转到-varwww-文件夹">4.新建网页文件存放目录，通过root用户新建 /var/www 路径，并转到 /var/www 文件夹</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>exit
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>exit
 </span></span><span style="display:flex;"><span>mkdir -p /var/www
 </span></span><span style="display:flex;"><span>cd /var/www
 </span></span><span style="display:flex;"><span>mkdir blog
 </span></span></code></pre></div><h4 id="5修改-varwwwblog-文件夹权限给用户git赋予tmp的操作权限提示后输入root密码">5.修改 /var/www/blog 文件夹权限，给用户Git赋予/tmp的操作权限，提示后输入root密码：</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chown -R git:git /var/www/blog/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chown -R git:git /var/www/blog/
 </span></span><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">777</span> /tmp
 </span></span></code></pre></div><h3 id="设置-git-钩子脚本">设置 git 钩子脚本</h3>
 <p>创建一个 git 钩子脚本，主要目的是当 Windows 本地的文件被远程推送到 VPS 的 blog.git 仓库时，触发脚本自动将 blog.git 里的内容。</p>
 <h4 id="1切换为-git-用户和文件夹新建-post-receive-脚本文件">1.切换为 git 用户和文件夹，新建 post-receive 脚本文件</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>su git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>su git
 </span></span><span style="display:flex;"><span>cd
 </span></span><span style="display:flex;"><span>cd blog.git/hooks/
 </span></span><span style="display:flex;"><span>vi post-receive
 </span></span></code></pre></div><p>post-receive内容如下：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash -e
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash -e
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># A place to clone the remote repo so Hugo can build from it</span>
 </span></span><span style="display:flex;"><span>WORKING_DIRECTORY<span style="color:#f92672">=</span>/home/git/clone
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Backup folder in case something goes wrong during this script</span>
@@ -476,7 +493,7 @@ VPS 上使用 Nginx 作为 Web 网页服务器。
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Exit without trapping, since everything went well</span>
 </span></span><span style="display:flex;"><span>trap - EXIT
 </span></span></code></pre></div><p>2.给 post-receive 脚本文件添加可执行权限</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chmod +x post-receive
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>chmod +x post-receive
 </span></span></code></pre></div><h2 id="二windows-本地-git-设置">二、Windows 本地 Git 设置</h2>
 <p>在 Windows 本地安装 Git 的方法参考其他。</p>
 <p>安装后需要在本地新建一个 git 用户，设置用户名和邮箱（仅作用户识别使用，可填写任意邮箱地址）。在任意路径下打开 Git Bash 命令窗口，输入以下指令：</p>
@@ -509,7 +526,7 @@ git remote set-url origin ssh://git@your_VPS_IP:SSH_Port/home/git/blog.git
 <code>git push origin master</code></p>
 <p>此时用浏览器访问域名 your_domain.com，即可打开自己的 blog 站点，并且自动开启了 HTTPS 加密。</p>
 <p>以后 Windows 本地更新内容后，只需在 D:\Hugo\Sites\blog\public 路径下打开 Git Bash 输入以下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git init
 </span></span><span style="display:flex;"><span>git add --all
 </span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;description&#34;</span>
 </span></span><span style="display:flex;"><span>git push origin master
@@ -528,17 +545,17 @@ git remote set-url origin ssh://git@your_VPS_IP:SSH_Port/home/git/blog.git
 <p>使用 acme 申请 SSL 证书，在此之前先要做好域名的解析。我使用 CloudFlare 进行域名解析，因此可以直接使用 CloudFlare 的 API 进行申请，比较方便，若使用其他解析服务，需要手动添加两条 txt 解析，可自行搜索教程。以下步骤均在 root 用户下。</p>
 <h4 id="1安装-acme">1.安装 acme</h4>
 <p>新建一个文件夹 /home/tls 存放证书和密钥</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf /home/tls <span style="color:#f92672">&amp;&amp;</span> mkdir -p /home/tls
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>rm -rf /home/tls <span style="color:#f92672">&amp;&amp;</span> mkdir -p /home/tls
 </span></span><span style="display:flex;"><span>curl https://get.acme.sh | sh
 </span></span><span style="display:flex;"><span>source ~/.bashrc
 </span></span></code></pre></div><h4 id="2导入-cloudflare-的-api">2.导入 CloudFlare 的 API</h4>
 <p>在 CloudFlare 的个人账户页面，找到 API Tokens-Global API Key，点击 view 查看，将 API Key 复制保存下来。在 VPS 上输入以下命令：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export CF_Key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your_API_Key&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export CF_Key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your_API_Key&#34;</span>
 </span></span><span style="display:flex;"><span>export CF_Email<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your_CloudFlare_Email&#34;</span>
 </span></span></code></pre></div><p>其中 CF_Key 和 CF_Email 填入自己的 API Key 和 CloudFlare 账户邮箱。</p>
 <h4 id="3申请证书">3.申请证书</h4>
 <p><code>~/.acme.sh/acme.sh --issue --dns dns_cf -d your_domain.com -d *.your_domain.com -k ec-256</code>
-以上命令中的 your_domain.com 替换为自己的域名，这个命令会生成 *.your_domain.com 泛域名的 SSL 证书，即 your_domain.com 下所有的二级、三级域名都会受到证书保护。所申请到的证书文件存放在 ~/.acme.sh/your_domain.com_ecc 文件夹下，~ 代表当前用户目录，若当前是 root 用户，则 ~ 代表 /root。</p>
+以上命令中的 your_domain.com 替换为自己的域名，这个命令会生成 *.your_domain.com 泛域名的 SSL 证书，即 your_domain.com 下所有的二级、三级域名都会受到证书保护。所申请到的证书文件存放在 <del>/.acme.sh/your_domain.com_ecc 文件夹下，</del> 代表当前用户目录，若当前是 root 用户，则 ~ 代表 /root。</p>
 <h4 id="4安装证书并启用自动更新">4.安装证书并启用自动更新</h4>
 <p>将证书安装到 /home/tls 路径下</p>
 <pre tabindex="0"><code>~/.acme.sh/acme.sh --installcert -d your_domain.com -d *.your_domain.com --fullchainpath /home/tls/your_domain.com.crt --keypath /home/tls/your_domain.com.key --ecc
@@ -546,16 +563,16 @@ acme.sh --upgrade --auto-upgrade
 </code></pre><p>同样将以上命令中的 your_domain.com 替换为自己的域名，此时在 /home/tls 路径下会生成证书文件 your_domain.com.crt 和密钥文件 your_domain.com.key。第二行命令设置证书到期自动更新。</p>
 <h4 id="5vps-上-nginx-设置">5.VPS 上 Nginx 设置</h4>
 <p>安装 Nginx</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get install nginx -y
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>apt-get install nginx -y
 </span></span><span style="display:flex;"><span>vi /etc/nginx/sites-enabled/default
 </span></span></code></pre></div><p>用以下内容覆盖原配置default：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">server</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">server</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">当</span> <span style="color:#960050;background-color:#1e0010">http</span> <span style="color:#960050;background-color:#1e0010">协议被请求时，统一转发到</span> <span style="color:#960050;background-color:#1e0010">https</span> <span style="color:#960050;background-color:#1e0010">协议上</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">80;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">[::]:80;</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">IPV6</span> <span style="color:#960050;background-color:#1e0010">协议</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">server_name</span> <span style="color:#960050;background-color:#1e0010">your_domain.com;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">rewrite</span> <span style="color:#960050;background-color:#1e0010">^(.*)$</span> <span style="color:#960050;background-color:#1e0010">https:</span><span style="color:#75715e">//$host$1 permanent;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">server</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">listen</span> <span style="color:#960050;background-color:#1e0010">443</span> <span style="color:#960050;background-color:#1e0010">ssl;</span>
@@ -578,7 +595,7 @@ acme.sh --upgrade --auto-upgrade
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">}</span>
 </span></span></code></pre></div><p>同样，将 your_domain.com 替换为自己的域名。以上 Nginx 配置文件的大概含义见注释，详细含义见 Nginx 官方文档。</p>
 <h5 id="修改配置文件后需要重启-nginx">修改配置文件后需要重启 Nginx</h5>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl restart nginx
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl restart nginx
 </span></span></code></pre></div>
     </div>
     
@@ -668,7 +685,7 @@ acme.sh --upgrade --auto-upgrade
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -689,16 +706,5 @@ acme.sh --upgrade --auto-upgrade
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

@@ -11,7 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="1.查询服务器登录失败的信息 sudo grep &amp;#34;Failed password for root&amp;#34; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | more sudo grep &amp;#34;Failed password for invalid user&amp;#34; /var/log/auth.log | awk &amp;#39;{print $13}&amp;#39; | sort | uniq -c | sort -nr | more 2.应对策略 2.1 SSH相关 2.1.1 不使用默认的22端口 ssh登陆默认的端口是22，而搬瓦工一般都默认是一个比较大的随机端口，不要为了方便，改回22。 修改 /etc/ssh/ss"
+  content="1.查询服务器登录失败的信息 sudo grep &#34;Failed password for root&#34; /var/log/auth.log | awk &#39;{print $11}&#39; | sort | uniq -c | sort -nr | more sudo grep &#34;Failed password for invalid user&#34; /var/log/auth.log | awk &#39;{print $13}&#39; | sort | uniq -c | sort -nr | more 2.应对策略 2.1 SSH相关 2.1.1 不使用默认的22端口 ssh登陆默认的端口是22，而搬瓦工一般都默认是一个比较大的随机端口，不要为了方便，改回22。 修改 /etc/ssh/sshd_config文件，将其中的Port 22改为随意的端口比如Port 47832，port的取值范围是 0 – 65535(即2的16次方)，0到1024是众所周知的端口（知名端口，常用于系统服务等，例如http服务的端口号是80)。
+"
 />
 <meta
   name="keywords"
@@ -23,7 +24,20 @@
 <link rel="canonical" href="//localhost:1313/post/tech/vps-secur/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,17 +66,17 @@
 
 
 <meta property="og:url" content="//localhost:1313/post/tech/vps-secur/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Vps 安全设置几个方法">
-  <meta property="og:description" content="提高Vps安全性的几个常用方法">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2020-10-29T14:50:51+08:00">
-    <meta property="article:modified_time" content="2020-10-29T14:50:51+08:00">
-    <meta property="article:tag" content="Vps">
-    <meta property="article:tag" content="Ssh">
-    <meta property="article:tag" content="Security">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Vps 安全设置几个方法">
+	<meta property="og:description" content="提高Vps安全性的几个常用方法">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2020-10-29T14:50:51+08:00">
+		<meta property="article:modified_time" content="2020-10-29T14:50:51+08:00">
+		<meta property="article:tag" content="Vps">
+		<meta property="article:tag" content="Ssh">
+		<meta property="article:tag" content="Security">
 
 
 
@@ -350,7 +364,7 @@
     <div class="post-content">
       
       <h4 id="1查询服务器登录失败的信息">1.查询服务器登录失败的信息</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo grep <span style="color:#e6db74">&#34;Failed password for root&#34;</span> /var/log/auth.log | awk <span style="color:#e6db74">&#39;{print $11}&#39;</span> | sort | uniq -c | sort -nr | more
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo grep <span style="color:#e6db74">&#34;Failed password for root&#34;</span> /var/log/auth.log | awk <span style="color:#e6db74">&#39;{print $11}&#39;</span> | sort | uniq -c | sort -nr | more
 </span></span><span style="display:flex;"><span>sudo grep <span style="color:#e6db74">&#34;Failed password for invalid user&#34;</span> /var/log/auth.log | awk <span style="color:#e6db74">&#39;{print $13}&#39;</span> | sort | uniq -c | sort -nr | more
 </span></span></code></pre></div><h4 id="2应对策略">2.应对策略</h4>
 <h5 id="21-ssh相关">2.1 SSH相关</h5>
@@ -363,7 +377,7 @@
 <p>跟之前写的debian ssh 连接android 通过termux里登陆部分是一样的。rsa的原理也不再赘述，wiki上的条目描述的很清楚。
 先通过<code>ssh-keygen -t rsa</code>生成你的客户端的密钥，包括一个私钥和公钥，用<code>scp id_rsa.pub root@XX.XX.XX.XX:~/</code>把公钥拷贝到服务器上，注意，生成私钥的时候，文件名是可以自定义的，且可以再加一层密码，所以建议文件名取自己能识别出哪台机器的名字。然后在服务器上，你的用户目录下，新建.ssh文件夹，并将该文件夹的权限设为700，chmod 700 .ssh，并新建一个authorized_keys，这是默认允许的key存储的文件。如果已经存在，则只需要将上传的id_rsa.pub文件内容追加进去即可：<code>cat id_rsa.pub &gt;&gt; authorized_keys</code>，如果不存在则新建并改权限为400即可。
 然后编辑ssh的配置文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vi /etc/ssh/sshd_config
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vi /etc/ssh/sshd_config
 </span></span></code></pre></div><blockquote>
 <p>RSAAuthentication yes #RSA认证
 PubkeyAuthentication yes #开启公钥验证
@@ -372,7 +386,7 @@ PasswordAuthentication no #禁止密码认证
 PermitEmptyPasswords no #禁止空密码</p>
 </blockquote>
 <p>最后保存，重启sshd服务</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo service sshd restart
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo service sshd restart
 </span></span></code></pre></div><h6 id="214-禁止root用户登录">2.1.4 禁止root用户登录</h6>
 <p>你可以新建一个用户来管理，而非直接使用root用户，防止密码被破解。
 还是修改 <strong>/etc/ssh/sshd_config</strong></p>
@@ -392,7 +406,7 @@ PermitEmptyPasswords no #禁止空密码</p>
 <h6 id="221-配置文件">2.2.1 配置文件</h6>
 <p>默认配置文件一般在 <strong>/etc/fail2ban/jail.conf</strong>。现在你已经准备好了通过配置 fail2ban 来加强你的SSH服务器。你需要编辑其配置文件 <strong>/etc/fail2ban/jail.conf</strong>。 在配置文件的“ <strong>[DEFAULT]</strong>”区，你可以在此定义所有受监控的服务的默认参数，另外在特定服务的配置部分，你可以为每个服务（例如SSH，Apache等）设置特定的配置来覆盖默认的参数配置。
 在针对服务的监狱区（在[DEFAULT]区后面的地方），你需要定义一个[ssh-iptables]区，这里用来定义SSH相关的监狱配置。真正的禁止IP地址的操作是通过iptables完成的。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>DEFAULT<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>DEFAULT<span style="color:#f92672">]</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 以空格分隔的列表，可以是 IP 地址、CIDR 前缀或者 DNS 主机名</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 用于指定哪些地址可以忽略 fail2ban 防御</span>
 </span></span><span style="display:flex;"><span>ignoreip <span style="color:#f92672">=</span> 127.0.0.1 172.31.0.0/24 10.10.0.0/24 192.168.0.0/24
@@ -418,9 +432,9 @@ PermitEmptyPasswords no #禁止空密码</p>
 根据上述配置，fail2ban会自动禁止在最近10分钟内有超过3次访问尝试失败的任意IP地址。一旦被禁，这个IP地址将会在24小时内一直被禁止访问 SSH 服务。</p>
 <h6 id="222运行">2.2.2运行</h6>
 <p>一旦配置文件准备就绪，按照以下方式重启fail2ban服务。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo service fail2ban restart
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo service fail2ban restart
 </span></span></code></pre></div><p>或者</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo systemctl restart fail2ban
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ sudo systemctl restart fail2ban
 </span></span></code></pre></div><p>为了验证fail2ban成功运行，使用参数&rsquo;<strong>ping</strong>&lsquo;来运行fail2ban-client 命令。 如果fail2ban服务正常运行，你可以看到“pong（嘭）”作为响应。
 <code>$ sudo fail2ban-client pingServer replied: pong</code></p>
 <h6 id="223-解锁特定ip">2.2.3 解锁特定ip</h6>
@@ -440,7 +454,7 @@ PermitEmptyPasswords no #禁止空密码</p>
 <code>$ sudo systemctl enable fail2ban</code></p>
 <h5 id="23-终极杀手锏-iptables">2.3 终极杀手锏 iptables</h5>
 <p>iptables，一个运行在用户空间的应用软件，通过控制Linux内核netfilter模块，来管理网络数据包的流动与转送。在大部分的Linux系统上面，iptables是使用/usr/sbin/iptables来操作，文件则放置在手册页（Man page[2]）底下，可以通过 man iptables 指令获取。通常iptables都需要内核层级的模块来配合运作，Xtables是主要在内核层级里面iptables API运作功能的模块。因相关动作上的需要，iptables的操作需要用到超级用户的权限。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 清除已有iptables规则</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 清除已有iptables规则</span>
 </span></span><span style="display:flex;"><span>iptables -F
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># 允许本地回环接口(即运行本机访问本机)</span>
 </span></span><span style="display:flex;"><span>iptables -A INPUT -i lo -j ACCEPT
@@ -548,7 +562,7 @@ PermitEmptyPasswords no #禁止空密码</p>
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -569,16 +583,5 @@ PermitEmptyPasswords no #禁止空密码</p>
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

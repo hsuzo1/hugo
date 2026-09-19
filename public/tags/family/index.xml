@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/family/</link>
     <description>Recent content in Family on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Mon, 01 Mar 2021 21:06:34 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/family/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/family/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>2021寒假结束新战役打响</title>
       <link>//localhost:1313/post/life/2021spring/</link>
       <pubDate>Mon, 01 Mar 2021 21:06:34 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/life/2021spring/</guid>
       <description>
@@ -28,10 +44,76 @@
         
         
         
-          2021寒假结束了，孩子们开始新的学习。 您的浏览器不支持 video 标签。 Pluto开学前一天的自习，自学七年级的有理数部分，对于基本概念的掌握已经很不错了。 您的浏览器不支持 video 标签。 2021.3.1 Pluto日常训练。好朋友手臂骨折了，也仍然坚持单臂训练，他还有什么理由偷懒呢。 您的浏览器不支持 video 标签。 2021.2.28
+          &lt;blockquote&gt;
+&lt;p&gt;2021寒假结束了，孩子们开始新的学习。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+
+    &lt;div class=&#34;fancybox&#34; align=&#34;center&#34;&gt;
+        &lt;video src=&#34;http://oos-cn.ctyunapi.cn/testimg/WeChat_20210301205347.mp4&#34; controls=&#34;controls&#34; preload=&#34;auto&#34; width=&#34;90%&#34;&gt;
+                您的浏览器不支持 video 标签。
+            &lt;/video&gt;
+    &lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Pluto开学前一天的自习，自学七年级的有理数部分，对于基本概念的掌握已经很不错了。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+    &lt;div class=&#34;fancybox&#34; align=&#34;center&#34;&gt;
+        &lt;video src=&#34;https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/video/WeChat_20210301205425.mp4&#34; controls=&#34;controls&#34; preload=&#34;auto&#34; width=&#34;90%&#34;&gt;
+                您的浏览器不支持 video 标签。
+            &lt;/video&gt;
+    &lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;2021.3.1 Pluto日常训练。好朋友手臂骨折了，也仍然坚持单臂训练，他还有什么理由偷懒呢。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+
+
+    &lt;div class=&#34;fancybox&#34; align=&#34;center&#34;&gt;
+        &lt;video src=&#34;https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/video/WeChat_20210301205352.mp4&#34; controls=&#34;controls&#34; preload=&#34;auto&#34; width=&#34;90%&#34;&gt;
+                您的浏览器不支持 video 标签。
+            &lt;/video&gt;
+    &lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;2021.2.28 Rose的舞蹈公开课。好像她最喜欢的就是绘画和舞蹈了，足球是被迫添加的户外运动项目咯。&lt;/li&gt;
+&lt;/ul&gt;
+
+
+
+  
+    
+    
+    
+      
+    
+    
+      
+    
+
+    
+   
+
+    
+    
+    
+    
+
+    &lt;div class=&#34;fancybox&#34; align=&#34;center&#34;&gt;
+      &lt;a data-fancybox=&#34;gallery&#34; href=&#34;https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/img//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210301205309.jpg&#34; data-caption=&#34;2020秋 大班上学期&#34;&gt;
+        &lt;img src=&#34;https://hugo-1300132103.cos.ap-guangzhou.myqcloud.com/img//%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20210301205309.jpg&#34; width=&#34;500&#34; loading=&#34;lazy&#34; alt=&#34;2020秋 大班上学期&#34; /&gt; 
+        
+      &lt;/a&gt;
+      &lt;p style=&#34;font-size: 0.8rem;&#34;&gt;2020秋 大班上学期&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/photo/</link>
     <description>Recent content in Photo on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Sun, 23 Jan 2022 22:27:34 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/photo/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/photo/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>小女儿七岁生日咯</title>
       <link>//localhost:1313/post/life/daughterbirthday/</link>
       <pubDate>Sun, 23 Jan 2022 22:27:34 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/life/daughterbirthday/</guid>
       <description>
@@ -31,7 +47,7 @@
           女儿7岁生日，许了一个愿望，要了一个特别的礼物。
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

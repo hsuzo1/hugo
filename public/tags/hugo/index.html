@@ -23,7 +23,20 @@
 <link rel="canonical" href="//localhost:1313/tags/hugo/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,11 +65,11 @@
 
 
 <meta property="og:url" content="//localhost:1313/tags/hugo/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Hugo">
-  <meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="website">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Hugo">
+	<meta property="og:description" content="张旭州的个人博客。Site stuff for having fun in my life.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="website">
 
 
 
@@ -431,7 +444,10 @@
         <div class="post-content">
           
             
-              为了最大节约带宽和服务器资源，除了尝试在CDN中缓存CSS、js文件之外，我想到尽量设置网页不主动加载一些不必要的外部库。 例如，一些纯文字的页面就不需要jquery库的支持，而使用图片灯箱的页面则自动加载fancybox的资源库。 因此，对于一些需要展示图片的网页，我就动态启用外部
+              <p>为了最大节约带宽和服务器资源，除了尝试在CDN中缓存CSS、js文件之外，我想到尽量设置网页不主动加载一些不必要的外部库。
+例如，一些纯文字的页面就不需要jquery库的支持，而使用图片灯箱的页面则自动加载fancybox的资源库。 <br>
+因此，对于一些需要展示图片的网页，我就动态启用外部脚本链接。<br>
+实现的方法也很简单，目前来看已经能满足我的要求，至于效果待以后再评估：</p>
             
           
         </div>
@@ -589,13 +605,6 @@
   <div class="pagination__buttons">
     
     
-      <span class="button next">
-        <a href="/tags/hugo/page/2/">
-          <span class="button__text">Older posts</span>
-          <span class="button__icon">→</span>
-        </a>
-      </span>
-    
   </div>
 </div>
 
@@ -618,7 +627,7 @@
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -639,16 +648,5 @@
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

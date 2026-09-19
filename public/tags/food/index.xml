@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/food/</link>
     <description>Recent content in Food on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Sun, 02 Jan 2022 17:52:55 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/food/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/food/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>2022來到了，慢慢品味生活🍕</title>
       <link>//localhost:1313/post/life/2022newyear/</link>
       <pubDate>Sun, 02 Jan 2022 17:52:55 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/life/2022newyear/</guid>
       <description>
@@ -30,7 +46,7 @@
           記錄生活美食食譜，體會生活點滴。快餐似乎成爲一部分人的全部，生活美食的意義在於與家人朋友分享，傳遞的是感情，是對生活的慢享受。
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/%E6%98%A5%E8%8A%82/</link>
     <description>Recent content in 春节 on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Mon, 31 Jan 2022 18:43:17 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/%E6%98%A5%E8%8A%82/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/%E6%98%A5%E8%8A%82/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>2022年特别的除夕夜</title>
       <link>//localhost:1313/post/life/2022springnight/</link>
       <pubDate>Mon, 31 Jan 2022 18:43:17 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/life/2022springnight/</guid>
       <description>
@@ -31,7 +47,7 @@
           2022年1月31日，农历牛年除夕夜，第一次单独看春晚。
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

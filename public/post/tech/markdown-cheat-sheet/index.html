@@ -24,7 +24,20 @@
 <link rel="canonical" href="//localhost:1313/post/tech/markdown-cheat-sheet/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -53,15 +66,15 @@
 
 
 <meta property="og:url" content="//localhost:1313/post/tech/markdown-cheat-sheet/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Markdown Cheat Sheet">
-  <meta property="og:description" content="记录一下MD文档的常用方法">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2020-10-30T16:20:56+08:00">
-    <meta property="article:modified_time" content="2020-10-30T16:20:56+08:00">
-    <meta property="article:tag" content="Markdown">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Markdown Cheat Sheet">
+	<meta property="og:description" content="记录一下MD文档的常用方法">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2020-10-30T16:20:56+08:00">
+		<meta property="article:modified_time" content="2020-10-30T16:20:56+08:00">
+		<meta property="article:tag" content="Markdown">
 
 
 
@@ -345,104 +358,104 @@
     <div class="post-content">
       
       <p>记录一下MD文档的常用方法</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Markdown Cheat Sheet
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Markdown Cheat Sheet
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Thanks for visiting [<span style="color:#f92672">The Markdown Guide</span>](<span style="color:#a6e22e">https://www.markdownguide.org</span>)!
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for [<span style="color:#f92672">basic syntax</span>](<span style="color:#a6e22e">https://www.markdownguide.org/basic-syntax</span>) and [<span style="color:#f92672">extended syntax</span>](<span style="color:#a6e22e">https://www.markdownguide.org/extended-syntax</span>).
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Basic Syntax
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Heading
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span># H1
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## H2
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">### H3
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Bold
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="font-weight:bold">**bold text**</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Italic
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="font-style:italic">*italicized text*</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Blockquote
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">
+</span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">
 </span></span></span><span style="display:flex;"><span><span style="color:#66d9ef">&gt; </span><span style="font-style:italic">blockquote
-</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Ordered List
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> First item
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Second item
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> Third item
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Unordered List
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> First item
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Second item
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Third item
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Code
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#e6db74">`code`</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Horizontal Rule
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Link
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[<span style="color:#f92672">title</span>](<span style="color:#a6e22e">https://www.example.com</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Image
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>![<span style="color:#f92672">alt text</span>](<span style="color:#a6e22e">image.jpg</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">## Extended Syntax
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Table
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>| Syntax | Description |
 </span></span><span style="display:flex;"><span>| ----------- | ----------- |
 </span></span><span style="display:flex;"><span>| Header | Title |
 </span></span><span style="display:flex;"><span>| Paragraph | Text |
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Fenced Code Block
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>\```
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  &#34;firstName&#34;: &#34;John&#34;,
-</span></span><span style="display:flex;"><span>  &#34;lastName&#34;: &#34;Smith&#34;,
-</span></span><span style="display:flex;"><span>  &#34;age&#34;: 25
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>\```
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>\``<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;firstName&#34;: &#34;John&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;lastName&#34;: &#34;Smith&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;age&#34;: 25
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">\`</span>``
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Footnote
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Here&#39;s a sentence with a footnote. [^1]
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>[^1]: This is the footnote.
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Heading ID
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### My Great Heading {#custom-id}
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Definition List
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>term
 </span></span><span style="display:flex;"><span>: definition
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Strikethrough
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">~~The world is flat.~~</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">### Task List
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [x]</span> Write the press release
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> Update the website
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> Contact the media
@@ -535,7 +548,7 @@
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -556,16 +569,5 @@
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

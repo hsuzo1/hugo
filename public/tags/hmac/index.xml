@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/hmac/</link>
     <description>Recent content in Hmac on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Tue, 16 Feb 2021 22:09:20 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/hmac/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/hmac/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>Delphi调用腾讯云TC3-HMAC-SHA256鉴权接口v3发送短信</title>
       <link>//localhost:1313/post/tech/delphi/delphi-tc3-hmac/</link>
       <pubDate>Tue, 16 Feb 2021 22:09:20 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/delphi/delphi-tc3-hmac/</guid>
       <description>
@@ -28,10 +44,18 @@
         
         
         
-          腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。 参考了 高文杰 先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256
+          &lt;p&gt;腾讯云的TC3 v3鉴权比较复杂，当然这是相对于Delphi下而言，其实在Python下直接使用SDK要省事儿的多。本文的源代码就不贴了，需要的可以去原文下载。&lt;br&gt;
+参考了&lt;a href=&#34;https://blog.csdn.net/xunchima123/article/details/93863574&#34;
+  
+  
+    target=&#34;_blank&#34; rel=&#34;noopener&#34;
+  
+&gt;
+  高文杰
+&lt;/a&gt;先生的代码，该代码使用的接口是旧版，目前仍可正常使用，我结合自己的学习增添了最新TC3-HMAC-SHA256 V3版本的鉴权接口。本文最后提供了源码及编译成品。&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/jquery/</link>
     <description>Recent content in Jquery on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Sat, 30 Jan 2021 08:21:07 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>Flask动态切换选项并通过Fetch查询显示</title>
       <link>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</link>
       <pubDate>Sat, 30 Jan 2021 08:21:07 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/python/flask-wtf-with-fetch/</guid>
       <description>
@@ -28,10 +44,43 @@
         
         
         
-          Flask-WTF 提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在 https://flask-wtf.readthedocs.io/en/stable/ 。 具体功能如下: 集成 wtforms。 带有 csrf 令牌的安全表单。 全局的 csrf 保护。 支持验证码（Recaptcha）
+          &lt;p&gt;&lt;a href=&#34;https://pypi.org/project/Flask-WTF/&#34;
+  
+  
+    target=&#34;_blank&#34; rel=&#34;noopener&#34;
+  
+&gt;
+  Flask-WTF
+&lt;/a&gt;提供了WTForms的功能集成，使用该模块能快捷创建表单页面，包含有 Flask 和 WTForms， 集成了 CSRF， file upload 以及 reCAPTCHA.。目前版本为0.14.3，使用说明文档在&lt;a href=&#34;https://flask-wtf.readthedocs.io/en/stable/&#34;
+  
+  
+    target=&#34;_blank&#34; rel=&#34;noopener&#34;
+  
+&gt;
+  https://flask-wtf.readthedocs.io/en/stable/
+&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;具体功能如下:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;集成 wtforms。&lt;/li&gt;
+&lt;li&gt;带有 csrf 令牌的安全表单。&lt;/li&gt;
+&lt;li&gt;全局的 csrf 保护。&lt;/li&gt;
+&lt;li&gt;支持验证码（Recaptcha）。&lt;/li&gt;
+&lt;li&gt;与 Flask-Uploads 一起支持文件上传。&lt;/li&gt;
+&lt;li&gt;国际化集成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;安装方法&#34;&gt;安装方法&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install Flask&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;WTF
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;创建表单&#34;&gt;创建表单&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; flask_wtf &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; Form
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; wtforms &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; StringField
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; wtforms.validators &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; DataRequired
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MyForm&lt;/span&gt;(Form):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; StringField(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;, validators&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;[DataRequired()])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;另外，隐藏的 CSRF 令牌会被自动地创建。你可以在模板这样地渲染它:&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

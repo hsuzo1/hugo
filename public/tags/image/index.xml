@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/image/</link>
     <description>Recent content in Image on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Fri, 13 Nov 2020 09:03:21 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/image/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/image/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>如何使用Slimbox2显示图片灯箱</title>
       <link>//localhost:1313/post/tech/slim2/</link>
       <pubDate>Fri, 13 Nov 2020 09:03:21 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/slim2/</guid>
       <description>
@@ -31,7 +47,7 @@
           Slimbox 2是一个JavaScript库，它在窗口中而不是在单独的窗口（弹出窗口）中将图像和照片显示为模式窗口。文本记录了在Hugo中使用slimbox2来显示图片灯箱效果的过程。
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

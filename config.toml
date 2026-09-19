@@ -5,6 +5,8 @@ paginate = 5
 hasCJKLanguage = true
 summaryLength = 140
 
+ignoreLogs = ['warning-goldmark-raw-html']
+
 #[markup.goldmark.renderer]
 #  unsafe=true
 
@@ -19,8 +21,11 @@ summaryLength = 140
   # Enable to show reading time in minutes for posts
   showReadingTime = false
   description = "张旭州的个人博客。Site stuff for having fun in my life."
+  [params.author]
+    name = "张旭州"
+    email = "6666kw@gmail.com"
   
-languageCode = 'en-us'
+locale = 'en-us'
 title = '张旭州的个人博客'
 [languages]
   [languages.en]

@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/other/</link>
     <description>Recent content in Other on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Thu, 29 Oct 2020 19:18:06 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/other/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/other/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>网页中引用GoogleFont的方法</title>
       <link>//localhost:1313/post/tech/web-font/</link>
       <pubDate>Thu, 29 Oct 2020 19:18:06 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/web-font/</guid>
       <description>
@@ -34,7 +50,7 @@
 &lt;/blockquote&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

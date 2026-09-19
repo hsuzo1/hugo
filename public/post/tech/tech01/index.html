@@ -11,7 +11,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="from jlelse&amp;rsquo;s Blog Hugo themes have the option to override the default rendering of Markdown images by using “Markdown Render Hooks” since version 0.62.0. By creating a file in layouts/_default/_markup named render-image.html it is possible to use a custom template for rendered images. This gives a lot of flexibility. I just used that flexibility to create a lightbox with pure CSS (without using JavaScript, like many lightbox implementations do). After clicking (or tapping) on an content image, you will see it filling the browser view. Another click brings you back to the content. I already used the render-image.html file to display the alternative text as a caption below the image, but now I added the lightbox. My current image template looks like this: html render-image.html &amp;lt;figure&amp;gt; &amp;lt;a"
+  content=" from jlelse&rsquo;s BlogHugo themes have the option to override the default rendering of Markdown images by using “Markdown Render Hooks” since version 0.62.0. By creating a file in layouts/_default/_markup named render-image.html it is possible to use a custom template for rendered images. This gives a lot of flexibility. I just used that flexibility to create a lightbox with pure CSS (without using JavaScript, like many lightbox implementations do). After clicking (or tapping) on an content image, you will see it filling the browser view. Another click brings you back to the content.
+I already used the render-image.html file to display the alternative text as a caption below the image, but now I added the lightbox. My current image template looks like this: htmlrender-image.html&lt;figure&gt;&lt;a href=&#34;#{{ .Destination | md5 }}-lightbox&#34;&gt;&lt;img src=&#34;{{ .Destination | safeURL }}&#34; alt=&#34;{{ .PlainText }}&#34;&gt;&lt;/a&gt;&lt;figcaption&gt;{{ if .Title }}&lt;p&gt;{{ .Title | markdownify }}&lt;/p&gt;{{ else if .Text }}&lt;p&gt;{{ .Text | markdownify }}&lt;/p&gt;{{ end }}&lt;/figcaption&gt;&lt;/figure&gt;&lt;a href=&#34;#_&#34; class=&#34;lightbox&#34; id=&#34;{{ .Destination | md5 }}-lightbox&#34;&gt;&lt;img src=&#34;{{ .Destination | safeURL }}&#34; alt=&#34;{{ .PlainText }}&#34;&gt;&lt;/a&gt;"
 />
 <meta
   name="keywords"
@@ -23,7 +24,20 @@
 <link rel="canonical" href="//localhost:1313/post/tech/tech01/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,17 +66,17 @@
 
 
 <meta property="og:url" content="//localhost:1313/post/tech/tech01/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Pure CSS Lightbox in Hugo theme">
-  <meta property="og:description" content="使用pure css显示图片灯箱的方法">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2020-10-27T16:20:56+08:00">
-    <meta property="article:modified_time" content="2020-10-27T16:20:56+08:00">
-    <meta property="article:tag" content="Hugo">
-    <meta property="article:tag" content="CSS">
-    <meta property="article:tag" content="Lightbox">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Pure CSS Lightbox in Hugo theme">
+	<meta property="og:description" content="使用pure css显示图片灯箱的方法">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2020-10-27T16:20:56+08:00">
+		<meta property="article:modified_time" content="2020-10-27T16:20:56+08:00">
+		<meta property="article:tag" content="Hugo">
+		<meta property="article:tag" content="CSS">
+		<meta property="article:tag" content="Lightbox">
 
 
 
@@ -399,7 +413,7 @@
 </p>
 <p>The <strong>img</strong> element inside the <strong>figure</strong> element is wrapped by an anchor element linking to another hidden (and wrapped) <strong>img</strong> by it’s id. The id is generated using the md5 hash of the image source location.</p>
 <p>The stylesheet (in SCSS) for the lightbox looks like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#a6e22e">.lightbox</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-scss" data-lang="scss"><span style="display:flex;"><span><span style="color:#a6e22e">.lightbox</span> {
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">display</span><span style="color:#f92672">:</span> none;
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">position</span><span style="color:#f92672">:</span> fixed;
 </span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">top</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>;
@@ -515,7 +529,7 @@
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -536,16 +550,5 @@
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

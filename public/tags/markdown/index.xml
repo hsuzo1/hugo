@@ -8,16 +8,32 @@
     <link>//localhost:1313/tags/markdown/</link>
     <description>Recent content in Markdown on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
     <lastBuildDate>Sat, 31 Oct 2020 16:20:56 +0800</lastBuildDate>
     
-	<atom:link href="//localhost:1313/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+
     
+    <atom:link href="//localhost:1313/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
+
     
     <item>
       <title>MarkDownTips</title>
       <link>//localhost:1313/post/tech/markdownextend/</link>
       <pubDate>Sat, 31 Oct 2020 16:20:56 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/markdownextend/</guid>
       <description>
@@ -31,13 +47,15 @@
           关于marikdown的一些用法总结
           
         
-        </description>
+      </description>
     </item>
     
     <item>
       <title>Markdown Cheat Sheet</title>
       <link>//localhost:1313/post/tech/markdown-cheat-sheet/</link>
       <pubDate>Fri, 30 Oct 2020 16:20:56 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
       
       <guid>//localhost:1313/post/tech/markdown-cheat-sheet/</guid>
       <description>
@@ -51,7 +69,7 @@
           &lt;p&gt;记录一下MD文档的常用方法&lt;/p&gt;
           
         
-        </description>
+      </description>
     </item>
     
   </channel>

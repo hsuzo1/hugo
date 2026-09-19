@@ -11,7 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="https://github.com 官网登录 下载git客户端 1.生成秘钥📜 打开git客户端，执行命令 ssh-keygen -t rsa -C &amp;#34;github的邮箱账号&amp;#34; 注意，需要给.ssh的7000权限 sudo chmod -R 700 ~/.ssh 去这个目录，寻找id_rsa.pub文件，把文件的字符串复制。 登录官网github.com右上角人头像🤵➜setting"
+  content=" https://github.com官网登录 下载git客户端 1.生成秘钥📜 打开git客户端，执行命令 ssh-keygen -t rsa -C &#34;github的邮箱账号&#34; 注意，需要给.ssh的7000权限
+sudo chmod -R 700 ~/.ssh 去这个目录，寻找id_rsa.pub文件，把文件的字符串复制。 登录官网github.com右上角人头像🤵➜setting a ssh and gpg keys a new ssh key➜制的内容➜add ssh keys
+2. 验证秘钥 git客户端输入ssh -T git@github.com ,按提示输入 yes 提示successfully即可
+"
 />
 <meta
   name="keywords"
@@ -23,7 +26,20 @@
 <link rel="canonical" href="//localhost:1313/post/tech/github-version/" />
 
 
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0KTWGV9SPG');
+        }
+      </script>
 
 
 <link rel="stylesheet" href="//localhost:1313/assets/style.css" />
@@ -52,15 +68,15 @@
 
 
 <meta property="og:url" content="//localhost:1313/post/tech/github-version/">
-  <meta property="og:site_name" content="张旭州的个人博客">
-  <meta property="og:title" content="Github版本控制的方法">
-  <meta property="og:description" content="Github版本控制的方法">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="post">
-    <meta property="article:published_time" content="2020-10-27T18:34:17+08:00">
-    <meta property="article:modified_time" content="2020-10-27T18:34:17+08:00">
-    <meta property="article:tag" content="Github">
+	<meta property="og:site_name" content="张旭州的个人博客">
+	<meta property="og:title" content="Github版本控制的方法">
+	<meta property="og:description" content="Github版本控制的方法">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="post">
+		<meta property="article:published_time" content="2020-10-27T18:34:17+08:00">
+		<meta property="article:modified_time" content="2020-10-27T18:34:17+08:00">
+		<meta property="article:tag" content="Github">
 
 
 
@@ -358,9 +374,9 @@
 </ul>
 </blockquote>
 <h4 id="1生成秘钥128220-打开git客户端执行命令">1.生成秘钥📜 打开git客户端，执行命令</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;github的邮箱账号&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;github的邮箱账号&#34;</span>
 </span></span></code></pre></div><p>注意，需要给.ssh的7000权限</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">700</span> ~/.ssh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chmod -R <span style="color:#ae81ff">700</span> ~/.ssh
 </span></span></code></pre></div><p>去这个目录，寻找<strong>id_rsa.pub</strong>文件，把文件的字符串复制。
 登录官网github.com右上角人头像🤵➜setting a ssh and gpg keys a new ssh key➜制的内容➜add ssh keys</p>
 <h4 id="2-验证秘钥">2. 验证秘钥</h4>
@@ -379,7 +395,7 @@ git config --global user.email  github邮箱用户
 <blockquote>
 <p>注意，有时候一些文件隐藏了.gitignore,凡是在目录中包含这个文件，将被忽略提交到github</p>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /d
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd /d
 </span></span><span style="display:flex;"><span>mkdir www
 </span></span><span style="display:flex;"><span>cd www
 </span></span></code></pre></div><p>创建一个文件随便输入字符保存退出.设置全局编码，防止代码乱码</p>
@@ -412,26 +428,26 @@ git config --global user.email  github邮箱用户
 <h3 id="案例3-修改了文件commit到缓冲区了经过了add-和-commit但是没有提交到github">案例3： 修改了文件，commit到缓冲区了（经过了add 和 commit），但是没有提交到github</h3>
 <p><code>git reset HEAD .</code></p>
 <h3 id="案例4删除了文件如何恢复">案例4：删除了文件如何恢复？？</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log
 </span></span></code></pre></div><p>会弹出一个修改的列表：如</p>
 <pre tabindex="0"><code>commit c2d7f0dc6196c87e636d121bf7f163ad31d8915d
 </code></pre><p>commit 后的就是id了
 恢复54:35时间的东西</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout id .
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout id .
 </span></span></code></pre></div><h3 id="案例5如何把对应版本代码克隆到本地">案例5：如何把对应版本代码克隆到本地</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone –b 版本号 代码链接
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone –b 版本号 代码链接
 </span></span></code></pre></div><h3 id="案例6在修改代码前必须要做的事">案例6：在修改代码前，必须要做的事</h3>
 <blockquote>
 <p>在修改前，必须是git pull 更新本地代码</p>
 </blockquote>
 <h3 id="案例7修改本地代码如何提交到服务器">案例7：修改本地代码如何提交到服务器？？</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git pull origin 1.0<span style="color:#f92672">(</span>指定1.0版本<span style="color:#f92672">)</span>或者 git pull
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git pull origin 1.0<span style="color:#f92672">(</span>指定1.0版本<span style="color:#f92672">)</span>或者 git pull
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit –m “修改了test文件”
 </span></span><span style="display:flex;"><span>***git push 后的origin1.0 是指定版本，可不填写***
 </span></span><span style="display:flex;"><span>git push origin 1.0
 </span></span></code></pre></div><h3 id="案例8从git上获取项目">案例8：从git上获取项目？？</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init 初始化一个仓库
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init 初始化一个仓库
 </span></span><span style="display:flex;"><span>git remote add origin 网址
 </span></span><span style="display:flex;"><span>git pull origin 分支
 </span></span><span style="display:flex;"><span>git checkout -b xx分支  <span style="color:#75715e">#如果没有该分支则尝试会创建这个分支</span>
@@ -450,7 +466,7 @@ git commit -m &#34;版本合并&#34;
 git push origin master
 </code></pre><h3 id="案例11屏蔽某个目录某个文件不提交到git">案例11：屏蔽某个目录，某个文件不提交到git</h3>
 <p><strong>.gitignore</strong>文件语法如下:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 此为注释 – 将被 Git 忽略</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 此为注释 – 将被 Git 忽略</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>*.a       <span style="color:#75715e"># 忽略所有 .a 结尾的文件</span>
 </span></span><span style="display:flex;"><span>
@@ -463,7 +479,7 @@ git push origin master
 </span></span><span style="display:flex;"><span>doc/*.txt <span style="color:#75715e"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span>
 </span></span></code></pre></div><p>在项目根目录创建 <strong>.gitignore</strong></p>
 <h3 id="案例12新建一个分支拉取另外一个分支代码-并把新的分支合并到另外一个分支">案例12：新建一个分支，拉取另外一个分支代码, 并把新的分支合并到另外一个分支</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout -b feature_line
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git checkout -b feature_line
 </span></span><span style="display:flex;"><span>git pull origin develop  //拉取develop代码
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;创建了个分支&#34;</span>
@@ -478,12 +494,12 @@ git push origin master
 <li>生成<strong>sshkey ssh-keygen -t rsa -C &ldquo;邮箱账号&rdquo;</strong>
 注意不要全部回车键  这里要写存储的路径如</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;gg&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;gg&#34;</span>
 </span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
 </span></span><span style="display:flex;"><span>Enter file in which to save the key <span style="color:#f92672">(</span>/c/Users/Administrator/.ssh/id_rsa<span style="color:#f92672">)</span>: 
 </span></span></code></pre></div><p>这里填写绝对路径 或者相对路径 命名两个账号都不同如：<strong>/C/Users/Administrator/.ssh/id_rsa_one</strong></p>
 <p>接着全部回车键，默认</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;gg&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>$ ssh-keygen -t rsa -C <span style="color:#e6db74">&#34;gg&#34;</span>
 </span></span><span style="display:flex;"><span>Generating public/private rsa key pair.
 </span></span><span style="display:flex;"><span>Enter file in which to save the key <span style="color:#f92672">(</span>/c/Users/Administrator/.ssh/id_rsa<span style="color:#f92672">)</span>: 
 </span></span></code></pre></div><p>这里填写绝对路径 或者相对路径 命名两个账号都不同如：<strong>/c/Users/Administrator/.ssh/id_rsa_two</strong></p>
@@ -618,7 +634,7 @@ Host github_1033
       
       <div class="copyright copyright--user">
         <span
-          >© 2024 Powered by
+          >© 2026 Powered by
           <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
         >
       </div>
@@ -639,16 +655,5 @@ Host github_1033
       
     </div>
 
-    
-      
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KTWGV9SPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0KTWGV9SPG');
-</script>
-    
   </body>
 </html>

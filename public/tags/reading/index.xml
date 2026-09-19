@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reading on </title>
+    
+    
+    
+    <link>//localhost:1313/tags/reading/</link>
+    <description>Recent content in Reading on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+    <language>en-us</language>
+    
+
+    
+    <managingEditor>6666kw@gmail.com (张旭州)</managingEditor>
+    <webMaster>6666kw@gmail.com (张旭州)</webMaster>
+    
+
+    
+
+    
+    <lastBuildDate>Sat, 19 Sep 2026 16:25:12 +0800</lastBuildDate>
+    
+
+    
+    <atom:link href="//localhost:1313/tags/reading/index.xml" rel="self" type="application/rss+xml" />
+    
+
+    
+    <item>
+      <title>看了一本新书</title>
+      <link>//localhost:1313/post/life/2026mynewtravel/</link>
+      <pubDate>Sat, 19 Sep 2026 16:25:12 +0800</pubDate>
+      
+      <author>6666kw@gmail.com (张旭州)</author>
+      
+      <guid>//localhost:1313/post/life/2026mynewtravel/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          断断续续，总算把《城南往事》看完了。
+          
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
